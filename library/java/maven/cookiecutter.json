@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Maven artifact",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "library",
+  "_stack": "java",
+  "_language": "java",
+  "_variant": "maven",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

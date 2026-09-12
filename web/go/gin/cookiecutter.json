@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Gin + net/http",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "web",
+  "_stack": "go",
+  "_language": "go",
+  "_variant": "gin",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

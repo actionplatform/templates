@@ -1,0 +1,14 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+type = "library"
+stack = "python"
+template = "poetry"
+language = "python"
+
+[source_host]
+kind = "github"
+repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+
+[release]
+strategy = "semver"
+changelog = "conventional"

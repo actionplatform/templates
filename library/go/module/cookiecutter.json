@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Go module",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "library",
+  "_stack": "go",
+  "_language": "go",
+  "_variant": "module",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

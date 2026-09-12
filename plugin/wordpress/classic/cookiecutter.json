@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "WordPress plugin (PHP)",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "plugin",
+  "_stack": "wordpress",
+  "_language": "php",
+  "_variant": "classic",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "FastMCP server",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "mcp",
+  "_stack": "python",
+  "_language": "python",
+  "_variant": "fastmcp",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

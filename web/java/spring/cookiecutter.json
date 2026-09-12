@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Spring Boot",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "web",
+  "_stack": "java",
+  "_language": "java",
+  "_variant": "spring",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

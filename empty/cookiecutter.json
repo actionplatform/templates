@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Only platform.toml + .code_quality/",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "empty",
+  "_stack": "",
+  "_language": "",
+  "_variant": "",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}

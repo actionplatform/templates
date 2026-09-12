@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Poetry package",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "_type": "library",
+  "_stack": "python",
+  "_language": "python",
+  "_variant": "poetry",
+  "_copy_without_render": [
+    ".code_quality"
+  ]
+}
