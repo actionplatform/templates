@@ -41,14 +41,6 @@ description = "Cargo crate"
 default = true
 description = "FastMCP server"
 
-[mobile.android.compose]
-default = true
-description = "Kotlin + Jetpack Compose"
-
-[mobile.ios.swiftui]
-default = true
-description = "Swift + SwiftUI"
-
 [docs.mkdocs.material]
 default = true
 description = "MkDocs Material"
