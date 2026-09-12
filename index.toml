@@ -65,10 +65,6 @@ description = "MkDocs Material"
 default = true
 description = "Docusaurus classic"
 
-[plugin.wordpress.classic]
-default = true
-description = "WordPress plugin (PHP)"
-
 [plugin.chrome.mv3]
 default = true
 description = "Chrome extension Manifest V3"
