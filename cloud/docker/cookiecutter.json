@@ -1,0 +1,28 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "language": [
+    "python",
+    "go",
+    "node"
+  ],
+  "type": [
+    "web"
+  ],
+  "ci": [
+    "github",
+    "gitlab",
+    "bitbucket",
+    "jenkins"
+  ],
+  "_kind": "cloud",
+  "_cloud": "docker",
+  "_description": "Dockerfile + docker-compose",
+  "_types": [
+    "web"
+  ],
+  "_copy_without_render": [
+    ".github"
+  ]
+}
