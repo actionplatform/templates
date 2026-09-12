@@ -13,7 +13,6 @@
   "ci": [
     "github",
     "gitlab",
-    "bitbucket",
     "jenkins"
   ],
   "_kind": "cloud",
