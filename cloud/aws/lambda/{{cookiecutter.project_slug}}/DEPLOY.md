@@ -26,3 +26,15 @@ samconfig.toml       # dev / prod stacks
 lambda_handler.py    # Mangum adapter
 Makefile             # SAM build recipes
 ```
+
+## Requirements — IAM
+
+`requirements/` declares the least privilege the deploy role needs. Create it once per account:
+
+```bash
+sed -i "s/ACCOUNT_ID/$(aws sts get-caller-identity --query Account --output text)/g" requirements/*.json
+aws iam create-role --role-name {{ cookiecutter.project_slug }}-deploy --assume-role-policy-document file://requirements/trust.json
+aws iam put-role-policy --role-name {{ cookiecutter.project_slug }}-deploy --policy-name deploy --policy-document file://requirements/policy.json
+```
+
+`trust.json` trusts GitHub OIDC for this repo only. Put the role ARN in the `AWS_DEPLOY_ROLE_ARN` secret.
