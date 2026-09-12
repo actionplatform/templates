@@ -11,3 +11,5 @@ Provider: **{{ cookiecutter.provider }}**
 | Var | Meaning |
 |-----|---------|
 | `DATABASE_URL` | `postgresql://user:pass@host:5432/db` |
+
+With `aws-rds`, `requirements/policy.json` is the least privilege `up` needs (RDS, SSM parameter under `/{{ cookiecutter.project_slug }}/`, EC2 describe). Attach it to the deploy role after replacing `ACCOUNT_ID`.

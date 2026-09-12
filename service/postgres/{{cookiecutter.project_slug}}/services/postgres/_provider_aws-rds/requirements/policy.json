@@ -1,0 +1,43 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Rds",
+      "Effect": "Allow",
+      "Action": [
+        "rds:CreateDBInstance",
+        "rds:ModifyDBInstance",
+        "rds:DeleteDBInstance",
+        "rds:DescribeDBInstances",
+        "rds:AddTagsToResource",
+        "rds:ListTagsForResource",
+        "rds:DescribeDBSubnetGroups"
+      ],
+      "Resource": [
+        "arn:aws:rds:*:ACCOUNT_ID:db:{{ cookiecutter.project_slug }}-*",
+        "arn:aws:rds:*:ACCOUNT_ID:subgrp:*"
+      ]
+    },
+    {
+      "Sid": "Ssm",
+      "Effect": "Allow",
+      "Action": [
+        "ssm:PutParameter",
+        "ssm:GetParameter",
+        "ssm:DeleteParameter",
+        "ssm:AddTagsToResource"
+      ],
+      "Resource": "arn:aws:ssm:*:ACCOUNT_ID:parameter/{{ cookiecutter.project_slug }}/*"
+    },
+    {
+      "Sid": "Ec2Describe",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
