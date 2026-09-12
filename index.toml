@@ -49,10 +49,6 @@ description = "Swift + SwiftUI"
 default = true
 description = "MkDocs Material"
 
-[docs.docusaurus.classic]
-default = true
-description = "Docusaurus classic"
-
 [plugin.chrome.mv3]
 default = true
 description = "Chrome extension Manifest V3"
