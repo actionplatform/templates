@@ -7,54 +7,69 @@ Cookiecutter templates for bootstrapping projects on the Action Platform.
 ```bash
 pipx install cookiecutter
 
-cookiecutter gh:actionplatform/templates --directory web/python
-cookiecutter gh:actionplatform/templates --directory plugin/wordpress
+cookiecutter gh:actionplatform/templates --directory web/python/fastapi
+cookiecutter gh:actionplatform/templates --directory plugin/wordpress/classic
 ```
 
 Or via the CLI:
 
 ```bash
-action-platform init                # interactive: type → stack → name
-action-platform init web python     # direct
-action-platform init web node --demo
-action-platform init --list         # show available matrix
+action-platform init                        # interactive: type → stack → template → name
+action-platform init web python fastapi     # direct
+action-platform init web python             # default template for the stack
+action-platform init --list                 # show available matrix
 ```
 
 ## Matrix
 
-| Type      | Stacks                             | Demo |
-|-----------|------------------------------------|------|
-| `web`     | python, go, php, java, node, rust  | yes  |
-| `library` | python, go, php, node, java, rust  | yes  |
-| `mcp`     | python, go, node, java             | yes  |
-| `mobile`  | android, ios                       | yes  |
-| `docs`    | mkdocs, docusaurus                 | no   |
-| `plugin`  | wordpress, chrome                  | no   |
-| `empty`   | — (only `platform.toml` + `.code_quality/`) | no |
+Three levels: **type → stack → template**.
 
-- `plugin` second level is the **host system**; `mobile` second level is the **platform**. Language is imposed by them.
-- `--demo` reuses the same template without release/deploy workflows (`stage = "demo"` in `platform.toml`).
-- `index.toml` marks each leaf as `prod` or `beta`.
+| Type      | Stacks                             |
+|-----------|------------------------------------|
+| `web`     | python, go, php, java, node, rust  |
+| `library` | python, go, php, node, java, rust  |
+| `mcp`     | python, go, node, java             |
+| `mobile`  | android, ios                       |
+| `docs`    | mkdocs, docusaurus                 |
+| `plugin`  | wordpress, chrome                  |
+| `empty`   | — (only `platform.toml` + `.code_quality/`) |
+
+`plugin` stack is the **host system**; `mobile` stack is the **platform**. Language is imposed by them.
 
 ## Structure
 
 ```
 templates/
 ├── index.toml                 # matrix read by the CLI
-├── web/python/
-├── web/go/
-├── library/python/
-├── plugin/wordpress/
-├── plugin/chrome/
+├── web/python/fastapi/
+├── web/python/django/
+├── web/go/gin/
+├── library/python/poetry/
+├── mcp/python/fastmcp/
+├── mobile/android/compose/
+├── plugin/wordpress/classic/
+├── plugin/chrome/mv3/
 └── empty/
 ```
 
-Each leaf directory is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory <type>/<stack>`.
+Each leaf is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory <type>/<stack>/<template>`.
+
+## `index.toml`
+
+```toml
+[web.python.fastapi]
+default = true
+description = "FastAPI + uvicorn + pydantic"
+
+[web.python.django]
+description = "Django + gunicorn"
+```
 
 ## Conventions
 
 - Every template ships `platform.toml` so the project works with `action-platform release` and `deploy` out of the box.
 - Every template ships `.code_quality/` with the stack's lint/format config.
+- Each stack has exactly one template with `default = true`.
 - Variables are declared in `cookiecutter.json`; keep defaults sensible.
 
 ## Related
