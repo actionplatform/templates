@@ -1,0 +1,11 @@
+image: maven:3-eclipse-temurin-21
+
+stages:
+  - code-quality
+
+code-quality:
+  stage: code-quality
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - mvn -B verify
