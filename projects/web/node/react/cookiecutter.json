@@ -21,6 +21,7 @@
     "Jenkinsfile",
     "webpack.config.js",
     "jest.config.js",
-    "src/hooks/useRequest/useRequest.js"
+    "src/hooks/useRequest/useRequest.js",
+    ".githooks"
   ]
 }

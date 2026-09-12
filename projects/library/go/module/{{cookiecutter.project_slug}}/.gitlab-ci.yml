@@ -12,3 +12,6 @@ check:
 
 commits:
   extends: .ap-conventional-commit
+
+gitflow:
+  extends: .ap-gitflow
