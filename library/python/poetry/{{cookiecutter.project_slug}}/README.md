@@ -8,6 +8,14 @@
 pip install {{ cookiecutter.project_slug }}
 ```
 
+## Usage
+
+```python
+from {{ cookiecutter.package_name }} import hello
+
+hello("ana")  # "hello, ana"
+```
+
 ## Develop
 
 ```bash
@@ -20,6 +28,7 @@ poetry run ruff check .
 
 ```
 {{ cookiecutter.package_name }}/
-└── __init__.py      # version + public API
+├── __init__.py      # version + public API
+└── hello.py         # hello() — dummy
 tests/
 ```

@@ -3,4 +3,6 @@
 __version__ = "0.1.0"
 __description__ = "{{ cookiecutter.description }}"
 
-__all__: list[str] = []
+from .hello import hello
+
+__all__ = ["hello"]
