@@ -6,6 +6,7 @@ pipeline {
             steps {
                 sh 'cargo fmt --check'
                 sh 'cargo clippy -- -D warnings'
+                sh 'cargo test'
             }
         }
     }
