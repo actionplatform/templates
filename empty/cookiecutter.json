@@ -4,11 +4,12 @@
   "description": "Only platform.toml + .code_quality/",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "empty",
   "_stack": "",
   "_language": "",
   "_variant": "",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }
