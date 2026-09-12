@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install poetry
-      - run: poetry install --with dev,code-quality
-      - run: poetry run ruff check .
-      - run: poetry run ruff format --check .
+      - run: npm ci
+      - run: npx eslint .
+      - run: npx prettier --check .
