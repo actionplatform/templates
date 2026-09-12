@@ -16,7 +16,7 @@ linters:
 
 linters-settings:
   goimports:
-    local-prefixes: github.com/stackin-io
+    local-prefixes: github.com/actionplatform
 
 issues:
   exclude-dirs:

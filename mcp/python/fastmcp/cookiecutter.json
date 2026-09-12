@@ -9,6 +9,7 @@
   "_language": "python",
   "_variant": "fastmcp",
   "_copy_without_render": [
-    ".code_quality"
+    ".code_quality",
+    ".github"
   ]
 }

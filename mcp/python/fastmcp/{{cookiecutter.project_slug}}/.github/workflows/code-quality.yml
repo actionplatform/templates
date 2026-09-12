@@ -26,11 +26,11 @@ jobs:
 
       - name: 🔍 Ruff (Linting)
         run: |
-          poetry run ruff check stackin/ tests/
+          poetry run ruff check .
 
       - name: 🎨 Ruff (Format Check)
         run: |
-          poetry run ruff format --check stackin/ tests/
+          poetry run ruff format --check .
 
       - name: ✅ Code Quality Summary
         if: always()

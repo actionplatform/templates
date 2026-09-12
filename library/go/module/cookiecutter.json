@@ -9,6 +9,7 @@
   "_language": "go",
   "_variant": "module",
   "_copy_without_render": [
-    ".code_quality"
+    ".code_quality",
+    ".github"
   ]
 }
