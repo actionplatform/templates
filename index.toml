@@ -61,3 +61,8 @@ types = ["web"]
 description = "Dockerfile + docker-compose"
 languages = ["python", "go", "node"]
 types = ["web"]
+
+[cloud.aws.amplify]
+description = "AWS Amplify Hosting (static build)"
+languages = ["node"]
+types = ["web"]
