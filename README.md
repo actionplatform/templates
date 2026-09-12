@@ -25,7 +25,7 @@ Three levels: **type → stack → template**.
 
 | Type      | Stacks                             |
 |-----------|------------------------------------|
-| `web`     | python, go                         |
+| `web`     | python, go, node                   |
 | `library` | python, go, php, node, java, rust  |
 | `mcp`     | python                             |
 | `mobile`  | android, ios                       |
@@ -46,7 +46,7 @@ templates/
 ├── library/python/poetry/
 ├── mcp/python/fastmcp/
 ├── mobile/android/compose/
-├── plugin/chrome/mv3/
+├── plugin/chrome/vanilla/
 └── empty/
 ```
 
