@@ -1,0 +1,13 @@
+pipeline {
+    agent { docker { image 'node:20' } }
+
+    stages {
+        stage('Code Quality') {
+            steps {
+                sh 'npm ci'
+                sh 'npx eslint .'
+                sh 'npx prettier --check .'
+            }
+        }
+    }
+}
