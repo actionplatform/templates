@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from app.api.v1.health import health_router
+from app.api.v1.hello import hello_router
 
 v1 = APIRouter()
-v1.include_router(health_router, prefix="/health", tags=["Health"])
+v1.include_router(hello_router, prefix="/hello", tags=["Hello"])

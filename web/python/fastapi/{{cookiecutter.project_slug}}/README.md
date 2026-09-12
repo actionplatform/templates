@@ -9,8 +9,6 @@ poetry install --with dev,code-quality
 poetry run uvicorn app:app --reload    # http://localhost:8000/docs
 ```
 
-Settings come from env vars (`SCOPE`, `API_V1_PREFIX`, `CORS_ORIGINS`, `SECRET_KEY`) or a local `.env`.
-
 ## Test / lint
 
 ```bash
@@ -23,10 +21,9 @@ poetry run ruff format --check .
 
 ```
 app/
-├── __init__.py        # create_app()
-├── settings.py        # pydantic settings
+├── __init__.py        # create_app(), __version__
 └── api/
-    ├── ping.py        # liveness
-    └── v1/            # versioned routers
+    ├── ping.py        # GET /ping
+    └── v1/            # versioned routers (hello = dummy)
 lambda_handler.py      # Mangum adapter for AWS Lambda
 ```
