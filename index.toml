@@ -37,18 +37,6 @@ description = "Cargo crate"
 default = true
 description = "FastMCP server"
 
-[mcp.go.mcp-go]
-default = true
-description = "mcp-go server"
-
-[mcp.node.sdk]
-default = true
-description = "@modelcontextprotocol/sdk server"
-
-[mcp.java.sdk]
-default = true
-description = "MCP Java SDK server"
-
 [mobile.android.compose]
 default = true
 description = "Kotlin + Jetpack Compose"
