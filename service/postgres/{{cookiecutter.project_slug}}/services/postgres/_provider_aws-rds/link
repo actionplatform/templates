@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+STAGE="${STAGE:-dev}"
+PARAM="/{{ cookiecutter.project_slug }}/${STAGE}/DATABASE_URL"
+URL=$(aws ssm get-parameter --name "$PARAM" --with-decryption --query Parameter.Value --output text)
+echo "export DATABASE_URL=\"$URL\""

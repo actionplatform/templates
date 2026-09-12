@@ -1,0 +1,14 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "service_name": "postgres",
+  "provider": [
+    "docker",
+    "aws-rds"
+  ],
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "_kind": "service",
+  "_service": "postgres",
+  "_description": "PostgreSQL database",
+  "_copy_without_render": []
+}
