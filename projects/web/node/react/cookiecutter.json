@@ -1,0 +1,26 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "React + webpack + jest",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "node_version": "20",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins"
+  ],
+  "_type": "web",
+  "_stack": "node",
+  "_language": "node",
+  "_variant": "react",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile",
+    "webpack.config.js",
+    "jest.config.js",
+    "src/hooks/useRequest/useRequest.js"
+  ]
+}

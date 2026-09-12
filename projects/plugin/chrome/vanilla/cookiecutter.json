@@ -1,0 +1,26 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Chrome extension, Manifest V3, no bundler",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins"
+  ],
+  "api_base": "https://api.example.com/api/v1",
+  "node_version": "22",
+  "_type": "plugin",
+  "_stack": "chrome",
+  "_language": "node",
+  "_variant": "vanilla",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile",
+    "scripts",
+    "tests"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "MkDocs Material",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins"
+  ],
+  "python_version": "3.12",
+  "_type": "docs",
+  "_stack": "mkdocs",
+  "_language": "python",
+  "_variant": "material",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile"
+  ]
+}

@@ -1,0 +1,3 @@
+@Library('ci-jenkins@v1') _
+
+apPipeline(image: 'golang:1.23')

@@ -1,0 +1,24 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Composer package",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins"
+  ],
+  "php_namespace": "{{ cookiecutter.project_name|replace('-', ' ')|title|replace(' ', '') }}",
+  "php_version": "8.1",
+  "_type": "library",
+  "_stack": "php",
+  "_language": "php",
+  "_variant": "composer",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile"
+  ]
+}

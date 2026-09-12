@@ -1,0 +1,3 @@
+@Library('ci-jenkins@v1') _
+
+apPipeline(image: 'python:3.12')

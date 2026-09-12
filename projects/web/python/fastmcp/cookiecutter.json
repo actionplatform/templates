@@ -1,0 +1,23 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "FastMCP server (Model Context Protocol over HTTP)",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins"
+  ],
+  "python_version": "3.12",
+  "_type": "web",
+  "_stack": "python",
+  "_language": "python",
+  "_variant": "fastmcp",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile"
+  ]
+}
