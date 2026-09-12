@@ -1,0 +1,12 @@
+image: rust:1.80
+
+stages:
+  - code-quality
+
+code-quality:
+  stage: code-quality
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - cargo fmt --check
+    - cargo clippy -- -D warnings
