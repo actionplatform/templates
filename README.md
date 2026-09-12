@@ -29,7 +29,7 @@ Three levels: **type → stack → template**.
 | `library` | python, go, php, node, java, rust  |
 | `mcp`     | python                             |
 | `mobile`  | android, ios                       |
-| `docs`    | mkdocs, docusaurus                 |
+| `docs`    | mkdocs                             |
 | `plugin`  | chrome                             |
 | `empty`   | — (only `platform.toml` + `.code_quality/`) |
 
