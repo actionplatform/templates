@@ -1,0 +1,15 @@
+pipeline {
+    agent { docker { image 'node:20' } }
+
+    stages {
+        stage('Code Quality') {
+            steps {
+                sh 'npm ci'
+                sh 'npm run lint'
+                sh 'npm run format:check'
+                sh 'npm test'
+                sh 'REACT_APP_API_URL=https://example.com/api/v1 npm run build'
+            }
+        }
+    }
+}

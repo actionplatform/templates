@@ -1,0 +1,13 @@
+image: node:20
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - npm ci
+            - npm run lint
+            - npm run format:check
+            - npm test
+            - REACT_APP_API_URL=https://example.com/api/v1 npm run build

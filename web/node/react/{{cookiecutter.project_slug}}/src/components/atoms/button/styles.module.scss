@@ -1,0 +1,23 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn_primary {
+  background: var(--color-ink);
+  color: var(--color-surface);
+}
+
+.btn_secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: currentColor;
+}

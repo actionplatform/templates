@@ -1,0 +1,20 @@
+module.exports = {
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
+  moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png|gif|webp|svg|ttf|woff|woff2)$": "<rootDir>/tests/__mocks__/fileMock.js",
+    "^components/(.*)$": "<rootDir>/src/components/$1",
+    "^hooks/(.*)$": "<rootDir>/src/hooks/$1",
+    "^hooks$": "<rootDir>/src/hooks",
+    "^utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^constants/(.*)$": "<rootDir>/src/constants/$1",
+    "^stores/(.*)$": "<rootDir>/src/stores/$1",
+    "^lib/(.*)$": "<rootDir>/src/lib/$1",
+  },
+  transform: { "^.+\\.(js|jsx)$": "babel-jest" },
+  transformIgnorePatterns: ["/node_modules/(?!(react-router|react-router-dom)/)"],
+  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+  collectCoverageFrom: ["src/**/*.{js,jsx}", "!src/**/*.test.{js,jsx}", "!src/index.js"],
+  coveragePathIgnorePatterns: ["/node_modules/", "/build/"],
+};
