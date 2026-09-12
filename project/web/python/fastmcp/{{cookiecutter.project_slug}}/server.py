@@ -1,14 +1,6 @@
-"""{{ cookiecutter.project_name }} — MCP server entry point."""
+"""Local entry point: `python server.py` (stdio) or `uvicorn app:app` (http)."""
 
-from fastmcp import FastMCP
-
-from tools.hello import hello
-
-__version__ = "0.1.0"
-
-mcp = FastMCP("{{ cookiecutter.project_name }}", version=__version__)
-
-mcp.tool(hello)
+from app import mcp
 
 if __name__ == "__main__":
     mcp.run()

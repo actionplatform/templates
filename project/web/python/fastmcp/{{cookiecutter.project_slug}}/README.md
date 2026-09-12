@@ -6,14 +6,14 @@
 
 ```bash
 poetry install --with dev,code-quality
-poetry run python server.py                 # stdio
-poetry run fastmcp run server.py --transport http --port 8000   # http
+poetry run uvicorn app:app --port 8000      # http://localhost:8000/mcp  +  /ping
+poetry run python server.py                 # stdio, for local MCP clients
 ```
 
 Register in a client (`.mcp.json`):
 
 ```json
-{ "mcpServers": { "{{ cookiecutter.project_slug }}": { "command": "poetry", "args": ["run", "python", "server.py"] } } }
+{ "mcpServers": { "{{ cookiecutter.project_slug }}": { "type": "http", "url": "http://localhost:8000/mcp" } } }
 ```
 
 ## Test / lint
@@ -26,7 +26,8 @@ poetry run ruff check .
 ## Layout
 
 ```
-server.py          # FastMCP instance, registers tools
+app/__init__.py    # FastMCP instance, /ping, create_app()  ← convention for every web/python/*
+server.py          # stdio entry point
 tools/hello.py     # one module per tool, plain functions
-tests/             # calls tools through the in-memory Client
+tests/             # tool via in-memory Client, /ping via TestClient
 ```
