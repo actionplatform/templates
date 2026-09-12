@@ -26,7 +26,7 @@ Three levels: **type → stack → template**.
 
 | Type      | Stacks                             |
 |-----------|------------------------------------|
-| `web`     | python, go, php, java, node, rust  |
+| `web`     | python, go                         |
 | `library` | python, go, php, node, java, rust  |
 | `mcp`     | python, go, node, java             |
 | `mobile`  | android, ios                       |
