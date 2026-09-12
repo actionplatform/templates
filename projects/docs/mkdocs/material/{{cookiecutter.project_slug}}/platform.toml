@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "docs"
 stack = "mkdocs"
 template = "material"
+ci = "{{ cookiecutter.ci }}"
 language = "python"
 
 [source_host]

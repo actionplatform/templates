@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "library"
 stack = "php"
 template = "composer"
+ci = "{{ cookiecutter.ci }}"
 language = "php"
 
 [source_host]

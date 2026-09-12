@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "library"
 stack = "java"
 template = "maven"
+ci = "{{ cookiecutter.ci }}"
 language = "java"
 
 [source_host]

@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "plugin"
 stack = "chrome"
 template = "vanilla"
+ci = "{{ cookiecutter.ci }}"
 language = "node"
 
 [source_host]

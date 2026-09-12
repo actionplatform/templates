@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "library"
 stack = "python"
 template = "poetry"
+ci = "{{ cookiecutter.ci }}"
 language = "python"
 
 [source_host]

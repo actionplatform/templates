@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "empty"
 stack = ""
 template = ""
+ci = ""
 language = ""
 
 [source_host]

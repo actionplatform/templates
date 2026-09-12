@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "web"
 stack = "go"
 template = "gin"
+ci = "{{ cookiecutter.ci }}"
 language = "go"
 
 [source_host]

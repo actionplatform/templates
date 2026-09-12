@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "library"
 stack = "node"
 template = "npm"
+ci = "{{ cookiecutter.ci }}"
 language = "node"
 
 [source_host]

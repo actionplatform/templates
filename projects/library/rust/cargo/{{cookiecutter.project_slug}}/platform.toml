@@ -3,6 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 type = "library"
 stack = "rust"
 template = "cargo"
+ci = "{{ cookiecutter.ci }}"
 language = "rust"
 
 [source_host]
