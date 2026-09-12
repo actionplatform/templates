@@ -11,6 +11,9 @@
     "bitbucket",
     "jenkins"
   ],
+  "java_package": "com.{{ cookiecutter.github_owner|replace('-', '') }}.{{ cookiecutter.package_name }}",
+  "java_package_dir": "{{ cookiecutter.java_package|replace('.', '/') }}",
+  "java_version": "17",
   "_type": "library",
   "_stack": "java",
   "_language": "java",

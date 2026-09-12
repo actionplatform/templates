@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'maven:3-eclipse-temurin-21' } }
+    agent { docker { image 'maven:3-eclipse-temurin-17' } }
 
     stages {
         stage('Code Quality') {

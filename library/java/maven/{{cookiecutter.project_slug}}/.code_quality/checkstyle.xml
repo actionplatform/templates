@@ -6,15 +6,16 @@
     <property name="charset" value="UTF-8"/>
     <property name="severity" value="warning"/>
 
+    <module name="LineLength">
+        <property name="max" value="120"/>
+    </module>
+
     <module name="TreeWalker">
         <module name="UnusedImports"/>
         <module name="RedundantImport"/>
         <module name="EqualsHashCode"/>
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
-        <module name="LineLength">
-            <property name="max" value="120"/>
-        </module>
         <module name="MethodLength">
             <property name="max" value="80"/>
         </module>

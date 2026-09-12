@@ -7,7 +7,7 @@ on:
 
 jobs:
   code-quality:
-    runs-on: ubuntu-latest
+    container: maven:3-eclipse-temurin-17
     steps:
       - uses: actions/checkout@v4
       - run: mvn -B verify
