@@ -9,22 +9,6 @@ description = "FastAPI + uvicorn + pydantic"
 default = true
 description = "Gin + net/http"
 
-[web.php.laravel]
-default = true
-description = "Laravel"
-
-[web.java.spring]
-default = true
-description = "Spring Boot"
-
-[web.node.express]
-default = true
-description = "Express + TypeScript"
-
-[web.rust.axum]
-default = true
-description = "Axum + tokio"
-
 [library.python.poetry]
 default = true
 description = "Poetry package"
