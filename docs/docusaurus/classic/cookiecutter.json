@@ -4,11 +4,12 @@
   "description": "Docusaurus classic",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "docs",
   "_stack": "docusaurus",
   "_language": "node",
   "_variant": "classic",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }
