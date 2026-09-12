@@ -1,0 +1,11 @@
+image: gradle:8-jdk21
+
+stages:
+  - code-quality
+
+code-quality:
+  stage: code-quality
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - ./gradlew detekt
