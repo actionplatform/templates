@@ -8,7 +8,6 @@ Cookiecutter templates for bootstrapping projects on the Action Platform.
 pipx install cookiecutter
 
 cookiecutter gh:actionplatform/templates --directory web/python/fastapi
-cookiecutter gh:actionplatform/templates --directory plugin/wordpress/classic
 ```
 
 Or via the CLI:
@@ -31,7 +30,7 @@ Three levels: **type → stack → template**.
 | `mcp`     | python, go, node, java             |
 | `mobile`  | android, ios                       |
 | `docs`    | mkdocs, docusaurus                 |
-| `plugin`  | wordpress, chrome                  |
+| `plugin`  | chrome                             |
 | `empty`   | — (only `platform.toml` + `.code_quality/`) |
 
 `plugin` stack is the **host system**; `mobile` stack is the **platform**. Language is imposed by them.
@@ -47,7 +46,6 @@ templates/
 ├── library/python/poetry/
 ├── mcp/python/fastmcp/
 ├── mobile/android/compose/
-├── plugin/wordpress/classic/
 ├── plugin/chrome/mv3/
 └── empty/
 ```
