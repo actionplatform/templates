@@ -7,6 +7,7 @@ pipeline {
                 sh 'go mod download'
                 sh 'go vet ./...'
                 sh 'test -z "$(gofmt -l .)"'
+                sh 'go test ./...'
             }
         }
     }
