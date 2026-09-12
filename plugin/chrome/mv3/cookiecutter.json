@@ -4,11 +4,12 @@
   "description": "Chrome extension Manifest V3",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "plugin",
   "_stack": "chrome",
   "_language": "node",
   "_variant": "mv3",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }
