@@ -1,0 +1,9 @@
+image: maven:3-eclipse-temurin-21
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - mvn -B verify

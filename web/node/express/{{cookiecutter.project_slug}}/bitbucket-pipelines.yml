@@ -1,0 +1,11 @@
+image: node:20
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - npm ci
+            - npx eslint .
+            - npx prettier --check .
