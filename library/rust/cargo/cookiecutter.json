@@ -4,11 +4,12 @@
   "description": "Cargo crate",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "library",
   "_stack": "rust",
   "_language": "rust",
   "_variant": "cargo",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }

@@ -4,12 +4,12 @@
   "description": "Go module",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "library",
   "_stack": "go",
   "_language": "go",
   "_variant": "module",
   "_copy_without_render": [
-    ".code_quality",
     ".github"
   ]
 }

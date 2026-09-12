@@ -4,11 +4,12 @@
   "description": "npm package + TypeScript",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "library",
   "_stack": "node",
   "_language": "node",
   "_variant": "npm",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }
