@@ -8,6 +8,14 @@
 go get github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
 ```
 
+## Usage
+
+```go
+import "github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+
+{{ cookiecutter.package_name }}.Hello("ana") // "hello, ana"
+```
+
 ## Develop
 
 ```bash
