@@ -1,0 +1,9 @@
+image: swift:5.10
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - swiftlint

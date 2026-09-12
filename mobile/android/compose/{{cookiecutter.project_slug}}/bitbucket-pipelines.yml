@@ -1,0 +1,9 @@
+image: gradle:8-jdk21
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - ./gradlew detekt
