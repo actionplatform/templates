@@ -1,4 +1,4 @@
-image: php:8.3-cli
+image: composer:2
 
 stages:
   - code-quality
@@ -8,6 +8,7 @@ code-quality:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   script:
-    - composer install --no-interaction
-    - vendor/bin/phpcs
-    - vendor/bin/phpstan analyse
+    - composer install --no-interaction --prefer-dist
+    - composer lint
+    - composer analyse
+    - composer test

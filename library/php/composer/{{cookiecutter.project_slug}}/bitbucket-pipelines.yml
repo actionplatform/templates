@@ -1,4 +1,4 @@
-image: php:8.3-cli
+image: composer:2
 
 pipelines:
   pull-requests:
@@ -6,6 +6,7 @@ pipelines:
       - step:
           name: Code Quality
           script:
-            - composer install --no-interaction
-            - vendor/bin/phpcs
-            - vendor/bin/phpstan analyse
+            - composer install --no-interaction --prefer-dist
+            - composer lint
+            - composer analyse
+            - composer test

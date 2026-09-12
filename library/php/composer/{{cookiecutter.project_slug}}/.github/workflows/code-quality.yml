@@ -8,8 +8,10 @@ on:
 jobs:
   code-quality:
     runs-on: ubuntu-latest
+    container: composer:2
     steps:
       - uses: actions/checkout@v4
-      - run: composer install --no-interaction
-      - run: vendor/bin/phpcs
-      - run: vendor/bin/phpstan analyse
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer lint
+      - run: composer analyse
+      - run: composer test

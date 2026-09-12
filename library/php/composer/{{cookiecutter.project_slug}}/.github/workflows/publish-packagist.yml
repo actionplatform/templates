@@ -1,0 +1,49 @@
+name: Publish to Packagist
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+      - run: composer install --no-interaction --prefer-dist
+
+      - name: Write version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "$VERSION" > LAST_VERSION
+          sed -i "s/VERSION = '.*'/VERSION = '$VERSION'/" src/Version.php
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - run: composer lint
+      - run: composer analyse
+      - run: composer test
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "📦 Update version to ${{ steps.version.outputs.version }}" || true
+          git push
+
+      - name: Ask Packagist to update
+        run: |
+          curl -fsS -XPOST -H 'content-type:application/json' \
+            "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_TOKEN }}" \
+            -d "{\"repository\":{\"url\":\"https://github.com/${{ github.repository }}\"}}"

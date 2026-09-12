@@ -1,0 +1,33 @@
+{
+    "name": "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}",
+    "description": "{{ cookiecutter.description }}",
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/issues",
+        "source": "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+    },
+    "require": {
+        "php": ">={{ cookiecutter.php_version }}"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "squizlabs/php_codesniffer": "^3.9",
+        "phpstan/phpstan": "^1.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "{{ cookiecutter.php_namespace }}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "{{ cookiecutter.php_namespace }}\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests",
+        "lint": "phpcs --standard=.code_quality/phpcs.xml",
+        "analyse": "phpstan analyse -c .code_quality/phpstan.neon"
+    }
+}
