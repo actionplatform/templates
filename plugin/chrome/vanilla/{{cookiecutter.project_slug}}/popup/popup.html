@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>{{ cookiecutter.project_name }}</h1>
+      <span class="dot" id="status-dot"></span>
+    </div>
+
+    <div class="section">
+      <label class="row">
+        <span>Enabled</span>
+        <input type="checkbox" id="enabled" />
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="section-title">API</div>
+      <div id="api-status" class="empty">—</div>
+    </div>
+
+    <script src="../shared/config.js"></script>
+    <script src="../shared/api.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

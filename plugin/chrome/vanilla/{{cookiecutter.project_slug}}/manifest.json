@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "{{ cookiecutter.project_name }}",
+  "version": "0.1.0",
+  "description": "{{ cookiecutter.description }}",
+  "minimum_chrome_version": "92",
+  "permissions": ["storage"],
+  "host_permissions": ["{{ cookiecutter.api_base }}/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://example.com/*"],
+      "js": ["shared/config.js", "content/base.js", "content/example.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

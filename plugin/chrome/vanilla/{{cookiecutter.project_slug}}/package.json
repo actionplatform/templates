@@ -1,0 +1,22 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.1.0",
+  "private": true,
+  "description": "{{ cookiecutter.description }}",
+  "engines": {
+    "node": ">={{ cookiecutter.node_version }}"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "lint": "eslint --config .code_quality/eslint.config.mjs . --max-warnings 0",
+    "format": "prettier --config .code_quality/.prettierrc.json --check \"**/*.{js,mjs,css,html,json}\"",
+    "format:write": "prettier --config .code_quality/.prettierrc.json --write \"**/*.{js,mjs,css,html,json}\"",
+    "bump": "node scripts/bump.js",
+    "build": "rm -f build/extension.zip && mkdir -p build && zip -r build/extension.zip manifest.json background.js popup content shared -x '*.DS_Store'"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.3.0"
+  }
+}
