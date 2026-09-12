@@ -19,18 +19,30 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ (github.ref_name == 'master' || github.ref_name == 'main') && 'prod' || 'dev' }}
     env:
+      AWS_DEPLOY_ROLE_ARN: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
       APP_ID: ${{ vars.AMPLIFY_APP_ID }}
       BRANCH: ${{ github.ref_name }}
-
     steps:
+      - name: Check deploy is configured
+        id: gate
+        run: |
+          if [ -z "$AWS_DEPLOY_ROLE_ARN" ] || [ -z "$APP_ID" ]; then
+            echo "::warning::AWS_DEPLOY_ROLE_ARN or AMPLIFY_APP_ID is not set for this environment — skipping deploy. See DEPLOY.md."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
+        if: steps.gate.outputs.ready == 'true'
+        uses: aws-actions/configure-aws-credentials@v5
         with:
-          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_DEPLOY_ROLE_ARN }}
           aws-region: us-east-1
 
       - name: Start the Amplify build (or adopt the one already running)
         id: job
+        if: steps.gate.outputs.ready == 'true'
         run: |
           for attempt in $(seq 1 40); do
             running=$(aws amplify list-jobs --app-id "$APP_ID" --branch-name "$BRANCH" --max-results 1 \
@@ -46,6 +58,7 @@ jobs:
           echo "id=$job_id" >> "$GITHUB_OUTPUT"
 
       - name: Wait for it to finish
+        if: steps.gate.outputs.ready == 'true'
         env:
           JOB_ID: ${{ steps.job.outputs.id }}
         run: |
