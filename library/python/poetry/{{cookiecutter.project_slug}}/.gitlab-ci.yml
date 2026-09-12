@@ -12,3 +12,4 @@ code-quality:
     - poetry install --with dev,code-quality
     - poetry run ruff check .
     - poetry run ruff format --check .
+    - poetry run pytest
