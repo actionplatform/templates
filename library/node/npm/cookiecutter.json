@@ -11,6 +11,7 @@
     "bitbucket",
     "jenkins"
   ],
+  "node_version": "20",
   "_type": "library",
   "_stack": "node",
   "_language": "node",

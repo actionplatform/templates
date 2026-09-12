@@ -1,0 +1,40 @@
+{
+  "name": "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}",
+  "version": "0.1.0",
+  "description": "{{ cookiecutter.description }}",
+  "license": "MIT",
+  "author": "{{ cookiecutter.author }}",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">={{ cookiecutter.node_version }}"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p .code_quality/tsconfig.json",
+    "clean": "rm -rf dist",
+    "lint": "eslint --config .code_quality/.eslintrc.json --no-eslintrc --ext .ts src tests",
+    "format": "prettier --config .code_quality/.prettierrc.json --check \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:write": "prettier --config .code_quality/.prettierrc.json --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}

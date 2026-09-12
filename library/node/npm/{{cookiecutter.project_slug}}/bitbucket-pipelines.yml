@@ -7,5 +7,7 @@ pipelines:
           name: Code Quality
           script:
             - npm ci
-            - npx eslint .
-            - npx prettier --check .
+            - npm run lint
+            - npm run format
+            - npm test
+            - npm run build
