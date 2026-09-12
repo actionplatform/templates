@@ -11,7 +11,7 @@
     "bitbucket",
     "jenkins"
   ],
-  "php_namespace": "{{ cookiecutter.project_name|replace(' ', '')|replace('-', '') }}",
+  "php_namespace": "{{ cookiecutter.project_name|replace('-', ' ')|title|replace(' ', '') }}",
   "php_version": "8.1",
   "_type": "library",
   "_stack": "php",

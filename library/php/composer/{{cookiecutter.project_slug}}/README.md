@@ -8,6 +8,14 @@
 composer require {{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
 ```
 
+## Usage
+
+```php
+use {{ cookiecutter.php_namespace }}\Hello;
+
+Hello::greet('ana'); // "hello, ana"
+```
+
 ## Develop
 
 ```bash

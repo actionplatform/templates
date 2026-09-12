@@ -2,12 +2,12 @@
 <ruleset name="{{ cookiecutter.project_slug }}">
     <description>Coding standard for {{ cookiecutter.project_name }}</description>
 
-    <arg name="basepath" value="."/>
+    <arg name="basepath" value=".."/>
     <arg name="colors"/>
     <arg value="p"/>
 
-    <file>src</file>
-    <file>tests</file>
+    <file>../src</file>
+    <file>../tests</file>
     <exclude-pattern>vendor/*</exclude-pattern>
     <exclude-pattern>examples/*</exclude-pattern>
 
