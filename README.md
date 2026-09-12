@@ -23,7 +23,7 @@ action-platform cloud set docker            # overlay on an existing project
 
 ## Projects
 
-Under `project/`, three levels: **type → stack → template**.
+Under `projects/`, three levels: **type → stack → template**.
 
 | Type      | Stacks                             |
 |-----------|------------------------------------|
@@ -49,12 +49,25 @@ Language-specific files live in `_lang/<language>/`; the post-gen hook keeps the
 
 Convention: every `web/python/*` template exposes `app.create_app()` — the Lambda handler, uvicorn and tests build the app through it. MCP servers are `web` too (`web/python/fastmcp`).
 
+## Services
+
+Under `service/`, application dependencies. Each adds `services/<name>/` to the project with an `up` script (provision), a `link` script (prints env vars) and the provider's files. Pick the provider with `provider=`.
+
+| Service    | Providers        | Exposes |
+|------------|------------------|---------|
+| `postgres` | docker, aws-rds  | `DATABASE_URL` |
+
+```bash
+action-platform service add postgres --provider docker
+eval "$(./services/postgres/link)"
+```
+
 ## Structure
 
 ```
 templates/
 ├── index.toml                        # matrix read by the CLI
-├── project/
+├── projects/
 │   ├── web/python/fastapi/
 │   ├── web/go/gin/
 │   ├── web/node/react/
@@ -63,13 +76,15 @@ templates/
 │   ├── docs/mkdocs/material/
 │   ├── plugin/chrome/vanilla/
 │   └── empty/
-└── cloud/
-    ├── aws/lambda/
-    ├── aws/amplify/
-    └── docker/
+├── cloud/
+│   ├── aws/lambda/
+│   ├── aws/amplify/
+│   └── docker/
+└── service/
+    └── postgres/
 ```
 
-Each leaf is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory project/<type>/<stack>/<template>` or `--directory cloud/<name>`.
+Each leaf is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory projects/<type>/<stack>/<template>` or `--directory cloud/<name>`.
 
 ## `index.toml`
 
@@ -86,20 +101,19 @@ types = ["web"]
 
 ## CI
 
-Every template (except `empty`) ships config for four CI providers. Pick one with the `ci` variable; the post-gen hook removes the others.
+Every template (except `empty`) ships config for three CI providers. Pick one with the `ci` variable; the post-gen hook removes the others.
 
 | `ci`        | File                          |
 |-------------|-------------------------------|
 | `github`    | `.github/workflows/code-quality.yml` |
 | `gitlab`    | `.gitlab-ci.yml`              |
-| `bitbucket` | `bitbucket-pipelines.yml`     |
 | `jenkins`   | `Jenkinsfile`                 |
 
 ```bash
 cookiecutter gh:actionplatform/templates --directory web/python/fastapi ci=gitlab
 ```
 
-All four run the same lint/format step for the stack (ruff, gofmt, eslint, phpcs, ...).
+All three call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`) and [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library).
 
 ## Conventions
 
