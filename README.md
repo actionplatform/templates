@@ -65,6 +65,23 @@ description = "FastAPI + uvicorn + pydantic"
 description = "Django + gunicorn"
 ```
 
+## CI
+
+Every template (except `empty`) ships config for four CI providers. Pick one with the `ci` variable; the post-gen hook removes the others.
+
+| `ci`        | File                          |
+|-------------|-------------------------------|
+| `github`    | `.github/workflows/code-quality.yml` |
+| `gitlab`    | `.gitlab-ci.yml`              |
+| `bitbucket` | `bitbucket-pipelines.yml`     |
+| `jenkins`   | `Jenkinsfile`                 |
+
+```bash
+cookiecutter gh:actionplatform/templates --directory web/python/fastapi ci=gitlab
+```
+
+All four run the same lint/format step for the stack (ruff, gofmt, eslint, phpcs, ...).
+
 ## Conventions
 
 - Every template ships `platform.toml` so the project works with `action-platform release` and `deploy` out of the box.
