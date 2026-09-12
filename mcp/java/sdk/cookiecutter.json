@@ -5,11 +5,20 @@
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
   "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "bitbucket",
+    "jenkins"
+  ],
   "_type": "mcp",
   "_stack": "java",
   "_language": "java",
   "_variant": "sdk",
   "_copy_without_render": [
-    ".github"
+    ".github",
+    ".gitlab-ci.yml",
+    "bitbucket-pipelines.yml",
+    "Jenkinsfile"
   ]
 }
