@@ -21,6 +21,6 @@
     "web"
   ],
   "_copy_without_render": [
-    ".github"
+    ".github/workflows/deploy.yml"
   ]
 }
