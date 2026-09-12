@@ -1,53 +1,63 @@
 # Template matrix read by `action-platform init`.
-# [type.stack.template]
+# [project.type.stack.template] — app templates
+# [cloud.provider.service]       — deploy overlays applied on top of a project
 
-[web.python.fastapi]
+[project.web.python.fastapi]
 default = true
 description = "FastAPI + uvicorn + pydantic"
 
-[web.go.gin]
+[project.web.python.fastmcp]
+description = "FastMCP server (Model Context Protocol over HTTP)"
+
+[project.web.go.gin]
 default = true
 description = "Gin + net/http"
 
-[web.node.react]
+[project.web.node.react]
 default = true
 description = "React + webpack + jest"
 
-[library.python.poetry]
+[project.library.python.poetry]
 default = true
 description = "Poetry package"
 
-[library.go.module]
+[project.library.go.module]
 default = true
 description = "Go module"
 
-[library.php.composer]
+[project.library.php.composer]
 default = true
 description = "Composer package"
 
-[library.node.npm]
+[project.library.node.npm]
 default = true
 description = "npm package + TypeScript"
 
-[library.java.maven]
+[project.library.java.maven]
 default = true
 description = "Maven artifact"
 
-[library.rust.cargo]
+[project.library.rust.cargo]
 default = true
 description = "Cargo crate"
 
-[mcp.python.fastmcp]
-default = true
-description = "FastMCP server"
-
-[docs.mkdocs.material]
+[project.docs.mkdocs.material]
 default = true
 description = "MkDocs Material"
 
-[plugin.chrome.vanilla]
+[project.plugin.chrome.vanilla]
 default = true
 description = "Chrome extension, Manifest V3, no bundler"
 
-[empty]
+[project.empty]
 description = "Only platform.toml + .code_quality/"
+
+[cloud.aws.lambda]
+description = "AWS Lambda + HTTP API Gateway via SAM"
+languages = ["python"]
+types = ["web"]
+
+[cloud.docker]
+description = "Dockerfile + docker-compose"
+languages = ["python", "go", "node"]
+types = ["web"]
