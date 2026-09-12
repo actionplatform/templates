@@ -16,21 +16,28 @@ Or via the CLI:
 ```bash
 action-platform init                # interactive: type → stack → name
 action-platform init web python     # direct
+action-platform init library go --cli
+action-platform init web node --demo
 action-platform init --list         # show available matrix
 ```
 
 ## Matrix
 
-| Type      | Stacks                        |
-|-----------|-------------------------------|
-| `web`     | python, go, php, java         |
-| `api`     | python, go, java, node        |
-| `library` | python, go, php, node         |
-| `cli`     | python, go, rust              |
-| `plugin`  | wordpress, chrome             |
-| `empty`   | — (only `platform.toml` + `.code_quality/`) |
+| Type      | Stacks                             | Demo |
+|-----------|------------------------------------|------|
+| `web`     | python, go, php, java, node, rust  | yes  |
+| `api`     | python, go, java, node             | yes  |
+| `library` | python, go, php, node, java, rust  | yes  |
+| `mcp`     | python, go, node, java             | yes  |
+| `mobile`  | android, ios                       | yes  |
+| `docs`    | mkdocs, docusaurus                 | no   |
+| `plugin`  | wordpress, chrome                  | no   |
+| `empty`   | — (only `platform.toml` + `.code_quality/`) | no |
 
-`plugin` second level is the **host system**, not the language (language is imposed by the host).
+- `plugin` second level is the **host system**; `mobile` second level is the **platform**. Language is imposed by them.
+- `library` covers CLIs: set `cli = true` to scaffold an entry point.
+- `--demo` reuses the same template without release/deploy workflows (`stage = "demo"` in `platform.toml`).
+- `index.toml` marks each leaf as `prod` or `beta`.
 
 ## Structure
 
