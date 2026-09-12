@@ -25,7 +25,6 @@ action-platform init --list         # show available matrix
 | Type      | Stacks                             | Demo |
 |-----------|------------------------------------|------|
 | `web`     | python, go, php, java, node, rust  | yes  |
-| `api`     | python, go, java, node             | yes  |
 | `library` | python, go, php, node, java, rust  | yes  |
 | `mcp`     | python, go, node, java             | yes  |
 | `mobile`  | android, ios                       | yes  |
