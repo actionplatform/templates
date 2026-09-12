@@ -20,7 +20,6 @@
   "_copy_without_render": [
     ".github",
     ".gitlab-ci.yml",
-    "Jenkinsfile",
-    ".githooks"
+    "Jenkinsfile"
   ]
 }

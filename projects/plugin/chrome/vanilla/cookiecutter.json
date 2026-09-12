@@ -21,7 +21,6 @@
     ".gitlab-ci.yml",
     "Jenkinsfile",
     "scripts",
-    "tests",
-    ".githooks"
+    "tests"
   ]
 }

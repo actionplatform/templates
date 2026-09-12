@@ -121,7 +121,7 @@ All three call the same scripts from [ci-scripts](https://github.com/actionplatf
 
 - Every template ships `platform.toml` so the project works with `action-platform release` and `deploy` out of the box.
 - Every template ships `.code_quality/` with the stack's lint/format config.
-- Every template ships `.githooks/` (git-flow + Conventional Commits, enforced before commit and push) and a `gitflow` CI check on pull requests. `action-platform init` and `action-platform branch` point `core.hooksPath` at it.
+- Git-flow and Conventional Commits are enforced by git hooks the CLI installs into `.git/hooks` (`action-platform install`, once per clone; `init`, `branch` and `push` do it too) and by the `gitflow` CI check on pull requests. Hooks are not versioned in the project.
 - Each stack has exactly one template with `default = true`.
 - Variables are declared in `cookiecutter.json`; keep defaults sensible.
 
