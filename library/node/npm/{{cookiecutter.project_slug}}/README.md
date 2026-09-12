@@ -8,6 +8,14 @@
 npm install @{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
 ```
 
+## Usage
+
+```ts
+import { hello } from "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}";
+
+hello("ana"); // "hello, ana"
+```
+
 ## Develop
 
 ```bash
@@ -23,6 +31,7 @@ npm run build
 
 ```
 src/index.ts      # public API
+src/hello.ts      # hello() — dummy
 tests/            # vitest
 .code_quality/    # eslint, prettier, tsconfig
 ```
