@@ -27,7 +27,7 @@ Three levels: **type → stack → template**.
 |-----------|------------------------------------|
 | `web`     | python, go                         |
 | `library` | python, go, php, node, java, rust  |
-| `mcp`     | python, go, node, java             |
+| `mcp`     | python                             |
 | `mobile`  | android, ios                       |
 | `docs`    | mkdocs, docusaurus                 |
 | `plugin`  | chrome                             |
