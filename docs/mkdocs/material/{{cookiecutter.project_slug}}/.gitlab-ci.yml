@@ -9,6 +9,5 @@ code-quality:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   script:
     - pip install poetry
-    - poetry install --with dev,code-quality
-    - poetry run ruff check .
-    - poetry run ruff format --check .
+    - poetry install
+    - poetry run mkdocs build --strict

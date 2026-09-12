@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+package-mode = false
+description = "{{ cookiecutter.description }}"
+authors = ["{{ cookiecutter.author }}"]
+
+[tool.poetry.dependencies]
+python = "^{{ cookiecutter.python_version }}"
+mkdocs-material = "^9.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

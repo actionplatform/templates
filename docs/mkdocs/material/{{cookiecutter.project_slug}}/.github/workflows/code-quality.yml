@@ -7,10 +7,9 @@ on:
 
 jobs:
   code-quality:
-    runs-on: ubuntu-latest
+    container: python:3.12
     steps:
       - uses: actions/checkout@v4
       - run: pip install poetry
-      - run: poetry install --with dev,code-quality
-      - run: poetry run ruff check .
-      - run: poetry run ruff format --check .
+      - run: poetry install
+      - run: poetry run mkdocs build --strict

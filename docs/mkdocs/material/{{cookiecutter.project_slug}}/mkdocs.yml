@@ -1,0 +1,31 @@
+site_name: {{ cookiecutter.project_name }}
+site_description: {{ cookiecutter.description }}
+repo_url: https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Light mode
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - toc:
+      permalink: true

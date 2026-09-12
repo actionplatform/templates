@@ -11,6 +11,7 @@
     "bitbucket",
     "jenkins"
   ],
+  "python_version": "3.12",
   "_type": "docs",
   "_stack": "mkdocs",
   "_language": "python",
