@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master, main, develop]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ (github.ref_name == 'master' || github.ref_name == 'main') && 'prod' || 'dev' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine stage
+        id: stage
+        run: |
+          if [ "${{ github.ref_name }}" = "master" ] || [ "${{ github.ref_name }}" = "main" ]; then
+            echo "config_env=prod" >> "$GITHUB_OUTPUT"
+          else
+            echo "config_env=default" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install "poetry>=1.8.0" poetry-plugin-export aws-sam-cli
+      - run: sam build
+      - run: |
+          sam deploy             --config-env ${{ steps.stage.outputs.config_env }}             --no-confirm-changeset --no-fail-on-empty-changeset             --parameter-overrides               DomainName=${{ vars.DOMAIN_NAME }}               DomainCertificateArn=${{ secrets.DOMAIN_CERTIFICATE_ARN }}
