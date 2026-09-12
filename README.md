@@ -28,12 +28,11 @@ Three levels: **type → stack → template**.
 | `web`     | python, go, node                   |
 | `library` | python, go, php, node, java, rust  |
 | `mcp`     | python                             |
-| `mobile`  | android, ios                       |
 | `docs`    | mkdocs                             |
 | `plugin`  | chrome                             |
 | `empty`   | — (only `platform.toml` + `.code_quality/`) |
 
-`plugin` stack is the **host system**; `mobile` stack is the **platform**. Language is imposed by them.
+`plugin` stack is the **host system** — it imposes the language.
 
 ## Structure
 
@@ -45,7 +44,6 @@ templates/
 ├── web/go/gin/
 ├── library/python/poetry/
 ├── mcp/python/fastmcp/
-├── mobile/android/compose/
 ├── plugin/chrome/vanilla/
 └── empty/
 ```
