@@ -1,0 +1,12 @@
+image: python:3.12
+
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: Code Quality
+          script:
+            - pip install poetry
+            - poetry install --with dev,code-quality
+            - poetry run ruff check .
+            - poetry run ruff format --check .
