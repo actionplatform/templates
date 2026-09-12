@@ -8,6 +8,7 @@ pipeline {
                 sh 'poetry install --with dev,code-quality'
                 sh 'poetry run ruff check .'
                 sh 'poetry run ruff format --check .'
+                sh 'poetry run pytest'
             }
         }
     }

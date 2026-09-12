@@ -11,6 +11,7 @@
     "bitbucket",
     "jenkins"
   ],
+  "python_version": "3.12",
   "_type": "web",
   "_stack": "python",
   "_language": "python",
