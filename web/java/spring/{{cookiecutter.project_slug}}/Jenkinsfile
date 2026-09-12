@@ -1,0 +1,11 @@
+pipeline {
+    agent { docker { image 'maven:3-eclipse-temurin-21' } }
+
+    stages {
+        stage('Code Quality') {
+            steps {
+                sh 'mvn -B verify'
+            }
+        }
+    }
+}
