@@ -16,49 +16,70 @@ Or via the CLI:
 action-platform init                        # interactive: type → stack → template → name
 action-platform init web python fastapi     # direct
 action-platform init web python             # default template for the stack
-action-platform init --list                 # show available matrix
+action-platform init web python --cloud aws/lambda
+action-platform init --list                 # projects and clouds
+action-platform cloud set docker            # overlay on an existing project
 ```
 
-## Matrix
+## Projects
 
-Three levels: **type → stack → template**.
+Under `project/`, three levels: **type → stack → template**.
 
 | Type      | Stacks                             |
 |-----------|------------------------------------|
-| `web`     | python, go, node                   |
+| `web`     | python (fastapi, fastmcp), go, node |
 | `library` | python, go, php, node, java, rust  |
-| `mcp`     | python                             |
 | `docs`    | mkdocs                             |
 | `plugin`  | chrome                             |
 | `empty`   | — (only `platform.toml` + `.code_quality/`) |
 
 `plugin` stack is the **host system** — it imposes the language.
 
+## Clouds
+
+Under `cloud/`, deploy overlays applied **on top** of a generated project. Projects stay cloud-agnostic; the overlay adds only deploy files and sets `[deploy] target` in `platform.toml`.
+
+| Cloud        | Types    | Languages        | Adds                                            |
+|--------------|----------|------------------|-------------------------------------------------|
+| `aws/lambda` | web      | python           | `template.yaml`, `samconfig.toml`, `lambda_handler.py`, `Makefile`, deploy workflow |
+| `docker`     | web      | python, go, node | `Dockerfile`, `docker-compose.yml`, `.dockerignore` |
+
+Language-specific files live in `_lang/<language>/`; the post-gen hook keeps the matching one.
+
+Convention: every `web/python/*` template exposes `app.create_app()` — the Lambda handler, uvicorn and tests build the app through it. MCP servers are `web` too (`web/python/fastmcp`).
+
 ## Structure
 
 ```
 templates/
-├── index.toml                 # matrix read by the CLI
-├── web/python/fastapi/
-├── web/python/django/
-├── web/go/gin/
-├── library/python/poetry/
-├── mcp/python/fastmcp/
-├── plugin/chrome/vanilla/
-└── empty/
+├── index.toml                        # matrix read by the CLI
+├── project/
+│   ├── web/python/fastapi/
+│   ├── web/go/gin/
+│   ├── web/node/react/
+│   ├── library/python/poetry/
+│   ├── web/python/fastmcp/
+│   ├── docs/mkdocs/material/
+│   ├── plugin/chrome/vanilla/
+│   └── empty/
+└── cloud/
+    ├── aws/lambda/
+    └── docker/
 ```
 
-Each leaf is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory <type>/<stack>/<template>`.
+Each leaf is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory project/<type>/<stack>/<template>` or `--directory cloud/<name>`.
 
 ## `index.toml`
 
 ```toml
-[web.python.fastapi]
+[project.web.python.fastapi]
 default = true
 description = "FastAPI + uvicorn + pydantic"
 
-[web.python.django]
-description = "Django + gunicorn"
+[cloud.aws.lambda]
+description = "AWS Lambda + HTTP API Gateway via SAM"
+languages = ["python"]
+types = ["web"]
 ```
 
 ## CI
