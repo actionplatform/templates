@@ -47,6 +47,8 @@ Under `cloud/`, deploy overlays applied **on top** of a generated project. Proje
 
 Language-specific files live in `_lang/<language>/`; the post-gen hook keeps the matching one.
 
+AWS overlays ship `requirements/` — `trust.json` (GitHub OIDC for the repo) and `policy.json` (least privilege the deploy role needs). `DEPLOY.md` shows the two `aws iam` commands to create the role.
+
 Convention: every `web/python/*` template exposes `app.create_app()` — the Lambda handler, uvicorn and tests build the app through it. MCP servers are `web` too (`web/python/fastmcp`).
 
 ## Services
