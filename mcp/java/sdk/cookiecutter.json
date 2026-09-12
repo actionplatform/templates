@@ -4,11 +4,12 @@
   "description": "MCP Java SDK server",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "mcp",
   "_stack": "java",
   "_language": "java",
   "_variant": "sdk",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }

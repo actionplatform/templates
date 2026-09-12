@@ -4,11 +4,12 @@
   "description": "@modelcontextprotocol/sdk server",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "mcp",
   "_stack": "node",
   "_language": "node",
   "_variant": "sdk",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }
