@@ -1,0 +1,13 @@
+image: node:20
+
+stages:
+  - code-quality
+
+code-quality:
+  stage: code-quality
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  script:
+    - npm ci
+    - npx eslint .
+    - npx prettier --check .
