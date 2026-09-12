@@ -4,11 +4,12 @@
   "description": "Axum + tokio",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "web",
   "_stack": "rust",
   "_language": "rust",
   "_variant": "axum",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }

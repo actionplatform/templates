@@ -4,11 +4,12 @@
   "description": "Spring Boot",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "web",
   "_stack": "java",
   "_language": "java",
   "_variant": "spring",
   "_copy_without_render": [
-    ".code_quality"
+    ".github"
   ]
 }

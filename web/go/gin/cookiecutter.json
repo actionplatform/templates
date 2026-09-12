@@ -4,12 +4,12 @@
   "description": "Gin + net/http",
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "_type": "web",
   "_stack": "go",
   "_language": "go",
   "_variant": "gin",
   "_copy_without_render": [
-    ".code_quality",
     ".github"
   ]
 }
