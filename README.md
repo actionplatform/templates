@@ -43,6 +43,7 @@ Under `cloud/`, deploy overlays applied **on top** of a generated project. Proje
 |--------------|----------|------------------|-------------------------------------------------|
 | `aws/lambda` | web      | python           | `template.yaml`, `samconfig.toml`, `lambda_handler.py`, `Makefile`, deploy workflow |
 | `docker`     | web      | python, go, node | `Dockerfile`, `docker-compose.yml`, `.dockerignore` |
+| `aws/amplify` | web     | node             | `amplify.yml`, `customHttp.yml`, deploy workflow (start job + wait) |
 
 Language-specific files live in `_lang/<language>/`; the post-gen hook keeps the matching one.
 
@@ -64,6 +65,7 @@ templates/
 │   └── empty/
 └── cloud/
     ├── aws/lambda/
+    ├── aws/amplify/
     └── docker/
 ```
 
