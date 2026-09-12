@@ -9,6 +9,10 @@ description = "FastAPI + uvicorn + pydantic"
 default = true
 description = "Gin + net/http"
 
+[web.node.react]
+default = true
+description = "React + webpack + jest"
+
 [library.python.poetry]
 default = true
 description = "Poetry package"
@@ -49,9 +53,9 @@ description = "Swift + SwiftUI"
 default = true
 description = "MkDocs Material"
 
-[plugin.chrome.mv3]
+[plugin.chrome.vanilla]
 default = true
-description = "Chrome extension Manifest V3"
+description = "Chrome extension, Manifest V3, no bundler"
 
 [empty]
 description = "Only platform.toml + .code_quality/"
