@@ -1,0 +1,11 @@
+pipeline {
+    agent { docker { image 'gradle:8-jdk21' } }
+
+    stages {
+        stage('Code Quality') {
+            steps {
+                sh './gradlew detekt'
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+pipeline {
+    agent { docker { image 'swift:5.10' } }
+
+    stages {
+        stage('Code Quality') {
+            steps {
+                sh 'swiftlint'
+            }
+        }
+    }
+}
