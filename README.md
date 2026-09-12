@@ -16,7 +16,6 @@ Or via the CLI:
 ```bash
 action-platform init                # interactive: type → stack → name
 action-platform init web python     # direct
-action-platform init library go --cli
 action-platform init web node --demo
 action-platform init --list         # show available matrix
 ```
@@ -35,7 +34,6 @@ action-platform init --list         # show available matrix
 | `empty`   | — (only `platform.toml` + `.code_quality/`) | no |
 
 - `plugin` second level is the **host system**; `mobile` second level is the **platform**. Language is imposed by them.
-- `library` covers CLIs: set `cli = true` to scaffold an entry point.
 - `--demo` reuses the same template without release/deploy workflows (`stage = "demo"` in `platform.toml`).
 - `index.toml` marks each leaf as `prod` or `beta`.
 
