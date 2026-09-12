@@ -7,32 +7,45 @@ Cookiecutter templates for bootstrapping projects on the Action Platform.
 ```bash
 pipx install cookiecutter
 
-cookiecutter gh:actionplatform/templates --directory python
-cookiecutter gh:actionplatform/templates --directory node
+cookiecutter gh:actionplatform/templates --directory web/python
+cookiecutter gh:actionplatform/templates --directory plugin/wordpress
 ```
 
 Or via the CLI:
 
 ```bash
-action-platform init python
+action-platform init                # interactive: type → stack → name
+action-platform init web python     # direct
+action-platform init --list         # show available matrix
 ```
+
+## Matrix
+
+| Type      | Stacks                        |
+|-----------|-------------------------------|
+| `web`     | python, go, php, java         |
+| `api`     | python, go, java, node        |
+| `library` | python, go, php, node         |
+| `cli`     | python, go, rust              |
+| `plugin`  | wordpress, chrome             |
+| `empty`   | — (only `platform.toml` + `.code_quality/`) |
+
+`plugin` second level is the **host system**, not the language (language is imposed by the host).
 
 ## Structure
 
 ```
 templates/
-├── python/
-│   ├── cookiecutter.json
-│   └── {{cookiecutter.project_slug}}/
-├── node/
-│   ├── cookiecutter.json
-│   └── {{cookiecutter.project_slug}}/
-└── go/
-    ├── cookiecutter.json
-    └── {{cookiecutter.project_slug}}/
+├── index.toml                 # matrix read by the CLI
+├── web/python/
+├── web/go/
+├── library/python/
+├── plugin/wordpress/
+├── plugin/chrome/
+└── empty/
 ```
 
-Each top-level directory is an independent cookiecutter template. Select it with `--directory <name>`.
+Each leaf directory is an independent cookiecutter template with its own `cookiecutter.json`. Select it with `--directory <type>/<stack>`.
 
 ## Conventions
 
