@@ -25,5 +25,4 @@ app/
 └── api/
     ├── ping.py        # GET /ping
     └── v1/            # versioned routers (hello = dummy)
-lambda_handler.py      # Mangum adapter for AWS Lambda
 ```
