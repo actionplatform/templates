@@ -8,7 +8,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "go_version": "1.22",
   "_type": "web",
@@ -18,6 +19,7 @@
   "_copy_without_render": [
     ".github",
     ".gitlab-ci.yml",
-    "Jenkinsfile"
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
   ]
 }
