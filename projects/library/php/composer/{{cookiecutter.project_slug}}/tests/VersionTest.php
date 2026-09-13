@@ -9,8 +9,9 @@ use {{ cookiecutter.php_namespace }}\Version;
 
 final class VersionTest extends TestCase
 {
-    public function testVersionIsSet(): void
+    public function testVersionMatchesLastVersion(): void
     {
-        $this->assertSame('0.1.0', Version::VERSION);
+        $expected = trim((string) file_get_contents(__DIR__ . '/../LAST_VERSION'));
+        $this->assertSame($expected, Version::VERSION);
     }
 }
