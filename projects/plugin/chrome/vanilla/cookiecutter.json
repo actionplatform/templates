@@ -8,7 +8,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "api_base": "https://api.example.com/api/v1",
   "node_version": "22",
@@ -21,6 +22,7 @@
     ".gitlab-ci.yml",
     "Jenkinsfile",
     "scripts",
-    "tests"
+    "tests",
+    "bitbucket-pipelines.yml"
   ]
 }

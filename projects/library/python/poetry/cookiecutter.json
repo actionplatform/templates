@@ -8,7 +8,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "python_version": "3.10",
   "_type": "library",
@@ -18,6 +19,7 @@
   "_copy_without_render": [
     ".github",
     ".gitlab-ci.yml",
-    "Jenkinsfile"
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
   ]
 }

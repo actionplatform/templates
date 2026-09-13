@@ -9,6 +9,7 @@ FILES = {
     "github": [".github"],
     "gitlab": [".gitlab-ci.yml"],
     "jenkins": ["Jenkinsfile"],
+    "bitbucket": ["bitbucket-pipelines.yml"],
 }
 
 for provider, paths in FILES.items():

@@ -103,19 +103,20 @@ types = ["web"]
 
 ## CI
 
-Every template (except `empty`) ships config for three CI providers. Pick one with the `ci` variable; the post-gen hook removes the others.
+Every template (except `empty`) ships config for four CI providers. Pick one with the `ci` variable; the post-gen hook removes the others.
 
 | `ci`        | File                          |
 |-------------|-------------------------------|
 | `github`    | `.github/workflows/code-quality.yml` |
 | `gitlab`    | `.gitlab-ci.yml`              |
 | `jenkins`   | `Jenkinsfile`                 |
+| `bitbucket` | `bitbucket-pipelines.yml`     |
 
 ```bash
 cookiecutter gh:actionplatform/templates --directory web/python/fastapi ci=gitlab
 ```
 
-All three call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`) and [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library).
+All four call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`), [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library) and [ci-bitbucket](https://github.com/actionplatform/ci-bitbucket) (a self-contained `bitbucket-pipelines.yml`, since Pipelines cannot include a remote file).
 
 ## Conventions
 

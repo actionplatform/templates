@@ -9,7 +9,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "_type": "web",
   "_stack": "node",
@@ -21,6 +22,7 @@
     "Jenkinsfile",
     "webpack.config.js",
     "jest.config.js",
-    "src/hooks/useRequest/useRequest.js"
+    "src/hooks/useRequest/useRequest.js",
+    "bitbucket-pipelines.yml"
   ]
 }

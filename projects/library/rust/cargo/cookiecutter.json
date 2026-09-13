@@ -8,7 +8,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "_type": "library",
   "_stack": "rust",
@@ -17,6 +18,7 @@
   "_copy_without_render": [
     ".github",
     ".gitlab-ci.yml",
-    "Jenkinsfile"
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
   ]
 }

@@ -8,7 +8,8 @@
   "ci": [
     "github",
     "gitlab",
-    "jenkins"
+    "jenkins",
+    "bitbucket"
   ],
   "java_package": "com.{{ cookiecutter.github_owner|replace('-', '') }}.{{ cookiecutter.package_name }}",
   "java_package_dir": "{{ cookiecutter.java_package|replace('.', '/') }}",
@@ -20,6 +21,7 @@
   "_copy_without_render": [
     ".github",
     ".gitlab-ci.yml",
-    "Jenkinsfile"
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
   ]
 }
