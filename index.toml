@@ -9,6 +9,14 @@ description = "FastAPI + uvicorn + pydantic"
 [projects.web.python.fastmcp]
 description = "FastMCP server (Model Context Protocol over HTTP)"
 
+[projects.web.java.spring]
+default = true
+description = "Spring Boot web API (Maven, JDK 17)"
+
+[projects.web.kotlin.spring]
+default = true
+description = "Spring Boot web API in Kotlin (Maven, JDK 17)"
+
 [projects.web.go.gin]
 default = true
 description = "Gin + net/http"

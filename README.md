@@ -27,7 +27,7 @@ Under `projects/`, three levels: **type → stack → template**.
 
 | Type      | Stacks                             |
 |-----------|------------------------------------|
-| `web`     | python (fastapi, fastmcp), go, node |
+| `web`     | python (fastapi, fastmcp), go, node, java (spring), kotlin (spring) |
 | `library` | python, go, php, node, java, rust  |
 | `docs`    | mkdocs                             |
 | `plugin`  | chrome                             |
