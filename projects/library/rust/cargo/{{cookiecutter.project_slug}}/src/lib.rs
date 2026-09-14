@@ -1,7 +1,7 @@
 {% if cookiecutter.description %}//! {{ cookiecutter.description }}
 
 {% endif %}/// Crate version, written from the release tag.
-pub const VERSION: &str = "0.1.0";
+pub const VERSION: &str = "0.0.0";
 
 /// Dummy public function. Replace with the real API.
 pub fn hello(name: &str) -> String {

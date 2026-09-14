@@ -8,7 +8,7 @@ import (
 	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/services"
 )
 
-const Version = "0.1.1"
+const Version = "0.0.0"
 
 const APIV1Prefix = "/api/v1"
 

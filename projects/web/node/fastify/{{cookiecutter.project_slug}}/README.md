@@ -30,7 +30,7 @@ npm run build
 ## Endpoints
 
 ```
-GET /ping                       {"status": "ok", "version": "0.1.0"}
+GET /ping                       {"status": "ok", "version": "0.0.0"}
 GET /api/v1/hello?name=Fernando {"message": "hello, Fernando"}
 ```
 
