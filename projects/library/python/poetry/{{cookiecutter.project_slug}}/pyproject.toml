@@ -1,6 +1,6 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
-version = "0.1.0"
+version = "0.0.0"
 authors = [{ name = "{{ cookiecutter.author }}" }]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
@@ -21,7 +21,7 @@ Issues = "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.pro
 
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
-version = "0.1.0"
+version = "0.0.0"
 description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }}"]
 readme = "README.md"

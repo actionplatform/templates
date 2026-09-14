@@ -8,7 +8,7 @@
 <dependency>
   <groupId>{{ cookiecutter.java_package }}</groupId>
   <artifactId>{{ cookiecutter.project_slug }}</artifactId>
-  <version>0.1.0</version>
+  <version>0.0.0</version>
 </dependency>
 ```
 
