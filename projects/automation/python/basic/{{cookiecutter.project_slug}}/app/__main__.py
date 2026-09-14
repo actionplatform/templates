@@ -8,7 +8,8 @@ from app.tasks.hello import hello
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="app", description="{{ cookiecutter.description }}"
+        prog="app",
+        description="{{ cookiecutter.description }}",
     )
     parser.add_argument("--name", default="world", help="who to greet")
     args = parser.parse_args(argv)

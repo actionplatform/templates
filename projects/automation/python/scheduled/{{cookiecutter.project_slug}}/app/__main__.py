@@ -8,7 +8,8 @@ from app import scheduler
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="app", description="{{ cookiecutter.description }}"
+        prog="app",
+        description="{{ cookiecutter.description }}",
     )
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="print the job names")
