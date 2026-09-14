@@ -1,0 +1,25 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "React with TypeScript, Vite and Vitest",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "node_version": "20",
+  "_type": "web",
+  "_stack": "node",
+  "_language": "node",
+  "_variant": "react-vite",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
+  ]
+}

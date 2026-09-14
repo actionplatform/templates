@@ -1,0 +1,15 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+type = "library"
+stack = "go"
+template = "cobra"
+ci = "{{ cookiecutter.ci }}"
+language = "go"
+
+[source_host]
+kind = "github"
+repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+
+[release]
+strategy = "semver"
+changelog = "conventional"
