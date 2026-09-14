@@ -1,4 +1,4 @@
-"""API v1."""
+"""API v1 module."""
 
 from app.api.v1.routers import v1
 

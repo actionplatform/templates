@@ -2,11 +2,13 @@
 
 from fastapi import APIRouter
 
+from app.schemas.health import Health
+
 ping_router = APIRouter(tags=["Ping"])
 
 
 @ping_router.get("/ping")
-def ping() -> dict[str, str]:
+def ping() -> Health:
     from app import __version__
 
-    return {"status": "ok", "version": __version__}
+    return Health(status="ok", version=__version__)

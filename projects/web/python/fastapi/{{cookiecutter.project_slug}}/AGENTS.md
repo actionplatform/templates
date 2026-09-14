@@ -34,11 +34,15 @@ Git-flow, enforced by git hooks locally (`action-platform install` once per clon
 
 ```
 app/
-├── __init__.py        # create_app(), __version__
-└── api/
-    ├── ping.py        # GET /ping
-    └── v1/            # versioned routers (hello = dummy)
+├── __init__.py        create_app(), __version__
+├── api/               HTTP only; v1/items is the example resource
+├── schemas/           Pydantic request/response contracts
+├── services/          business rules; raise DomainError; no FastAPI imports
+├── repositories/      data access; no rules, no HTTP
+└── core/errors.py     DomainError → {"detail": {code, message, field}}
 ```
+
+Request → api → service → repository. Never put a rule in a router; never import FastAPI in a service.
 
 ## Checks before a PR
 
