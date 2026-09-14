@@ -1,9 +1,18 @@
 package {{ cookiecutter.package_name }}
 
-import "testing"
+import (
+	"os"
+	"strings"
+	"testing"
+)
 
 func TestVersion(t *testing.T) {
-	if Version != "0.1.0" {
-		t.Fatalf("Version = %q, want 0.1.0", Version)
+	raw, err := os.ReadFile("LAST_VERSION")
+	if err != nil {
+		t.Fatalf("read LAST_VERSION: %v", err)
+	}
+	want := strings.TrimSpace(string(raw))
+	if Version != want {
+		t.Fatalf("Version = %q, want %q", Version, want)
 	}
 }

@@ -24,7 +24,8 @@ mod tests {
     }
 
     #[test]
-    fn version_is_set() {
-        assert_eq!(VERSION, "0.1.0");
+    fn version_matches_last_version() {
+        let expected = std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/LAST_VERSION")).unwrap();
+        assert_eq!(VERSION, expected.trim());
     }
 }
