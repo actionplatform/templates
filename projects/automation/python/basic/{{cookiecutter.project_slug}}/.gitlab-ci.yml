@@ -1,0 +1,17 @@
+include:
+  - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
+
+image: python:3.12
+
+stages: [test, deploy]
+
+check:
+  extends: .ap-check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+commits:
+  extends: .ap-conventional-commit
+
+gitflow:
+  extends: .ap-gitflow
