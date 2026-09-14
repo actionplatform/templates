@@ -1,0 +1,433 @@
+{
+  "name": "actionplatform/templates",
+  "repository": "https://github.com/actionplatform/templates",
+  "ci_providers": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "types": [
+    {
+      "id": "web",
+      "label": "Web application",
+      "description": "API, backend service or frontend application."
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "description": "Reusable package, module or command-line tool."
+    },
+    {
+      "id": "automation",
+      "label": "Automation",
+      "description": "Scripts and jobs run by hand or by an external scheduler."
+    },
+    {
+      "id": "docs",
+      "label": "Documentation",
+      "description": "Documentation site."
+    },
+    {
+      "id": "plugin",
+      "label": "Plugin",
+      "description": "Extension for a host system, which imposes the language."
+    },
+    {
+      "id": "empty",
+      "label": "Empty project",
+      "description": "Only platform.toml and .code_quality/."
+    }
+  ],
+  "stacks": [
+    {
+      "id": "python",
+      "label": "Python",
+      "icon": "assets/icons/python.svg"
+    },
+    {
+      "id": "go",
+      "label": "Go",
+      "icon": "assets/icons/go.svg"
+    },
+    {
+      "id": "node",
+      "label": "Node.js",
+      "icon": "assets/icons/nodejs.svg"
+    },
+    {
+      "id": "java",
+      "label": "Java",
+      "icon": "assets/icons/java.svg"
+    },
+    {
+      "id": "kotlin",
+      "label": "Kotlin",
+      "icon": "assets/icons/kotlin.svg"
+    },
+    {
+      "id": "php",
+      "label": "PHP",
+      "icon": "assets/icons/php.svg"
+    },
+    {
+      "id": "rust",
+      "label": "Rust",
+      "icon": "assets/icons/rust.svg"
+    },
+    {
+      "id": "mkdocs",
+      "label": "MkDocs",
+      "icon": "assets/icons/mkdocs.svg"
+    },
+    {
+      "id": "chrome",
+      "label": "Chrome",
+      "icon": "assets/icons/chrome.svg"
+    }
+  ],
+  "projects": [
+    {
+      "id": "web/python/fastapi",
+      "type": "web",
+      "stack": "python",
+      "template": "fastapi",
+      "framework": "FastAPI",
+      "language": "python",
+      "description": "FastAPI + uvicorn + pydantic",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/fastapi.svg"
+      }
+    },
+    {
+      "id": "web/python/fastmcp",
+      "type": "web",
+      "stack": "python",
+      "template": "fastmcp",
+      "framework": "FastMCP",
+      "language": "python",
+      "description": "FastMCP server (Model Context Protocol over HTTP)",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/mcp.svg"
+      }
+    },
+    {
+      "id": "web/java/spring",
+      "type": "web",
+      "stack": "java",
+      "template": "spring",
+      "framework": "Spring Boot",
+      "language": "java",
+      "description": "Spring Boot web API (Maven, JDK 17)",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/java.svg",
+        "framework": "assets/icons/spring.svg"
+      }
+    },
+    {
+      "id": "web/kotlin/spring",
+      "type": "web",
+      "stack": "kotlin",
+      "template": "spring",
+      "framework": "Spring Boot",
+      "language": "java",
+      "description": "Spring Boot web API in Kotlin (Maven, JDK 17)",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/kotlin.svg",
+        "framework": "assets/icons/spring.svg"
+      }
+    },
+    {
+      "id": "web/go/gin",
+      "type": "web",
+      "stack": "go",
+      "template": "gin",
+      "framework": "Gin",
+      "language": "go",
+      "description": "Gin + net/http",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/go.svg",
+        "framework": "assets/icons/gin.svg"
+      }
+    },
+    {
+      "id": "web/node/react",
+      "type": "web",
+      "stack": "node",
+      "template": "react",
+      "framework": "React",
+      "language": "node",
+      "description": "React + webpack + jest",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/react.svg"
+      }
+    },
+    {
+      "id": "web/node/fastify",
+      "type": "web",
+      "stack": "node",
+      "template": "fastify",
+      "framework": "Fastify",
+      "language": "node",
+      "description": "Fastify API with TypeScript and Vitest",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/fastify.svg"
+      }
+    },
+    {
+      "id": "web/node/react-vite",
+      "type": "web",
+      "stack": "node",
+      "template": "react-vite",
+      "framework": "React + Vite",
+      "language": "node",
+      "description": "React with TypeScript, Vite and Vitest",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/vite.svg"
+      }
+    },
+    {
+      "id": "library/python/poetry",
+      "type": "library",
+      "stack": "python",
+      "template": "poetry",
+      "framework": "Poetry",
+      "language": "python",
+      "description": "Poetry package",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/poetry.svg"
+      }
+    },
+    {
+      "id": "library/python/typer",
+      "type": "library",
+      "stack": "python",
+      "template": "typer",
+      "framework": "Typer",
+      "language": "python",
+      "description": "Python CLI with Typer",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/python.svg"
+      }
+    },
+    {
+      "id": "library/go/module",
+      "type": "library",
+      "stack": "go",
+      "template": "module",
+      "framework": "Go module",
+      "language": "go",
+      "description": "Go module",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/go.svg",
+        "framework": "assets/icons/go.svg"
+      }
+    },
+    {
+      "id": "library/go/cobra",
+      "type": "library",
+      "stack": "go",
+      "template": "cobra",
+      "framework": "Cobra",
+      "language": "go",
+      "description": "Go CLI with Cobra",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/go.svg",
+        "framework": "assets/icons/go.svg"
+      }
+    },
+    {
+      "id": "library/php/composer",
+      "type": "library",
+      "stack": "php",
+      "template": "composer",
+      "framework": "Composer",
+      "language": "php",
+      "description": "Composer package",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/php.svg",
+        "framework": "assets/icons/composer.svg"
+      }
+    },
+    {
+      "id": "library/node/npm",
+      "type": "library",
+      "stack": "node",
+      "template": "npm",
+      "framework": "npm",
+      "language": "node",
+      "description": "npm package + TypeScript",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/npm.svg"
+      }
+    },
+    {
+      "id": "library/java/maven",
+      "type": "library",
+      "stack": "java",
+      "template": "maven",
+      "framework": "Maven",
+      "language": "java",
+      "description": "Maven artifact",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/java.svg",
+        "framework": "assets/icons/maven.svg"
+      }
+    },
+    {
+      "id": "library/rust/cargo",
+      "type": "library",
+      "stack": "rust",
+      "template": "cargo",
+      "framework": "Cargo",
+      "language": "rust",
+      "description": "Cargo crate",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/rust.svg",
+        "framework": "assets/icons/rust.svg"
+      }
+    },
+    {
+      "id": "automation/python/basic",
+      "type": "automation",
+      "stack": "python",
+      "template": "basic",
+      "framework": "argparse",
+      "language": "python",
+      "description": "Simple Python automation",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/python.svg"
+      }
+    },
+    {
+      "id": "automation/python/scheduled",
+      "type": "automation",
+      "stack": "python",
+      "template": "scheduled",
+      "framework": "argparse",
+      "language": "python",
+      "description": "Scheduled Python jobs",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/python.svg"
+      }
+    },
+    {
+      "id": "docs/mkdocs/material",
+      "type": "docs",
+      "stack": "mkdocs",
+      "template": "material",
+      "framework": "MkDocs Material",
+      "language": "python",
+      "description": "MkDocs Material",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/mkdocs.svg",
+        "framework": "assets/icons/mkdocs.svg"
+      }
+    },
+    {
+      "id": "plugin/chrome/vanilla",
+      "type": "plugin",
+      "stack": "chrome",
+      "template": "vanilla",
+      "framework": "Manifest V3",
+      "language": "node",
+      "description": "Chrome extension, Manifest V3, no bundler",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/chrome.svg",
+        "framework": "assets/icons/chrome.svg"
+      }
+    },
+    {
+      "id": "empty",
+      "type": "empty",
+      "stack": null,
+      "template": null,
+      "framework": null,
+      "language": "",
+      "description": "Only platform.toml + .code_quality/",
+      "default": false,
+      "icons": {
+        "language": null,
+        "framework": null
+      }
+    }
+  ],
+  "clouds": [
+    {
+      "id": "aws/lambda",
+      "description": "AWS Lambda + HTTP API Gateway via SAM",
+      "types": [
+        "web"
+      ],
+      "languages": [
+        "python"
+      ],
+      "icon": "assets/icons/aws.svg"
+    },
+    {
+      "id": "aws/amplify",
+      "description": "AWS Amplify Hosting (static build)",
+      "types": [
+        "web"
+      ],
+      "languages": [
+        "node"
+      ],
+      "icon": "assets/icons/aws.svg"
+    },
+    {
+      "id": "docker",
+      "description": "Dockerfile + docker-compose",
+      "types": [
+        "web"
+      ],
+      "languages": [
+        "python",
+        "go",
+        "node"
+      ],
+      "icon": "assets/icons/docker.svg"
+    }
+  ],
+  "services": [
+    {
+      "id": "postgres",
+      "description": "PostgreSQL database",
+      "providers": [
+        "docker",
+        "aws-rds"
+      ],
+      "icon": "assets/icons/postgresql.svg"
+    }
+  ]
+}
