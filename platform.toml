@@ -1,0 +1,13 @@
+[project]
+name = "templates"
+type = "web"
+ci = "github"
+language = "python"
+
+[source_host]
+kind = "github"
+repo = "actionplatform/templates"
+
+[release]
+strategy = "semver"
+changelog = "conventional"
