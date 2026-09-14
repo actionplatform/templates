@@ -25,13 +25,25 @@ description = "Gin + net/http"
 default = true
 description = "React + webpack + jest"
 
+[projects.web.node.fastify]
+description = "Fastify API with TypeScript and Vitest"
+
+[projects.web.node.react-vite]
+description = "React with TypeScript, Vite and Vitest"
+
 [projects.library.python.poetry]
 default = true
 description = "Poetry package"
 
+[projects.library.python.typer]
+description = "Python CLI with Typer"
+
 [projects.library.go.module]
 default = true
 description = "Go module"
+
+[projects.library.go.cobra]
+description = "Go CLI with Cobra"
 
 [projects.library.php.composer]
 default = true
@@ -48,6 +60,13 @@ description = "Maven artifact"
 [projects.library.rust.cargo]
 default = true
 description = "Cargo crate"
+
+[projects.automation.python.basic]
+default = true
+description = "Simple Python automation"
+
+[projects.automation.python.scheduled]
+description = "Scheduled Python jobs"
 
 [projects.docs.mkdocs.material]
 default = true
