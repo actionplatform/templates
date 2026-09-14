@@ -1,6 +1,6 @@
-//! {{ cookiecutter.description }}
+{% if cookiecutter.description %}//! {{ cookiecutter.description }}
 
-/// Crate version, written from the release tag.
+{% endif %}/// Crate version, written from the release tag.
 pub const VERSION: &str = "0.1.0";
 
 /// Dummy public function. Replace with the real API.
@@ -25,7 +25,8 @@ mod tests {
 
     #[test]
     fn version_matches_last_version() {
-        let expected = std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/LAST_VERSION")).unwrap();
+        let expected =
+            std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/LAST_VERSION")).unwrap();
         assert_eq!(VERSION, expected.trim());
     }
 }
