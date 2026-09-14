@@ -66,6 +66,11 @@
       "icon": "assets/icons/kotlin.svg"
     },
     {
+      "id": "ruby",
+      "label": "Ruby",
+      "icon": "assets/icons/ruby.svg"
+    },
+    {
       "id": "php",
       "label": "PHP",
       "icon": "assets/icons/php.svg"
@@ -141,6 +146,20 @@
       "icons": {
         "language": "assets/icons/kotlin.svg",
         "framework": "assets/icons/spring.svg"
+      }
+    },
+    {
+      "id": "web/ruby/sinatra",
+      "type": "web",
+      "stack": "ruby",
+      "template": "sinatra",
+      "framework": "Sinatra",
+      "language": "ruby",
+      "description": "Sinatra + Puma + RSpec",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/ruby.svg",
+        "framework": "assets/icons/sinatra.svg"
       }
     },
     {
