@@ -1,0 +1,1 @@
+inherit_from: .code_quality/rubocop.yml
