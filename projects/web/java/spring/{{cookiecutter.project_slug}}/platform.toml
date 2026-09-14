@@ -1,0 +1,15 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+type = "web"
+stack = "java"
+template = "spring"
+ci = "{{ cookiecutter.ci }}"
+language = "java"
+
+[source_host]
+kind = "github"
+repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+
+[release]
+strategy = "semver"
+changelog = "conventional"
