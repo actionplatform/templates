@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from app.api.v1.hello import hello_router
+from app.api.v1.items import items_router
 
 v1 = APIRouter()
-v1.include_router(hello_router, prefix="/hello", tags=["Hello"])
+v1.include_router(items_router, prefix="/items", tags=["Items"])

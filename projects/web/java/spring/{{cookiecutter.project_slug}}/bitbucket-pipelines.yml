@@ -1,0 +1,45 @@
+# Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
+
+image: maven:3-eclipse-temurin-17
+
+clone:
+  depth: full
+
+definitions:
+  scripts:
+    - &ap-fetch mkdir -p .ap && for s in lib setup check release conventional-commit gitflow gitflow-pr; do curl -fsSL "https://raw.githubusercontent.com/actionplatform/ci-scripts/v1/$s.sh" -o ".ap/$s.sh"; done && chmod +x .ap/*.sh
+  steps:
+    - step: &ap-check
+        name: Check
+        script:
+          - *ap-fetch
+          - .ap/setup.sh
+          - .ap/check.sh
+    - step: &ap-conventional-commit
+        name: Conventional commits
+        script:
+          - *ap-fetch
+          - git fetch origin "$BITBUCKET_PR_DESTINATION_BRANCH"
+          - AP_BASE="origin/$BITBUCKET_PR_DESTINATION_BRANCH" .ap/conventional-commit.sh
+    - step: &ap-gitflow
+        name: Git-flow
+        script:
+          - *ap-fetch
+          - AP_HEAD="$BITBUCKET_BRANCH" AP_BASE="$BITBUCKET_PR_DESTINATION_BRANCH" AP_DEFAULT_BRANCH="${AP_DEFAULT_BRANCH:-main}" .ap/gitflow-pr.sh
+    - step: &ap-release
+        name: Release
+        script:
+          - *ap-fetch
+          - git remote set-url origin "https://x-token-auth:${CI_PUSH_TOKEN}@bitbucket.org/${BITBUCKET_REPO_FULL_NAME}.git"
+          - AP_TAG="$BITBUCKET_TAG" AP_BRANCH="${AP_DEFAULT_BRANCH:-main}" .ap/release.sh
+
+pipelines:
+  pull-requests:
+    "**":
+      - parallel:
+          - step: *ap-check
+          - step: *ap-conventional-commit
+          - step: *ap-gitflow
+  tags:
+    "v*":
+      - step: *ap-release

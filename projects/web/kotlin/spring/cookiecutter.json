@@ -1,0 +1,28 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Spring Boot web API in Kotlin",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "java_package": "com.{{ cookiecutter.github_owner|replace('-', '') }}.{{ cookiecutter.package_name }}",
+  "java_package_dir": "{{ cookiecutter.java_package|replace('.', '/') }}",
+  "java_version": "17",
+  "kotlin_version": "2.0.21",
+  "_type": "web",
+  "_stack": "kotlin",
+  "_language": "java",
+  "_variant": "spring",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
+  ]
+}

@@ -33,17 +33,12 @@ Git-flow, enforced by git hooks locally (`action-platform install` once per clon
 ## Layout
 
 ```
-cmd/server/main.go        # main only: env, app.New, Run
+cmd/server/main.go        main only: env, app.New, Run
 internal/
-├── app/app.go            # router, middlewares, groups; Version
-├── api/                  # HTTP handlers: parse request, write response
-│   ├── ping.go           # GET /ping
-│   └── v1/
-│       ├── router.go     # Register(group) — mounts every v1 route
-│       └── hello.go      # dummy, one file per resource
-├── service/              # business rules — never imports gin
-├── repository/           # data access — never imports gin
-└── model/                # domain structs
+├── app/app.go            router and every route; Version
+├── handlers/             HTTP: parse the request, call a service, write the response (health.go, items.go)
+├── services/             business rules; never import gin; return errors handlers translate
+└── models/               the structs that cross the HTTP boundary
 ```
 
 `service/`, `repository/` and `model/` are created on demand; the handler → service → repository chain is the rule.
