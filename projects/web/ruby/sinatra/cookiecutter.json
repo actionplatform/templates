@@ -1,0 +1,24 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Sinatra + Puma + RSpec",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "ruby_version": "3.3",
+  "_type": "web",
+  "_stack": "ruby",
+  "_language": "ruby",
+  "_variant": "sinatra",
+  "_copy_without_render": [
+    ".github",
+    ".gitlab-ci.yml",
+    "Jenkinsfile",
+    "bitbucket-pipelines.yml"
+  ]
+}
