@@ -1,7 +1,7 @@
 // Package models holds the structs that cross the HTTP boundary.
 package models
 
-// Health is the body of GET /ping.
+// Health is the body of GET /health.
 type Health struct {
 	Status  string `json:"status"`
 	Version string `json:"version"`

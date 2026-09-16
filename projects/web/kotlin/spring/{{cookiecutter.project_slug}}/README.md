@@ -5,7 +5,7 @@
 ## Run
 
 ```bash
-mvn -B spring-boot:run          # http://localhost:8000/ping
+mvn -B spring-boot:run          # http://localhost:8000/health
 ```
 
 ## Test / lint
@@ -21,7 +21,7 @@ Five layers; each one depends only on the ones below it.
 ```
 src/main/kotlin/{{cookiecutter.java_package_dir}}/
 ├── Application.kt     Spring Boot entry point · Version.kt
-├── api/               HTTP only — controllers; PingController, v1/ItemsController
+├── api/               HTTP only — controllers; HealthController, v1/ItemsController
 ├── dto/               data classes that cross the HTTP boundary
 ├── service/           business rules; throw DomainException; no web imports
 ├── repository/        data access — one class per store, one method per query

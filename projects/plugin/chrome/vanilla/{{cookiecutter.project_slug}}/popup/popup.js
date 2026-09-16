@@ -13,7 +13,7 @@ async function init() {
   });
 
   try {
-    await api.ping();
+    await api.health();
     $("#status-dot").classList.add("ok");
     $("#api-status").textContent = "reachable";
   } catch (err) {

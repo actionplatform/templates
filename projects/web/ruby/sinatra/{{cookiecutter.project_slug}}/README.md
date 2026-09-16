@@ -6,7 +6,7 @@
 
 ```bash
 bundle install
-bundle exec rackup    # http://localhost:9292/ping
+bundle exec rackup    # http://localhost:9292/health
 ```
 
 ## Test / lint
@@ -25,7 +25,7 @@ app.rb                App.create, mounts every API
 app/
 ├── version.rb        App::VERSION
 ├── api/              HTTP only — routes, status codes; no rules
-│   ├── ping.rb       GET /ping
+│   ├── health.rb       GET /health
 │   └── v1/           versioned APIs; items is the example resource
 ├── schemas/          Data — the contract of every response
 ├── services/         business rules; receive repositories, raise DomainError

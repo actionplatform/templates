@@ -33,10 +33,10 @@ Git-flow, enforced by git hooks locally (`action-platform install` once per clon
 ## Layout
 
 ```
-app/__init__.py    # FastMCP instance, /ping, create_app()  ← convention for every web/python/*
+app/__init__.py    # FastMCP instance, /health, create_app()  ← convention for every web/python/*
 server.py          # stdio entry point
 tools/hello.py     # one module per tool, plain functions
-tests/             # tool via in-memory Client, /ping via TestClient
+tests/             # tool via in-memory Client, /health via TestClient
 ```
 
 ## Checks before a PR

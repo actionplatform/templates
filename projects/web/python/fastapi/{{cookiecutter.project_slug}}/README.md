@@ -25,7 +25,7 @@ Five layers; each one depends only on the ones below it.
 app/
 ├── __init__.py       create_app(), __version__
 ├── api/              HTTP only — routes, status codes, Depends; no rules
-│   ├── ping.py       GET /ping
+│   ├── health.py       GET /health
 │   └── v1/           versioned routers; items is the example resource
 ├── schemas/          Pydantic — the contract of every request and response
 ├── services/         business rules; receive repositories, raise DomainError

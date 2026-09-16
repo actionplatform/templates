@@ -18,9 +18,9 @@ class ApiTest(
     @Autowired private val mvc: MockMvc,
 ) {
     @Test
-    fun ping() {
+    fun health() {
         mvc
-            .perform(get("/ping"))
+            .perform(get("/health"))
             .andExpect(status().isOk)
             .andExpect(jsonPath("$.status").value("ok"))
             .andExpect(jsonPath("$.version").value(Version.VERSION))

@@ -20,8 +20,8 @@ class ApiTest {
     private MockMvc mvc;
 
     @Test
-    void ping() throws Exception {
-        mvc.perform(get("/ping"))
+    void health() throws Exception {
+        mvc.perform(get("/health"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.status").value("ok"))
             .andExpect(jsonPath("$.version").value(Version.VERSION));
