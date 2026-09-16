@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.5 — 2026-09-16
+
+### Bug Fixes
+- **cloud:** aws/lambda Ruby recipe and handler — synced from apx-aws-lambda
+
 ## v0.1.4 — 2026-09-16
 
 ### Bug Fixes
