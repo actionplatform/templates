@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.4 — 2026-09-16
+
+### Bug Fixes
+- **cloud:** aws/lambda Ruby package without puma and rackup — synced from apx-aws-lambda
+
 ## v0.1.3 — 2026-09-15
 
 ### Breaking Changes
