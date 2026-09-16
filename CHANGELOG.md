@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.3 — 2026-09-15
+
+### Breaking Changes
+- **cloud:** aws/lambda overlay for every web language — synced from apx-aws-lambda
+
+### Bug Fixes
+- **ruby:** the health API class is HealthApi — app.rb mounts it under that name
+
 ## v0.1.2 — 2026-09-15
 
 ### Breaking Changes
