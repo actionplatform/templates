@@ -22,7 +22,7 @@ func call(t *testing.T, r http.Handler, method, path, body string) (int, map[str
 }
 
 func TestPing(t *testing.T) {
-	code, body := call(t, New(), http.MethodGet, "/ping", "")
+	code, body := call(t, New(), http.MethodGet, "/health", "")
 	if code != http.StatusOK || body["status"] != "ok" || body["version"] != Version {
 		t.Fatalf("got %d %v", code, body)
 	}

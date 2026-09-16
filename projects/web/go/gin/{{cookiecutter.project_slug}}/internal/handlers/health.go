@@ -9,7 +9,7 @@ import (
 	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/models"
 )
 
-// Health reports the version. Every API exposes it at /ping.
+// Health reports the version. Every API exposes it at /health.
 func Health(version string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK, models.Health{Status: "ok", Version: version})

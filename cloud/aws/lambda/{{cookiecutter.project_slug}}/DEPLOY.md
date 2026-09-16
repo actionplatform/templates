@@ -7,7 +7,7 @@ Overlay `cloud/aws/lambda`. The app runs on Lambda (arm64, python3.12) behind an
 ```bash
 pip install aws-sam-cli
 sam build
-sam local start-api            # http://127.0.0.1:3000/ping
+sam local start-api            # http://127.0.0.1:3000/health
 sam deploy                     # dev stack: {{ cookiecutter.project_slug }}-dev
 sam deploy --config-env prod   # prod stack: {{ cookiecutter.project_slug }}-prod
 ```

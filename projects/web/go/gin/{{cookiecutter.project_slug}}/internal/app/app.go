@@ -18,7 +18,7 @@ func New() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery())
 
-	r.GET("/ping", handlers.Health(Version))
+	r.GET("/health", handlers.Health(Version))
 
 	v1 := r.Group(APIV1Prefix)
 	v1.GET("/items", items.List)

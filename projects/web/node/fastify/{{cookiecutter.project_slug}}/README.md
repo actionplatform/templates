@@ -12,7 +12,7 @@ npm ci
 ## Run
 
 ```bash
-npm run dev            # http://localhost:8000/ping (reloads on change)
+npm run dev            # http://localhost:8000/health (reloads on change)
 npm run build && npm start
 ```
 
@@ -30,7 +30,7 @@ npm run build
 ## Endpoints
 
 ```
-GET /ping                       {"status": "ok", "version": "0.0.0"}
+GET /health                       {"status": "ok", "version": "0.0.0"}
 GET /api/v1/hello?name=Fernando {"message": "hello, Fernando"}
 ```
 
@@ -41,11 +41,11 @@ src/
 ├── app.ts          createApp(): builds and returns the Fastify instance; VERSION
 ├── server.ts       starts the server, nothing else
 └── api/
-    ├── ping.ts     GET /ping
+    ├── health.ts     GET /health
     └── v1/
         ├── router.ts   mounts every v1 route
         └── hello.ts    GET /hello — replace with real resources
 tests/
-├── ping.test.ts
+├── health.test.ts
 └── hello.test.ts   app.inject(), no network
 ```

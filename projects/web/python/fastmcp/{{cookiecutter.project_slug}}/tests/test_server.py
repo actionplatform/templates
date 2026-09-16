@@ -18,8 +18,8 @@ async def test_hello_tool_via_client():
         assert result.data == "hello, ana"
 
 
-def test_ping():
+def test_health():
     with TestClient(create_app(stateless=True)) as client:
-        response = client.get("/ping")
+        response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "version": __version__}

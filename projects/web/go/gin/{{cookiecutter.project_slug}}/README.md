@@ -5,7 +5,7 @@
 ## Run
 
 ```bash
-go run ./cmd/server        # http://localhost:8000/ping
+go run ./cmd/server        # http://localhost:8000/health
 ```
 
 `ADDR` overrides the listen address (default `:8000`).
@@ -25,7 +25,7 @@ cmd/server/main.go        main only: env, app.New, Run
 internal/
 ├── app/app.go            router and every route; Version
 ├── handlers/             HTTP: parse the request, call a service, write the response
-│   ├── health.go         GET /ping
+│   ├── health.go         GET /health
 │   └── items.go          the example resource: list, create, get
 ├── services/             business rules; never import gin; return errors handlers translate
 └── models/               the structs that cross the HTTP boundary

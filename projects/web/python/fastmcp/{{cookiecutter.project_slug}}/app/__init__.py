@@ -18,13 +18,13 @@ mcp = FastMCP("{{ cookiecutter.project_name }}", version=__version__)
 mcp.tool(hello)
 
 
-@mcp.custom_route("/ping", methods=["GET"])
-async def ping(_: Request) -> JSONResponse:
+@mcp.custom_route("/health", methods=["GET"])
+async def health(_: Request) -> JSONResponse:
     return JSONResponse({"status": "ok", "version": __version__})
 
 
 def create_app(stateless: bool | None = None):
-    """MCP over streamable HTTP at /mcp, ping at /ping.
+    """MCP over streamable HTTP at /mcp, health at /health.
 
     Stateless is forced on Lambda: nothing survives between invocations, so a
     session-bound transport would break on the second request.

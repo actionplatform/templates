@@ -16,6 +16,6 @@
 
   root.{{ cookiecutter.package_name|upper }}.api = {
     request,
-    ping: () => request("/ping"),
+    health: () => request("/health"),
   };
 })();
