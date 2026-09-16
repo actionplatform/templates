@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.1.2 — 2026-09-15
+
+### Breaking Changes
+- **web:** the health route is GET /health on every web template — API Gateway reserves /ping on execute-api and answers it itself
+
+### Features
+- **web:** ruby sinatra template with ping and items across five layers
+- **index:** index.json is the catalog — types, stacks, frameworks and icons; index.toml, repo-level CI and lint config removed; README index with links
+- **matrix:** register the six templates
+- **automation:** automation/python/basic and scheduled
+- **cobra:** library/go/cobra — Go CLI with Cobra
+- **typer:** library/python/typer — Python CLI with Typer
+- **react-vite:** web/node/react-vite — React + TypeScript + Vite + Vitest
+- **fastify:** web/node/fastify — Fastify + TypeScript + Vitest
+
+### Bug Fixes
+- **go:** no trailing space in the package comment when the description is empty
+- **python:** version test formatted the same for any package name
+- **automation:** keep argparse call exploded so ruff format is stable for any description
+- **rust:** rustfmt-clean lib.rs even with an empty description
+- **kotlin:** package name derived from the slug without underscores, whatever package_name is passed
+
+### Docs
+- **index:** register web/ruby/sinatra and the ruby stack
+- catalog table with icons; --directory paths under projects/
+
+### Chores
+- **templates:** every generated project starts at 0.0.0 until its first release
+
 ## v0.1.1 — 2026-09-14
 
 ### Features
