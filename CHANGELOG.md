@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.0 — 2026-09-19
+
+### Features
+- **library:** one publish.yml the platform dispatches; registry targets in platform.toml
+
 ## v0.3.0 — 2026-09-19
 
 ### Features
