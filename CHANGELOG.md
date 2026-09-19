@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.3.0 — 2026-09-19
+
+### Features
+- **projects:** the thin templates catch up — rust integration tests and layout, a component test for react-vite
+- **projects:** .editorconfig, .gitignore, LICENSE and dependabot.yml in every template
+- **projects:** one pinned toolchain per template, rendered everywhere, and lockfiles
+
+### Bug Fixes
+- **rust:** Cargo.lock is committed — a library template ships the lockfile its checks passed with
+- **sinatra:** gems in alphabetical order, as rubocop asks
+
+### Refactoring
+- **projects:** only linters that run stay in .code_quality
+- **projects:** shared CI files, hook and AGENTS.md head come from projects/_shared
+
+### Docs
+- **projects:** the contract of each project type, and two templates brought onto it
+
+### CI
+- **templates:** render every template for each CI provider and run its own checks
+
 ## v0.2.0 — 2026-09-19
 
 ### Refactoring
