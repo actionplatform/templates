@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The release to publish (without the v prefix); the workflow runs on its tag
+        required: true
+      registry:
+        description: Where it goes — the scope the platform deploys to
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actionplatform/ci-github/setup@v1
+      - uses: actionplatform/ci-github/check@v1
+      - uses: actionplatform/ci-github/publish@v1
+        with:
+          version: ${{ inputs.version }}
+          registry: ${{ inputs.registry }}

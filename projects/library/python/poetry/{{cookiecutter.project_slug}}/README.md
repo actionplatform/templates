@@ -34,3 +34,7 @@ poetry run mypy --config-file .code_quality/mypy.ini .
 └── hello.py         # hello() — dummy
 tests/
 ```
+
+## Publish
+
+Releasing does not publish. The platform deploys a release to a scope — `testpypi` for candidates, `pypi` for stable releases — by dispatching `.github/workflows/publish.yml` on the tag with `version` and `registry`; the workflow builds and uploads with trusted publishing (register the repository as a trusted publisher on PyPI and TestPyPI once). `platform.toml` declares both targets.
