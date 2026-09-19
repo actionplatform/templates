@@ -54,6 +54,21 @@ Under `projects/`, three levels: **type → stack → template**.
 
 `action-platform init <type> <stack>` picks the default template of the pair; name the third part to pick another (`init web node fastify`). `plugin` stack is the **host system** — it imposes the language.
 
+### What a template of each type must provide
+
+The contract a template honours so the platform can build, check and run every project the same way — `ap-build install/build/test/lint/start` from the [build images](https://github.com/actionplatform/images-base), `check.sh` from ci-scripts, the cloud overlays. A new template is accepted when it meets its row and passes `scripts/render.py` + its own checks in CI.
+
+| Type | Must provide | Checked by |
+|---|---|---|
+| `web` | serves HTTP on `$PORT` (the platform sets it; default `8000` locally) and answers `GET /health`; `ap-build start` runs it — the language default or `[build] start` in `platform.toml` (the two React templates serve their static bundle with `serve`); tests for the HTTP contract and for the rules behind it | `check.sh`, the Lambda Web Adapter's readiness check on `/health` |
+| `library` | a public API with a version constant the release writes (`__version__`, `const Version`, `VERSION`…), unit tests for every public function, an install line in the README (`pip install`, `npm i`, `cargo add`, `go get`…) | `check.sh`, `release.sh` |
+| `automation` | an entrypoint the scheduler calls (`python -m app`, a `main`), one module per task, tests per task, no long-lived server | `check.sh` |
+| `docs` | `mkdocs.yml` + `docs/`; builds with `mkdocs build --strict` | `check.sh` (docs type) |
+| `plugin` | the host's manifest and build, tests where the host allows them | `check.sh` |
+| `empty` | `platform.toml`, `LAST_VERSION`, `.code_quality/` — nothing else | render only |
+
+Every type: `platform.toml`, `LAST_VERSION = 0.0.0`, `.code_quality/` with the linters that run, the shared files (CI for the four providers, `.editorconfig`, `.gitignore`, `LICENSE`, `AGENTS.md`), a pinned toolchain and its lockfile, a `README` with Run / Test / Layout sections, and code that passes its own lint, format and tests on the first commit.
+
 ## Clouds
 
 Under `cloud/`, deploy overlays applied **on top** of a generated project. Projects stay cloud-agnostic; the overlay adds only deploy files and sets `[deploy] target` in `platform.toml`. The contract every `web` project honours — **serve HTTP on `$PORT`** — is what lets one overlay deploy every language: the build is `ap-build package` (from [images-base](https://github.com/actionplatform/images-base)), no per-language files.

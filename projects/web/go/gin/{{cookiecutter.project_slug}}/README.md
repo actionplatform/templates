@@ -8,7 +8,7 @@
 go run ./cmd/server        # http://localhost:8000/health
 ```
 
-`ADDR` overrides the listen address (default `:8000`).
+`PORT` overrides the listen port (default `8000`) — the platform sets it when it runs the app.
 
 ## Test / lint
 
