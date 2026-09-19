@@ -25,7 +25,7 @@ Exit code is `0` on success and `1` when the task raises, so a caller (cron, CI,
 poetry run pytest
 poetry run ruff check .
 poetry run ruff format --check .
-poetry run mypy .
+poetry run mypy --config-file .code_quality/mypy.ini .
 ```
 
 ## Layout

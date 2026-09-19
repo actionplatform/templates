@@ -49,6 +49,7 @@ Request → api → service → repository. Never put a rule in a router; never 
 ```bash
 poetry run ruff check .
 poetry run ruff format --check .
+poetry run mypy --config-file .code_quality/mypy.ini .
 poetry run pytest
 ```
 

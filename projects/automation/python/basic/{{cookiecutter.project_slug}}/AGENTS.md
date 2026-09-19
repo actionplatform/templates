@@ -44,7 +44,7 @@ tests/
 ```bash
 poetry run ruff check .
 poetry run ruff format --check .
-poetry run mypy .
+poetry run mypy --config-file .code_quality/mypy.ini .
 poetry run pytest
 ```
 

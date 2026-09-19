@@ -15,6 +15,7 @@ poetry run uvicorn app:app --reload    # http://localhost:8000/docs
 poetry run pytest
 poetry run ruff check .
 poetry run ruff format --check .
+poetry run mypy --config-file .code_quality/mypy.ini .
 ```
 
 ## Layout
