@@ -1,7 +1,7 @@
 include:
   - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
 
-image: golang:1.23
+image: golang:{{ cookiecutter._go_version }}
 
 stages: [test, deploy]
 

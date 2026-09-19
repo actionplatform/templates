@@ -11,15 +11,12 @@
     "jenkins",
     "bitbucket"
   ],
-  "go_version": "1.22",
   "_type": "library",
   "_stack": "go",
   "_language": "go",
   "_variant": "module",
   "_copy_without_render": [
-    ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    ".github"
+  ],
+  "_go_version": "1.23"
 }

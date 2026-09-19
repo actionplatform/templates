@@ -1,6 +1,6 @@
 # Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
 
-image: python:3.12
+image: python:{{ cookiecutter._python_version }}
 
 clone:
   depth: full

@@ -7,7 +7,7 @@
   "author": "{{ cookiecutter.author }}",
   "main": "dist/server.js",
   "engines": {
-    "node": ">={{ cookiecutter.node_version }}"
+    "node": ">={{ cookiecutter._node_version }}"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",

@@ -15,7 +15,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">={{ cookiecutter.node_version }}"
+    "node": ">={{ cookiecutter._node_version }}"
   },
   "publishConfig": {
     "access": "public"

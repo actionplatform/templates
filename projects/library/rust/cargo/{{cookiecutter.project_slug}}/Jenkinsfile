@@ -2,4 +2,4 @@ library identifier: 'ci-jenkins@v1',
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: 'https://github.com/actionplatform/ci-jenkins.git'])
 
-apPipeline(image: 'rust:1.80')
+apPipeline(image: 'rust:{{ cookiecutter._rust_version }}')

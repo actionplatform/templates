@@ -21,7 +21,7 @@
   <url>https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}</url>
 
   <properties>
-    <java.version>{{ cookiecutter.java_version }}</java.version>
+    <java.version>{{ cookiecutter._java_version }}</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 

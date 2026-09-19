@@ -2,4 +2,4 @@ library identifier: 'ci-jenkins@v1',
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: 'https://github.com/actionplatform/ci-jenkins.git'])
 
-apPipeline(image: 'golang:1.23')
+apPipeline(image: 'golang:{{ cookiecutter._go_version }}')

@@ -11,15 +11,13 @@
     "jenkins",
     "bitbucket"
   ],
-  "go_version": "1.22",
   "_type": "library",
   "_stack": "go",
   "_language": "go",
   "_variant": "cobra",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    "go.sum"
+  ],
+  "_go_version": "1.23"
 }

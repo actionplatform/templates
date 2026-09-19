@@ -1,6 +1,6 @@
 # Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
 
-image: ruby:3.3
+image: ruby:{{ cookiecutter._ruby_version }}
 
 clone:
   depth: full

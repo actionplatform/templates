@@ -2,4 +2,4 @@ library identifier: 'ci-jenkins@v1',
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: 'https://github.com/actionplatform/ci-jenkins.git'])
 
-apPipeline(image: 'node:20')
+apPipeline(image: 'node:{{ cookiecutter._node_version }}')

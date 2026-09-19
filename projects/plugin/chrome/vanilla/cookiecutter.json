@@ -12,17 +12,14 @@
     "bitbucket"
   ],
   "api_base": "https://api.example.com/api/v1",
-  "node_version": "22",
   "_type": "plugin",
   "_stack": "chrome",
   "_language": "node",
   "_variant": "vanilla",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
     "scripts",
-    "tests",
-    "bitbucket-pipelines.yml"
-  ]
+    "tests"
+  ],
+  "_node_version": "22"
 }
