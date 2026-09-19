@@ -32,7 +32,12 @@ Git-flow, enforced by git hooks locally (`action-platform install` once per clon
 
 ## Layout
 
-_see README_
+```
+src/lib.rs      public API + VERSION; unit tests in `mod tests`
+tests/          integration tests, one file per feature
+```
+
+Public items live in `src/lib.rs` or modules it re-exports. A public function gets a unit test beside it and an integration test in `tests/`. `rustfmt.toml`, `clippy.toml` and `rust-toolchain.toml` stay at the root — cargo reads them there.
 
 ## Checks before a PR
 

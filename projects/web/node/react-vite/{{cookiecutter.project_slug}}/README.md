@@ -38,7 +38,8 @@ src/
     └── Welcome.tsx
 tests/
 ├── setup.ts            jest-dom matchers
-└── App.test.tsx        Testing Library, jsdom
+├── App.test.tsx        the page, Testing Library + jsdom
+└── Welcome.test.tsx    the component with its own props
 ```
 
 No router, no state library, no UI kit — add them when a second page needs them.
