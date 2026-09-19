@@ -1,6 +1,22 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Platform
+.ap-build/
+
+# Node
 node_modules/
+dist/
 build/
 coverage/
-.env
-.DS_Store
 npm-debug.log*
+*.tsbuildinfo

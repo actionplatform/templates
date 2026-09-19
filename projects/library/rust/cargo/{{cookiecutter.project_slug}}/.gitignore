@@ -1,2 +1,17 @@
-target/
+# Environment
 .env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Platform
+.ap-build/
+
+# Rust
+target/

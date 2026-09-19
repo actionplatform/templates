@@ -1,6 +1,21 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Platform
+.ap-build/
+
+# Ruby
 .bundle/
 vendor/bundle/
-.env
 coverage/
 tmp/
 log/

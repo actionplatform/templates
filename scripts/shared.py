@@ -3,9 +3,12 @@
     python scripts/shared.py --write   # copy _shared into every template
     python scripts/shared.py --check   # exit 1 when a template drifted from _shared
 
-Shared: the four GitHub workflows, `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml`
-(`__IMAGE__` becomes the language's CI image), the post-generation hook, and the head of
-`AGENTS.md` — everything from `## Commits` to before `## Layout`, which each template writes itself."""
+Shared: the four GitHub workflows and `dependabot.yml` (`__ECOSYSTEM__` becomes the language's
+package ecosystem), `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__`
+becomes the language's CI image), the post-generation hook, `.editorconfig`, `LICENSE`,
+`.gitignore` (`gitignore/common` + `gitignore/<language>`), and the head of `AGENTS.md` —
+everything from `## Commits` to before `## Layout`, which each template writes itself.
+The `empty` template gets `.editorconfig` and the common `.gitignore` only."""
 
 from __future__ import annotations
 
@@ -28,11 +31,22 @@ IMAGES = {
     "rust": "rust:{{ cookiecutter._rust_version }}",
 }
 
+ECOSYSTEMS = {
+    "python": "pip",
+    "node": "npm",
+    "go": "gomod",
+    "java": "maven",
+    "ruby": "bundler",
+    "php": "composer",
+    "rust": "cargo",
+}
+
 CI_FILES = [
     ".github/workflows/code-quality.yml",
     ".github/workflows/conventional-commit.yml",
     ".github/workflows/gitflow.yml",
     ".github/workflows/trivy.yml",
+    ".github/dependabot.yml",
     ".gitlab-ci.yml",
     "Jenkinsfile",
     "bitbucket-pipelines.yml",
@@ -47,16 +61,29 @@ def templates() -> list[Path]:
         p.parent
         for p in (ROOT / "projects").rglob("cookiecutter.json")
         if (p.parent / SLUG / "platform.toml").exists()
-        and json.loads(p.read_text()).get("_language")
     )
 
 
 def expected(template: Path) -> dict[Path, str]:
-    language = json.loads((template / "cookiecutter.json").read_text())["_language"]
-    files = {}
+    language = json.loads((template / "cookiecutter.json").read_text()).get("_language")
+    files = {template / SLUG / ".editorconfig": (SHARED / ".editorconfig").read_text()}
+    gitignore = (SHARED / "gitignore" / "common").read_text()
+
+    if not language:
+        files[template / SLUG / ".gitignore"] = gitignore
+
+        return files
+
+    files[template / SLUG / ".gitignore"] = gitignore + (SHARED / "gitignore" / language).read_text()
+    files[template / SLUG / "LICENSE"] = (SHARED / "LICENSE").read_text()
 
     for rel in CI_FILES:
-        text = (SHARED / rel).read_text().replace("__IMAGE__", IMAGES[language])
+        text = (
+            (SHARED / rel)
+            .read_text()
+            .replace("__IMAGE__", IMAGES[language])
+            .replace("__ECOSYSTEM__", ECOSYSTEMS[language])
+        )
         files[template / SLUG / rel] = text
 
     files[template / HOOK] = (SHARED / HOOK).read_text()

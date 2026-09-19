@@ -1,0 +1,9 @@
+
+# Ruby
+.bundle/
+vendor/bundle/
+coverage/
+tmp/
+log/
+*.gem
+.rspec_status
