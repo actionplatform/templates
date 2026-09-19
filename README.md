@@ -132,6 +132,16 @@ cookiecutter gh:actionplatform/templates --directory projects/web/python/fastapi
 
 All four call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`), [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library) and [ci-bitbucket](https://github.com/actionplatform/ci-bitbucket) (a self-contained `bitbucket-pipelines.yml`, since Pipelines cannot include a remote file).
 
+## Validation
+
+`.github/workflows/templates.yml` runs on every pull request: `scripts/render.py` renders every template for each of the four CI providers and fails on an unrendered tag, a CI file left behind or a `LAST_VERSION` other than `0.0.0`; then one job per template runs the same `setup.sh` and `check.sh` from ci-scripts that the generated project's own CI runs — install, lint, format, tests. A template that does not pass its own checks does not merge.
+
+```bash
+pip install cookiecutter
+python scripts/render.py --ci github out      # every template into out/<id>/sample-app
+python scripts/render.py --list               # the matrix
+```
+
 ## Conventions
 
 - Every template ships `platform.toml` so the project works with `action-platform release` and `deploy` out of the box.
