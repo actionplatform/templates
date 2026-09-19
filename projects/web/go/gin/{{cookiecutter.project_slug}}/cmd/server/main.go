@@ -8,10 +8,11 @@ import (
 )
 
 func main() {
-	addr := os.Getenv("ADDR")
-	if addr == "" {
-		addr = ":8000"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
 	}
+	addr := ":" + port
 	r := app.New()
 	log.Printf("listening on %s", addr)
 	if err := r.Run(addr); err != nil {

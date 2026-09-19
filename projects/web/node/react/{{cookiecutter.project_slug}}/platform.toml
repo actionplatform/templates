@@ -13,3 +13,6 @@ repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
 [release]
 strategy = "semver"
 changelog = "conventional"
+
+[build]
+start = "npx serve -s build -l ${PORT:-8000}"
