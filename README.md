@@ -88,8 +88,10 @@ eval "$(./services/postgres/link)"
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
 ├── projects/             <type>/<stack>/<template> — 22 templates, see the catalog above
+│   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
+├── scripts/              render.py (validation), shared.py (shared files)
 └── assets/icons/
 ```
 
@@ -131,6 +133,15 @@ cookiecutter gh:actionplatform/templates --directory projects/web/python/fastapi
 ```
 
 All four call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`), [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library) and [ci-bitbucket](https://github.com/actionplatform/ci-bitbucket) (a self-contained `bitbucket-pipelines.yml`, since Pipelines cannot include a remote file).
+
+## Shared files
+
+`projects/_shared/` is the single source of what every template carries unchanged: the four GitHub workflows, `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__` becomes the language's CI image), the post-generation hook and the head of `AGENTS.md` (Commits and Branches — each template writes Layout onwards). Edit them there, then:
+
+```bash
+python scripts/shared.py --write    # copies into every template
+python scripts/shared.py --check    # CI: fails on a template that drifted
+```
 
 ## Validation
 
