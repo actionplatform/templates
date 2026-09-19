@@ -403,22 +403,6 @@
   ],
   "clouds": [
     {
-      "id": "aws/lambda",
-      "description": "AWS Lambda + HTTP API Gateway via SAM",
-      "types": [
-        "web"
-      ],
-      "languages": [
-        "python",
-        "node",
-        "go",
-        "java",
-        "kotlin",
-        "ruby"
-      ],
-      "icon": "assets/icons/aws.svg"
-    },
-    {
       "id": "aws/amplify",
       "description": "AWS Amplify Hosting (static build)",
       "types": [
@@ -431,14 +415,17 @@
     },
     {
       "id": "docker",
-      "description": "Dockerfile + docker-compose",
+      "description": "Dockerfile on the build/runtime images + docker-compose",
       "types": [
         "web"
       ],
       "languages": [
         "python",
+        "node",
         "go",
-        "node"
+        "java",
+        "kotlin",
+        "ruby"
       ],
       "icon": "assets/icons/docker.svg"
     }
