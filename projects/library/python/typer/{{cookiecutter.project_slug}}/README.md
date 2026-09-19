@@ -39,3 +39,7 @@ tests/
 ```
 
 A new command is a function decorated with `@app.command()` in `cli.py`; keep the body small and call plain functions.
+
+## Publish
+
+Releasing does not publish. The platform deploys a release to a scope — `testpypi` for candidates, `pypi` for stable releases — by dispatching `.github/workflows/publish.yml` on the tag with `version` and `registry`; the workflow builds and uploads with trusted publishing (register the repository as a trusted publisher on PyPI and TestPyPI once). `platform.toml` declares both targets.

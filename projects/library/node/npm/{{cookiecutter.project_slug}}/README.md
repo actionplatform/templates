@@ -35,3 +35,7 @@ src/hello.ts      # hello() — dummy
 tests/            # vitest
 .code_quality/    # eslint, prettier, tsconfig
 ```
+
+## Publish
+
+Releasing does not publish. The platform deploys a release to a scope — `npm-next` (dist-tag `next`) for candidates, `npm` (`latest`) for stable releases — by dispatching `.github/workflows/publish.yml` on the tag with `version` and `registry`; the workflow publishes with provenance through npm trusted publishing (link the repository to the package on npmjs.com once). `platform.toml` declares both targets.

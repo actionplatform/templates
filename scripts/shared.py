@@ -6,7 +6,8 @@
 Shared: the four GitHub workflows and `dependabot.yml` (`__ECOSYSTEM__` becomes the language's
 package ecosystem), `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__`
 becomes the language's CI image), the post-generation hook, `.editorconfig`, `LICENSE`,
-`.gitignore` (`gitignore/common` + `gitignore/<language>`), and the head of `AGENTS.md` —
+`.gitignore` (`gitignore/common` + `gitignore/<language>`), `publish.yml` for the `library` type
+(the workflow the platform dispatches with `version` and `registry`), and the head of `AGENTS.md` —
 everything from `## Commits` to before `## Layout`, which each template writes itself.
 The `empty` template gets `.editorconfig` and the common `.gitignore` only."""
 
@@ -51,6 +52,7 @@ CI_FILES = [
     "Jenkinsfile",
     "bitbucket-pipelines.yml",
 ]
+LIBRARY_FILES = [".github/workflows/publish.yml"]
 HOOK = "hooks/post_gen_project.py"
 AGENTS_HEAD_START = "## Commits"
 AGENTS_HEAD_END = "## Layout"
@@ -65,7 +67,8 @@ def templates() -> list[Path]:
 
 
 def expected(template: Path) -> dict[Path, str]:
-    language = json.loads((template / "cookiecutter.json").read_text()).get("_language")
+    data = json.loads((template / "cookiecutter.json").read_text())
+    language = data.get("_language")
     files = {template / SLUG / ".editorconfig": (SHARED / ".editorconfig").read_text()}
     gitignore = (SHARED / "gitignore" / "common").read_text()
 
@@ -85,6 +88,10 @@ def expected(template: Path) -> dict[Path, str]:
             .replace("__ECOSYSTEM__", ECOSYSTEMS[language])
         )
         files[template / SLUG / rel] = text
+
+    if data.get("_type") == "library":
+        for rel in LIBRARY_FILES:
+            files[template / SLUG / rel] = (SHARED / rel.split("/")[-1]).read_text()
 
     files[template / HOOK] = (SHARED / HOOK).read_text()
 
