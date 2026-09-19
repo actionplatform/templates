@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 CI = "{{ cookiecutter.ci }}"
-PACKAGE_DIR = "{{ cookiecutter.package_name }}"
+PACKAGE_DIR = "{{ cookiecutter.package_name if 'package_name' in cookiecutter else cookiecutter.project_slug }}"
 
 FILES = {
     "github": [".github"],
