@@ -136,7 +136,7 @@ All four call the same scripts from [ci-scripts](https://github.com/actionplatfo
 
 ## Shared files
 
-`projects/_shared/` is the single source of what every template carries unchanged: the four GitHub workflows, `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__` becomes the language's CI image), the post-generation hook and the head of `AGENTS.md` (Commits and Branches — each template writes Layout onwards). Edit them there, then:
+`projects/_shared/` is the single source of what every template carries unchanged: the four GitHub workflows and `dependabot.yml` (`__ECOSYSTEM__` becomes the language's package ecosystem), `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__` becomes the language's CI image), the post-generation hook, `.editorconfig`, the MIT `LICENSE` (author and year rendered), `.gitignore` (`gitignore/common` + `gitignore/<language>`) and the head of `AGENTS.md` (Commits and Branches — each template writes Layout onwards). `empty` gets `.editorconfig` and the common `.gitignore`. Edit them there, then:
 
 ```bash
 python scripts/shared.py --write    # copies into every template
@@ -156,7 +156,7 @@ python scripts/render.py --list               # the matrix
 ## Conventions
 
 - Every template ships `platform.toml` so the project works with `action-platform release` and `deploy` out of the box.
-- Every template ships `.code_quality/` with the stack's lint/format config.
+- Every template ships `.code_quality/` with the stack's lint/format config, `.editorconfig`, `.gitignore`, a MIT `LICENSE` and, for GitHub, `dependabot.yml` (weekly, actions + the language's ecosystem) — all from `projects/_shared/`. A template whose code reads environment variables ships `.env.example` naming them.
 - One toolchain per template, pinned as a private variable in `cookiecutter.json` (`_python_version` 3.12, `_node_version` 22, `_go_version` 1.23, `_java_version` 21, `_ruby_version` 3.3, `_php_version` 8.2, `_rust_version` 1.80 — the versions of the [images-base](https://github.com/actionplatform/images-base) build images) and rendered into the toolchain file the CI reads (`.python-version`, `.nvmrc`, `go.mod`, `.java-version`, `.ruby-version`, `rust-toolchain.toml`), the CI images of `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml`, and the linter's target. Changing a version is a change to the template, validated by its CI.
 - Every template with a package manager ships its lockfile (`poetry.lock`, `package-lock.json`, `go.sum`, `Cargo.lock`, `Gemfile.lock`, `composer.lock`); a generated project installs the same versions the template was validated with. Bumping a dependency means regenerating the lockfile: render the template (`scripts/render.py`), run the package manager's lock command in the output and copy the file back, with the project name turned back into `{{ cookiecutter.project_slug }}` where it appears.
 - Git-flow and Conventional Commits are enforced by git hooks the CLI installs into `.git/hooks` (`action-platform install`, once per clone; `init`, `branch` and `push` do it too) and by the `gitflow` CI check on pull requests. Hooks are not versioned in the project.
