@@ -20,13 +20,3 @@ kind = "pypi"
 run_by = "github_actions"
 workflow = "publish.yml"
 package = "{{ cookiecutter.project_slug }}"
-stages = ["pypi"]
-
-[[deploy.targets]]
-name = "testpypi"
-kind = "pypi"
-run_by = "github_actions"
-workflow = "publish.yml"
-package = "{{ cookiecutter.project_slug }}"
-index_url = "https://test.pypi.org"
-stages = ["testpypi"]

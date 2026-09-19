@@ -20,12 +20,3 @@ kind = "npm"
 run_by = "github_actions"
 workflow = "publish.yml"
 package = "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
-stages = ["npm"]
-
-[[deploy.targets]]
-name = "npm-next"
-kind = "npm"
-run_by = "github_actions"
-workflow = "publish.yml"
-package = "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
-stages = ["npm-next"]
