@@ -24,7 +24,7 @@ python -m {{ cookiecutter.package_name }} hello
 poetry run pytest
 poetry run ruff check .
 poetry run ruff format --check .
-poetry run mypy .
+poetry run mypy --config-file .code_quality/mypy.ini .
 ```
 
 ## Layout

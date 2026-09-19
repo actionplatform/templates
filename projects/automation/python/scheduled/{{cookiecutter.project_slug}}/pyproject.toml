@@ -20,8 +20,6 @@ mypy = "^1.13.0"
 [tool.ruff]
 extend = ".code_quality/ruff.toml"
 
-[tool.mypy]
-config_file = ".code_quality/mypy.ini"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
