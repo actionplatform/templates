@@ -37,4 +37,4 @@ tests/
 
 ## Publish
 
-Releasing does not publish. The platform deploys a release to a scope — `testpypi` for candidates, `pypi` for stable releases — by dispatching `.github/workflows/publish.yml` on the tag with `version` and `registry`; the workflow builds and uploads with trusted publishing (register the repository as a trusted publisher on PyPI and TestPyPI once). `platform.toml` declares both targets.
+Releasing does not publish. The platform deploys a release to a scope by dispatching `.github/workflows/publish.yml` on the tag; a scope of criticality `test` publishes to TestPyPI, any other to PyPI. The workflow uploads with trusted publishing — register the repository as a trusted publisher on PyPI and TestPyPI once. `platform.toml` declares the target.

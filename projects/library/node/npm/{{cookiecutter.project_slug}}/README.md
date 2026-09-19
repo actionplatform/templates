@@ -38,4 +38,4 @@ tests/            # vitest
 
 ## Publish
 
-Releasing does not publish. The platform deploys a release to a scope — `npm-next` (dist-tag `next`) for candidates, `npm` (`latest`) for stable releases — by dispatching `.github/workflows/publish.yml` on the tag with `version` and `registry`; the workflow publishes with provenance through npm trusted publishing (link the repository to the package on npmjs.com once). `platform.toml` declares both targets.
+Releasing does not publish. The platform deploys a release to a scope by dispatching `.github/workflows/publish.yml` on the tag; a scope of criticality `test` publishes under the dist-tag `next`, any other under `latest`. The workflow publishes with provenance through npm trusted publishing — link the repository to the package on npmjs.com once. `platform.toml` declares the target.
