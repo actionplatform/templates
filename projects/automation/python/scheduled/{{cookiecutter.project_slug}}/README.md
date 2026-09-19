@@ -29,7 +29,7 @@ Exit code is `0` on success and `1` when the job raises or does not exist. A cro
 poetry run pytest
 poetry run ruff check .
 poetry run ruff format --check .
-poetry run mypy .
+poetry run mypy --config-file .code_quality/mypy.ini .
 ```
 
 ## Layout

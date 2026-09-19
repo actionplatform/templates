@@ -22,6 +22,8 @@ hello("ana")  # "hello, ana"
 poetry install --with dev,code-quality
 poetry run pytest
 poetry run ruff check .
+poetry run ruff format --check .
+poetry run mypy --config-file .code_quality/mypy.ini .
 ```
 
 ## Layout
