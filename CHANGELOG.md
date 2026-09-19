@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.0 — 2026-09-19
+
+### Refactoring
+- **cloud:** clouds live in plugins; one Dockerfile for the docker overlay
+
 ## v0.1.5 — 2026-09-16
 
 ### Bug Fixes

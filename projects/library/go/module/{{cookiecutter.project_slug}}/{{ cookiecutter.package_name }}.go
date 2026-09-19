@@ -2,4 +2,4 @@
 package {{ cookiecutter.package_name }}
 
 // Version is the module version, written from the release tag.
-const Version = "0.1.5"
+const Version = "0.2.0"
