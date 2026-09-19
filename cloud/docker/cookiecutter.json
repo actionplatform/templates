@@ -5,8 +5,11 @@
   "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "language": [
     "python",
+    "node",
     "go",
-    "node"
+    "java",
+    "kotlin",
+    "ruby"
   ],
   "type": [
     "web"
@@ -18,7 +21,7 @@
   ],
   "_kind": "cloud",
   "_cloud": "docker",
-  "_description": "Dockerfile + docker-compose",
+  "_description": "Dockerfile on the build/runtime images + docker-compose",
   "_types": [
     "web"
   ],

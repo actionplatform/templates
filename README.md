@@ -56,15 +56,14 @@ Under `projects/`, three levels: **type → stack → template**.
 
 ## Clouds
 
-Under `cloud/`, deploy overlays applied **on top** of a generated project. Projects stay cloud-agnostic; the overlay adds only deploy files and sets `[deploy] target` in `platform.toml`.
+Under `cloud/`, deploy overlays applied **on top** of a generated project. Projects stay cloud-agnostic; the overlay adds only deploy files and sets `[deploy] target` in `platform.toml`. The contract every `web` project honours — **serve HTTP on `$PORT`** — is what lets one overlay deploy every language: the build is `ap-build package` (from [images-base](https://github.com/actionplatform/images-base)), no per-language files.
 
 | Cloud | Types | Languages | Adds |
 |---|---|---|---|
-| <img src="assets/icons/aws.svg" width="18" height="18" alt="aws"> [`aws/lambda`](cloud/aws/lambda) | web | python | `template.yaml`, `samconfig.toml`, `lambda_handler.py`, `Makefile`, deploy workflow |
 | <img src="assets/icons/aws.svg" width="18" height="18" alt="aws"> [`aws/amplify`](cloud/aws/amplify) | web | node | `amplify.yml`, `customHttp.yml`, deploy workflow (start job + wait) |
-| <img src="assets/icons/docker.svg" width="18" height="18" alt="docker"> [`docker`](cloud/docker) | web | python, go, node | `Dockerfile`, `docker-compose.yml`, `.dockerignore` |
+| <img src="assets/icons/docker.svg" width="18" height="18" alt="docker"> [`docker`](cloud/docker) | web | python, node, go, java, kotlin, ruby | `Dockerfile` (build image → runtime image), `docker-compose.yml`, `.dockerignore` |
 
-Language-specific files live in `_lang/<language>/`; the post-gen hook keeps the matching one.
+Clouds that need a deploy target come as plugins and bring their overlay with them: `aws/lambda` lives in [apx-aws-lambda](https://github.com/actionplatform/apx-aws-lambda) and shows in the matrix through the plugin.
 
 AWS overlays ship `requirements/` — `trust.json` (GitHub OIDC for the repo) and `policy.json` (least privilege the deploy role needs). `DEPLOY.md` shows the two `aws iam` commands to create the role.
 
@@ -89,7 +88,7 @@ eval "$(./services/postgres/link)"
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
 ├── projects/             <type>/<stack>/<template> — 22 templates, see the catalog above
-├── cloud/                aws/lambda · aws/amplify · docker
+├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
 └── assets/icons/
 ```
@@ -109,7 +108,7 @@ The one source of truth for the catalog. Every entry has an `id` that is also it
       "framework": "FastAPI", "language": "python", "description": "…", "default": true,
       "icons": { "language": "assets/icons/python.svg", "framework": "assets/icons/fastapi.svg" } }
   ],
-  "clouds":   [{ "id": "aws/lambda", "types": ["web"], "languages": ["python"], "icon": "…", "description": "…" }],
+  "clouds":   [{ "id": "docker", "types": ["web"], "languages": ["python"], "icon": "…", "description": "…" }],
   "services": [{ "id": "postgres", "providers": ["docker", "aws-rds"], "icon": "…", "description": "…" }]
 }
 ```
