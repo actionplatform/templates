@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby ">= {{ cookiecutter.ruby_version }}"
+ruby ">= {{ cookiecutter._ruby_version }}"
 
 gem "rackup", "~> 2.1"
 gem "sinatra", "~> 4.1"

@@ -11,15 +11,12 @@
     "jenkins",
     "bitbucket"
   ],
-  "node_version": "20",
   "_type": "web",
   "_stack": "node",
   "_language": "node",
   "_variant": "fastify",
   "_copy_without_render": [
-    ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    ".github"
+  ],
+  "_node_version": "22"
 }

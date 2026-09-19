@@ -6,7 +6,7 @@ description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }}"]
 
 [tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
+python = "^{{ cookiecutter._python_version }}"
 mkdocs-material = "^9.5"
 
 [build-system]

@@ -12,15 +12,13 @@
     "bitbucket"
   ],
   "php_namespace": "{{ cookiecutter.project_name|replace('-', ' ')|title|replace(' ', '') }}",
-  "php_version": "8.1",
   "_type": "library",
   "_stack": "php",
   "_language": "php",
   "_variant": "composer",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    "composer.lock"
+  ],
+  "_php_version": "8.2"
 }

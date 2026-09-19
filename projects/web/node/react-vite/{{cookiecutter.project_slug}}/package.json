@@ -7,7 +7,7 @@
   "author": "{{ cookiecutter.author }}",
   "type": "module",
   "engines": {
-    "node": ">={{ cookiecutter.node_version }}"
+    "node": ">={{ cookiecutter._node_version }}"
   },
   "scripts": {
     "dev": "vite",

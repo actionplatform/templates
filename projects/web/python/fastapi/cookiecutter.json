@@ -11,15 +11,13 @@
     "jenkins",
     "bitbucket"
   ],
-  "python_version": "3.12",
   "_type": "web",
   "_stack": "python",
   "_language": "python",
   "_variant": "fastapi",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    "poetry.lock"
+  ],
+  "_python_version": "3.12"
 }

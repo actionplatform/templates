@@ -1,6 +1,6 @@
 # Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
 
-image: maven:3-eclipse-temurin-17
+image: maven:3-eclipse-temurin-{{ cookiecutter._java_version }}
 
 clone:
   depth: full

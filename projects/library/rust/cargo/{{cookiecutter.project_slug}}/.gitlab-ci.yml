@@ -1,7 +1,7 @@
 include:
   - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
 
-image: rust:1.80
+image: rust:{{ cookiecutter._rust_version }}
 
 stages: [test, deploy]
 

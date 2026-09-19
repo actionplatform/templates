@@ -21,8 +21,8 @@
   <url>https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}</url>
 
   <properties>
-    <java.version>{{ cookiecutter.java_version }}</java.version>
-    <kotlin.version>{{ cookiecutter.kotlin_version }}</kotlin.version>
+    <java.version>{{ cookiecutter._java_version }}</java.version>
+    <kotlin.version>{{ cookiecutter._kotlin_version }}</kotlin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 

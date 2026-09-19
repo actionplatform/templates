@@ -1,7 +1,7 @@
 include:
   - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
 
-image: ruby:3.3
+image: ruby:{{ cookiecutter._ruby_version }}
 
 stages: [test, deploy]
 

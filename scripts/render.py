@@ -23,6 +23,13 @@ CI_FILES = {
     "jenkins": ["Jenkinsfile"],
     "bitbucket": ["bitbucket-pipelines.yml"],
 }
+LOCKFILES = {
+    "pyproject.toml": "poetry.lock",
+    "package.json": "package-lock.json",
+    "Cargo.toml": "Cargo.lock",
+    "Gemfile": "Gemfile.lock",
+    "composer.json": "composer.lock",
+}
 LEFTOVER = re.compile(r"\{\{\s*cookiecutter\.|\{%")
 
 
@@ -85,6 +92,10 @@ def check(project: Path, ci: str, template: dict) -> None:
 
     if (project / "LAST_VERSION").read_text().strip() != "0.0.0":
         problems.append("LAST_VERSION is not 0.0.0")
+
+    for manifest, lock in LOCKFILES.items():
+        if (project / manifest).exists() and not (project / lock).exists():
+            problems.append(f"{manifest} without {lock}")
 
     if problems:
         sys.exit(f"{template['id']}: " + "; ".join(problems))

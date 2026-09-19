@@ -10,15 +10,13 @@
     "jenkins",
     "bitbucket"
   ],
-  "ruby_version": "3.3",
   "_type": "web",
   "_stack": "ruby",
   "_language": "ruby",
   "_variant": "sinatra",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
-    "bitbucket-pipelines.yml"
-  ]
+    "Gemfile.lock"
+  ],
+  "_ruby_version": "3.3"
 }

@@ -1,7 +1,7 @@
 include:
   - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
 
-image: maven:3-eclipse-temurin-17
+image: maven:3-eclipse-temurin-{{ cookiecutter._java_version }}
 
 stages: [test, deploy]
 

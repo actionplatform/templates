@@ -5,7 +5,7 @@
 line-length = 79
 
 # Target Python version
-target-version = "py310"
+target-version = "py{{ cookiecutter._python_version|replace('.', '') }}"
 
 # Exclude patterns
 exclude = [

@@ -5,7 +5,6 @@
   "author": "Fernando Celmer",
   "github_owner": "actionplatform",
   "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
-  "node_version": "20",
   "ci": [
     "github",
     "gitlab",
@@ -18,11 +17,9 @@
   "_variant": "react",
   "_copy_without_render": [
     ".github",
-    ".gitlab-ci.yml",
-    "Jenkinsfile",
     "webpack.config.js",
     "jest.config.js",
-    "src/hooks/useRequest/useRequest.js",
-    "bitbucket-pipelines.yml"
-  ]
+    "src/hooks/useRequest/useRequest.js"
+  ],
+  "_node_version": "22"
 }

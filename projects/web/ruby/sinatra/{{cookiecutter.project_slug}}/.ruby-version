@@ -1,1 +1,1 @@
-{{ cookiecutter.ruby_version }}
+{{ cookiecutter._ruby_version }}

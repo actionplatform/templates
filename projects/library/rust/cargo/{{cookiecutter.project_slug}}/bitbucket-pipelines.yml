@@ -1,6 +1,6 @@
 # Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
 
-image: rust:1.80
+image: rust:{{ cookiecutter._rust_version }}
 
 clone:
   depth: full

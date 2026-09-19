@@ -1,6 +1,6 @@
 # Bitbucket Pipelines for this project; steps come from https://github.com/actionplatform/ci-scripts (v1).
 
-image: golang:1.23
+image: golang:{{ cookiecutter._go_version }}
 
 clone:
   depth: full

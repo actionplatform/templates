@@ -1,7 +1,7 @@
 include:
   - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
 
-image: python:3.12
+image: python:{{ cookiecutter._python_version }}
 
 stages: [test, deploy]
 
