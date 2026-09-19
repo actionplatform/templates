@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.1 — 2026-09-19
+
+### Bug Fixes
+- **library:** one registry target; the scope's criticality picks the test registry
+
 ## v0.4.0 — 2026-09-19
 
 ### Features
