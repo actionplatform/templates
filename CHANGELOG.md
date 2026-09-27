@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.5.0 — 2026-09-27
+
+### Features
+- **cloud/docker:** the Dockerfile names the language version
+
+### Bug Fixes
+- **templates:** put the version constants back to 0.0.0
+- **templates:** ruff ^0.16 and Spring Boot 3.5.16 for the newest language versions
+
 ## v0.4.2 — 2026-09-27
 
 ### Bug Fixes
