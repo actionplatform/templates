@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.0 — 2026-09-27
+
+### Bug Fixes
+- **cloud/docker:** take the package's architecture from the build stage
+
 ## v0.5.0 — 2026-09-27
 
 ### Features
