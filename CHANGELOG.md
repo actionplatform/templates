@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.2 — 2026-09-27
+
+### Bug Fixes
+- **web/python:** fastapi ^0.141.0, starlette 1.7.0 in the fastapi and fastmcp locks
+
 ## v0.4.1 — 2026-09-19
 
 ### Bug Fixes
