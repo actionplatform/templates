@@ -126,6 +126,20 @@
       }
     },
     {
+      "id": "web/python/mcp-remote",
+      "type": "web",
+      "stack": "python",
+      "template": "mcp-remote",
+      "framework": "FastMCP",
+      "language": "python",
+      "description": "Remote MCP server: FastMCP over HTTP with OAuth bearer auth",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/mcp.svg"
+      }
+    },
+    {
       "id": "web/java/spring",
       "type": "web",
       "stack": "java",
