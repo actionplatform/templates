@@ -91,6 +91,11 @@
       "icon": "assets/icons/mkdocs.svg"
     },
     {
+      "id": "markdown",
+      "label": "Markdown",
+      "icon": "assets/icons/markdown.svg"
+    },
+    {
       "id": "chrome",
       "label": "Chrome",
       "icon": "assets/icons/chrome.svg"
@@ -403,6 +408,20 @@
       "icons": {
         "language": "assets/icons/mkdocs.svg",
         "framework": "assets/icons/mkdocs.svg"
+      }
+    },
+    {
+      "id": "docs/markdown/knowledge",
+      "type": "docs",
+      "stack": "markdown",
+      "template": "knowledge",
+      "framework": "Markdown",
+      "language": "node",
+      "description": "Markdown knowledge repository with agent skills, link and format checks",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/markdown.svg",
+        "framework": "assets/icons/markdown.svg"
       }
     },
     {

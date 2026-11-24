@@ -51,6 +51,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`scheduled`](projects/automation/python/scheduled) | Scheduled Python jobs: `python -m app run <job>` |  |
 | `job` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`basic`](projects/job/python/basic) | Python job: runs once, exits with a status code | ✓ |
 | `docs` | mkdocs | <img src="assets/icons/mkdocs.svg" width="18" height="18" alt="mkdocs"> MkDocs Material | [`material`](projects/docs/mkdocs/material) | MkDocs Material site | ✓ |
+|  | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> markdown | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> Markdown | [`knowledge`](projects/docs/markdown/knowledge) | Markdown pages + `AGENTS.md`/`CLAUDE.md` + an example agent skill; checks links and format, no build | ✓ |
 | `plugin` | chrome | <img src="assets/icons/chrome.svg" width="18" height="18" alt="chrome"> Manifest V3 | [`vanilla`](projects/plugin/chrome/vanilla) | Chrome extension, no bundler | ✓ |
 | `empty` | — | — | [`empty`](projects/empty) | Only `platform.toml` + `.code_quality/` |  |
 
@@ -66,7 +67,7 @@ The contract a template honours so the platform can build, check and run every p
 | `library` | a public API with a version constant the release writes (`__version__`, `const Version`, `VERSION`…), unit tests for every public function, an install line in the README (`pip install`, `npm i`, `cargo add`, `go get`…); `publish.yml` from `_shared` — the platform dispatches it with `version` and `registry` when a release is deployed to a scope, the pipeline publishes with its own credentials; python and node declare one registry target in `platform.toml`; the scope's criticality picks TestPyPI / the npm `next` tag (`test`) or the registry itself | `check.sh`, `publish.sh` |
 | `automation` | an entrypoint the scheduler calls (`python -m app`, a `main`), one module per task, tests per task, no long-lived server | `check.sh` |
 | `job` | an entrypoint that runs once and exits with a status code (`python -m app`), logs to stdout, config from the environment, tests per task; no server | `check.sh` |
-| `docs` | `mkdocs.yml` + `docs/`; builds with `mkdocs build --strict` | `check.sh` (docs type) |
+| `docs` | `docs/` of Markdown pages; with `mkdocs.yml` it builds with `mkdocs build --strict` (`mkdocs/material`), without it the language's checks run (`markdown/knowledge`: Prettier format + remark link check through npm) | `check.sh` (docs type) |
 | `plugin` | the host's manifest and build, tests where the host allows them | `check.sh` |
 | `empty` | `platform.toml`, `LAST_VERSION`, `.code_quality/` — nothing else | render only |
 
@@ -105,7 +106,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 24 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 25 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
