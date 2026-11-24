@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "{{ cookiecutter.description }}",
   "private": true,
-  "license": "MIT",
+  "license": "{{ cookiecutter.__spdx or 'UNLICENSED' }}",
   "author": "{{ cookiecutter.author }}",
   "type": "module",
   "engines": {

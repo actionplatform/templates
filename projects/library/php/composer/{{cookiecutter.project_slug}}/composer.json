@@ -1,11 +1,11 @@
 {
-    "name": "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}",
+    "name": "{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}",
     "description": "{{ cookiecutter.description }}",
     "type": "library",
-    "license": "MIT",
+    "license": "{{ cookiecutter.__spdx or 'proprietary' }}",
     "support": {
-        "issues": "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/issues",
-        "source": "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+        "issues": "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/issues",
+        "source": "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}"
     },
     "require": {
         "php": ">={{ cookiecutter._php_version }}"

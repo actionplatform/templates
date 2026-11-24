@@ -1,9 +1,10 @@
-"""Keep only the CI config selected in `ci`; stamp the package dir into unrendered workflows."""
+"""Keep only the CI config selected in `ci`; stamp the package dir into unrendered workflows; drop LICENSE when no licence was chosen."""
 
 import shutil
 from pathlib import Path
 
 CI = "{{ cookiecutter.ci }}"
+LICENSE = "{{ cookiecutter.license }}"
 PACKAGE_DIR = "{{ cookiecutter.package_name if 'package_name' in cookiecutter else cookiecutter.project_slug }}"
 
 FILES = {
@@ -25,3 +26,6 @@ for provider, paths in FILES.items():
 
 for workflow in Path(".github/workflows").glob("*.yml") if Path(".github").exists() else []:
     workflow.write_text(workflow.read_text().replace("PACKAGE_DIR", PACKAGE_DIR))
+
+if LICENSE not in ("mit", "apache-2.0") and Path("LICENSE").exists():
+    Path("LICENSE").unlink()

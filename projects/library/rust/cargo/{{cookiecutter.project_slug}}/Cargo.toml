@@ -3,7 +3,7 @@ name = "{{ cookiecutter.package_name }}"
 version = "0.0.0"
 edition = "2021"
 description = "{{ cookiecutter.description }}"
-license = "MIT"
-repository = "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+{% if cookiecutter.__spdx %}license = "{{ cookiecutter.__spdx }}"
+{% endif %}repository = "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}"
 
 [dependencies]

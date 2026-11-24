@@ -1,12 +1,12 @@
 {
-  "name": "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}",
+  "name": "@{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}",
   "version": "0.0.0",
   "description": "{{ cookiecutter.description }}",
-  "license": "MIT",
+  "license": "{{ cookiecutter.__spdx or 'UNLICENSED' }}",
   "author": "{{ cookiecutter.author }}",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}.git"
+    "url": "git+https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

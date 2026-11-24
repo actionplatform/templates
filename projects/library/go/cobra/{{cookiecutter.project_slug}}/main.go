@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/cmd"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/cmd"
 )
 
 func main() {
