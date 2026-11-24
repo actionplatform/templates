@@ -1,0 +1,22 @@
+{
+  "project_name": "My Plugin",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Plugin for Claude Code and Codex",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "_type": "plugin",
+  "_stack": "agent",
+  "_language": "python",
+  "_variant": "claude-codex",
+  "_copy_without_render": [
+    ".github",
+    "poetry.lock"
+  ],
+  "_python_version": "3.12"
+}

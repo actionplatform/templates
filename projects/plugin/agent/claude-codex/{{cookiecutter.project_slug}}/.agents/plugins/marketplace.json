@@ -1,0 +1,20 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "interface": {
+    "displayName": "{{ cookiecutter.project_name }}"
+  },
+  "plugins": [
+    {
+      "name": "{{ cookiecutter.project_slug }}",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

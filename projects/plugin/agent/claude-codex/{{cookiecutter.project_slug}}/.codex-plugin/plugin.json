@@ -1,0 +1,16 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.0.0",
+  "description": "{{ cookiecutter.description }}",
+  "author": {
+    "name": "{{ cookiecutter.author }}"
+  },
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "{{ cookiecutter.project_name }}",
+    "shortDescription": "{{ cookiecutter.description }}",
+    "developerName": "{{ cookiecutter.author }}",
+    "category": "Productivity"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.0.0",
+  "description": "{{ cookiecutter.description }}",
+  "author": {
+    "name": "{{ cookiecutter.author }}"
+  },
+  "license": "MIT",
+  "skills": "./skills/"
+}

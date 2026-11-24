@@ -1,0 +1,13 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "owner": {
+    "name": "{{ cookiecutter.author }}"
+  },
+  "plugins": [
+    {
+      "name": "{{ cookiecutter.project_slug }}",
+      "source": "./",
+      "description": "{{ cookiecutter.description }}"
+    }
+  ]
+}
