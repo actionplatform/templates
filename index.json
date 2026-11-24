@@ -86,6 +86,11 @@
       "icon": "assets/icons/mkdocs.svg"
     },
     {
+      "id": "markdown",
+      "label": "Markdown",
+      "icon": "assets/icons/markdown.svg"
+    },
+    {
       "id": "chrome",
       "label": "Chrome",
       "icon": "assets/icons/chrome.svg"
@@ -370,6 +375,20 @@
       "icons": {
         "language": "assets/icons/mkdocs.svg",
         "framework": "assets/icons/mkdocs.svg"
+      }
+    },
+    {
+      "id": "docs/markdown/plain",
+      "type": "docs",
+      "stack": "markdown",
+      "template": "plain",
+      "framework": "Markdown",
+      "language": "",
+      "description": "Plain Markdown, no build, no site",
+      "default": true,
+      "icons": {
+        "language": null,
+        "framework": "assets/icons/markdown.svg"
       }
     },
     {

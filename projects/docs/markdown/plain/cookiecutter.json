@@ -1,0 +1,22 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Plain Markdown documentation",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "_type": "docs",
+  "_stack": "markdown",
+  "_language": "",
+  "_variant": "plain",
+  "_ci_image": "buildpack-deps:stable-scm",
+  "_copy_without_render": [
+    ".github"
+  ]
+}
