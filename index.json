@@ -24,6 +24,11 @@
       "description": "Scripts and jobs run by hand or by an external scheduler."
     },
     {
+      "id": "job",
+      "label": "Job",
+      "description": "A command that runs once and exits, started by a scheduler."
+    },
+    {
       "id": "docs",
       "label": "Documentation",
       "description": "Documentation site."
@@ -353,6 +358,20 @@
       "language": "python",
       "description": "Scheduled Python jobs",
       "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/python.svg"
+      }
+    },
+    {
+      "id": "job/python/basic",
+      "type": "job",
+      "stack": "python",
+      "template": "basic",
+      "framework": "argparse",
+      "language": "python",
+      "description": "Python job: runs once, exits with a status code",
+      "default": true,
       "icons": {
         "language": "assets/icons/python.svg",
         "framework": "assets/icons/python.svg"
