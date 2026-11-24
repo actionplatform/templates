@@ -359,6 +359,20 @@
       }
     },
     {
+      "id": "automation/python/data-load",
+      "type": "automation",
+      "stack": "python",
+      "template": "data-load",
+      "framework": "psycopg",
+      "language": "python",
+      "description": "Scheduled data load into Postgres, idempotent",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/python.svg"
+      }
+    },
+    {
       "id": "docs/mkdocs/material",
       "type": "docs",
       "stack": "mkdocs",
