@@ -24,7 +24,7 @@
     "jenkins",
     "bitbucket"
   ],
-  "java_package": "com.{{ cookiecutter.__owner|lower|replace('-', '')|replace('_', '')|replace('.', '') }}.{{ cookiecutter.project_slug|replace('-', '')|replace('_', '') }}",
+  "java_package": "com.{% if cookiecutter.__owner[:1].isdigit() %}_{% endif %}{{ cookiecutter.__owner|lower|replace('-', '')|replace('_', '')|replace('.', '') }}.{{ cookiecutter.project_slug|replace('-', '')|replace('_', '') }}",
   "java_package_dir": "{{ cookiecutter.java_package|replace('.', '/') }}",
   "_type": "web",
   "_stack": "kotlin",
