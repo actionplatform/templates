@@ -1,0 +1,11 @@
+pipeline {
+    agent { docker { image 'python:{{ cookiecutter._python_version }}-slim' } }
+    triggers { cron('H 3 * * *') }
+    stages {
+        stage('Run') {
+            steps {
+                sh 'python -m app'
+            }
+        }
+    }
+}
