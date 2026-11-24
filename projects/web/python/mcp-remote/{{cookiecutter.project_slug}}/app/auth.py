@@ -1,8 +1,7 @@
-"""Bearer auth built from the environment."""
-
 import os
 
 from fastmcp.server.auth import AuthProvider, JWTVerifier, RemoteAuthProvider
+from pydantic import AnyHttpUrl
 
 REQUIRED = (
     "MCP_JWKS_URI",
@@ -22,7 +21,6 @@ def auth_disabled() -> bool:
 
 
 def auth_from_env() -> AuthProvider | None:
-    """JWT verification against the JWKS plus RFC 9728 metadata; `None` only when MCP_AUTH_DISABLED is set."""
     if auth_disabled():
         return None
     missing = [name for name in REQUIRED if not os.environ.get(name)]
@@ -39,6 +37,8 @@ def auth_from_env() -> AuthProvider | None:
     )
     return RemoteAuthProvider(
         token_verifier=verifier,
-        authorization_servers=[os.environ["MCP_AUTHORIZATION_SERVER"]],  # type: ignore[list-item]
+        authorization_servers=[
+            AnyHttpUrl(os.environ["MCP_AUTHORIZATION_SERVER"])
+        ],
         base_url=base_url,
     )

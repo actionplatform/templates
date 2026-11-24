@@ -47,6 +47,5 @@ app/__init__.py    # build_mcp(), /health, create_app()  <- convention for every
 app/auth.py        # JWT verification + protected resource metadata, built from MCP_* env vars
 server.py          # stdio entry point (no auth)
 tools/hello.py     # one module per tool, plain functions
-tools/whoami.py    # reads the authenticated token's claims
 tests/             # signed tokens from a generated RSA key pair; no network
 ```

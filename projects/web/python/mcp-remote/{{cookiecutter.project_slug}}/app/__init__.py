@@ -1,9 +1,3 @@
-"""{{ cookiecutter.project_name }} — remote MCP server as an ASGI app.
-
-`create_app()` is the convention every `web/python/*` template follows: the
-Lambda handler, uvicorn and tests build the app through it.
-"""
-
 __version__ = "0.0.0"
 
 import os
@@ -15,13 +9,11 @@ from starlette.responses import JSONResponse
 
 from app.auth import auth_from_env
 from tools.hello import hello
-from tools.whoami import whoami
 
 
 def build_mcp(auth: AuthProvider | None = None) -> FastMCP:
     mcp = FastMCP("{{ cookiecutter.project_name }}", version=__version__, auth=auth)
     mcp.tool(hello)
-    mcp.tool(whoami)
 
     @mcp.custom_route("/health", methods=["GET"])
     async def health(_: Request) -> JSONResponse:
@@ -33,11 +25,6 @@ def build_mcp(auth: AuthProvider | None = None) -> FastMCP:
 def create_app(
     stateless: bool | None = None, auth: AuthProvider | None = None
 ):
-    """MCP over streamable HTTP at /mcp, health at /health.
-
-    Auth comes from the environment unless given. Stateless is forced on
-    Lambda: nothing survives between invocations.
-    """
     if stateless is None:
         stateless = bool(os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
     mcp = build_mcp(auth or auth_from_env())

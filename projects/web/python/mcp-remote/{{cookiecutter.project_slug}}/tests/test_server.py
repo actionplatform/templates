@@ -1,3 +1,5 @@
+from typing import Any
+
 import httpx
 import pytest
 from fastmcp import Client
@@ -5,6 +7,7 @@ from fastmcp.client.auth import BearerAuth
 from fastmcp.client.transports import StreamableHttpTransport
 from fastmcp.server.auth import JWTVerifier, RemoteAuthProvider
 from fastmcp.server.auth.providers.jwt import RSAKeyPair
+from pydantic import AnyHttpUrl
 
 from app import __version__, auth, build_mcp, create_app
 from tools.hello import hello
@@ -30,7 +33,7 @@ def app(keys):
     )
     provider = RemoteAuthProvider(
         token_verifier=verifier,
-        authorization_servers=[ISSUER],  # type: ignore[list-item]
+        authorization_servers=[AnyHttpUrl(ISSUER)],
         base_url=BASE_URL,
     )
     return create_app(stateless=True, auth=provider)
@@ -85,28 +88,31 @@ async def test_mcp_with_invalid_token_is_401(app, keys, overrides):
 
 
 async def test_tools_with_valid_token(app, keys):
-    def factory(**kwargs):
+    def factory(
+        headers: dict[str, str] | None = None,
+        timeout: httpx.Timeout | None = None,
+        auth: httpx.Auth | None = None,
+        **kwargs: Any,
+    ) -> httpx.AsyncClient:
         kwargs.pop("transport", None)
         return httpx.AsyncClient(
-            transport=httpx.ASGITransport(app=app), **kwargs
+            transport=httpx.ASGITransport(app=app),
+            headers=headers,
+            timeout=timeout,
+            auth=auth,
+            **kwargs,
         )
 
     transport = StreamableHttpTransport(
         MCP_URL,
         auth=BearerAuth(token(keys, scopes=["read"])),
-        httpx_client_factory=factory,  # type: ignore[arg-type]
+        httpx_client_factory=factory,
     )
     async with app.router.lifespan_context(app), Client(transport) as client:
-        names = sorted(t.name for t in await client.list_tools())
+        names = [t.name for t in await client.list_tools()]
         greeting = await client.call_tool("hello", {"name": "ana"})
-        who = await client.call_tool("whoami", {})
-    assert names == ["hello", "whoami"]
+    assert names == ["hello"]
     assert greeting.data == "hello, ana"
-    assert who.data == {
-        "authenticated": True,
-        "subject": "ana",
-        "scopes": ["read"],
-    }
 
 
 async def test_protected_resource_metadata(app):
@@ -122,8 +128,8 @@ async def test_protected_resource_metadata(app):
 
 async def test_stdio_server_has_no_auth():
     async with Client(build_mcp()) as client:
-        result = await client.call_tool("whoami", {})
-    assert result.data == {"authenticated": False}
+        result = await client.call_tool("hello", {})
+    assert result.data == "hello, world"
 
 
 def test_env_auth_requires_all_variables(monkeypatch):
