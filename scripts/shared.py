@@ -72,21 +72,26 @@ def expected(template: Path) -> dict[Path, str]:
     files = {template / SLUG / ".editorconfig": (SHARED / ".editorconfig").read_text()}
     gitignore = (SHARED / "gitignore" / "common").read_text()
 
-    if not language:
+    image = IMAGES[language] if language else data.get("_ci_image")
+
+    if not image:
         files[template / SLUG / ".gitignore"] = gitignore
 
         return files
 
-    files[template / SLUG / ".gitignore"] = gitignore + (SHARED / "gitignore" / language).read_text()
+    files[template / SLUG / ".gitignore"] = gitignore + (
+        (SHARED / "gitignore" / language).read_text() if language else ""
+    )
     files[template / SLUG / "LICENSE"] = (SHARED / "LICENSE").read_text()
 
     for rel in CI_FILES:
-        text = (
-            (SHARED / rel)
-            .read_text()
-            .replace("__IMAGE__", IMAGES[language])
-            .replace("__ECOSYSTEM__", ECOSYSTEMS[language])
-        )
+        text = (SHARED / rel).read_text().replace("__IMAGE__", image)
+
+        if language:
+            text = text.replace("__ECOSYSTEM__", ECOSYSTEMS[language])
+        else:
+            text = text.split("  - package-ecosystem: __ECOSYSTEM__")[0]
+
         files[template / SLUG / rel] = text
 
     if data.get("_type") == "library":
