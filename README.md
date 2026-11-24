@@ -50,6 +50,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`scheduled`](projects/automation/python/scheduled) | Scheduled Python jobs: `python -m app run <job>` |  |
 | `docs` | mkdocs | <img src="assets/icons/mkdocs.svg" width="18" height="18" alt="mkdocs"> MkDocs Material | [`material`](projects/docs/mkdocs/material) | MkDocs Material site | ✓ |
 | `plugin` | chrome | <img src="assets/icons/chrome.svg" width="18" height="18" alt="chrome"> Manifest V3 | [`vanilla`](projects/plugin/chrome/vanilla) | Chrome extension, no bundler | ✓ |
+|  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/agent.svg" width="18" height="18" alt="agent"> Claude Code + Codex plugin | [`claude-codex`](projects/plugin/agent/claude-codex) | Plugin for Claude Code and Codex: manifests, skills, manifest checker | ✓ |
 | `empty` | — | — | [`empty`](projects/empty) | Only `platform.toml` + `.code_quality/` |  |
 
 `action-platform init <type> <stack>` picks the default template of the pair; name the third part to pick another (`init web node fastify`). `plugin` stack is the **host system** — it imposes the language.
@@ -102,7 +103,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 22 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 23 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
