@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.7.0 — 2026-11-24
+
+### Features
+- **docs:** markdown knowledge repository template with an agent skill
+- **web:** add mcp-remote template with OAuth bearer auth
+- **job:** add python job template
+
+### Bug Fixes
+- **web:** build the mcp-remote ASGI app on first access so stdio runs without auth env
+
+### Refactoring
+- **web:** keep mcp-remote basic — one tool, no comments, typed auth servers
+
+### Docs
+- **docs:** register docs/markdown/knowledge in the catalog
+- **web:** 24 templates in the structure tree
+- **web:** register mcp-remote in index and catalog
+- **job:** register the job type and template
+
+### Style
+- **templates:** align the shared AGENTS.md head in job and mcp-remote
+- **templates:** align the commit types table in the shared AGENTS.md head
+
 ## v0.6.0 — 2026-09-27
 
 ### Bug Fixes
