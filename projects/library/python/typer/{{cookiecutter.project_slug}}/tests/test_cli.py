@@ -21,7 +21,7 @@ def test_hello_defaults_to_world():
 
 
 def test_hello_with_name():
-    result = runner.invoke(app, ["hello", "--name", "Fernando"])
+    result = runner.invoke(app, ["hello", "--name", "Ana"])
 
     assert result.exit_code == 0
-    assert result.output.strip() == "hello, Fernando"
+    assert result.output.strip() == "hello, Ana"

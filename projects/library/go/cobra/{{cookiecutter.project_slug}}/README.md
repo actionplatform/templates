@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-go install github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}@latest
+go install {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}@latest
 ```
 
 ## Run
@@ -13,7 +13,7 @@ go install github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_sl
 ```bash
 go run . version
 go run . hello
-go run . hello --name Fernando
+go run . hello --name Ana
 go build -o {{ cookiecutter.project_slug }} .
 ```
 

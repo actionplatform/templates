@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-composer require {{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
+composer require {{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}
 ```
 
 ## Usage

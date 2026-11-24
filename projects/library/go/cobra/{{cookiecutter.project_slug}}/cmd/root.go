@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/version"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/version"
 )
 
 // New builds the root command with its subcommands; tests call it with their own output.

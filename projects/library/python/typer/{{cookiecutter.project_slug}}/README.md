@@ -14,7 +14,7 @@ poetry install --with dev,code-quality         # for development
 ```bash
 poetry run {{ cookiecutter.project_slug }} version
 poetry run {{ cookiecutter.project_slug }} hello
-poetry run {{ cookiecutter.project_slug }} hello --name Fernando
+poetry run {{ cookiecutter.project_slug }} hello --name Ana
 python -m {{ cookiecutter.package_name }} hello
 ```
 

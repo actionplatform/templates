@@ -31,7 +31,7 @@ npm run build
 
 ```
 GET /health                       {"status": "ok", "version": "0.0.0"}
-GET /api/v1/hello?name=Fernando {"message": "hello, Fernando"}
+GET /api/v1/hello?name=Ana {"message": "hello, Ana"}
 ```
 
 ## Layout

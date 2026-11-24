@@ -3,7 +3,7 @@ name = "{{ cookiecutter.project_slug }}"
 version = "0.0.0"
 package-mode = false
 description = "{{ cookiecutter.description }}"
-authors = ["{{ cookiecutter.author }}"]
+authors = [{% if cookiecutter.author %}"{{ cookiecutter.author }}"{% endif %}]
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter._python_version }}"

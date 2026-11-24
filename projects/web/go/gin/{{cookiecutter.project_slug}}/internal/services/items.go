@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/models"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/models"
 )
 
 const maxName = 40

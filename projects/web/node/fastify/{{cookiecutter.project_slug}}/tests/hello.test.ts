@@ -6,11 +6,11 @@ describe("GET /api/v1/hello", () => {
   it("greets the name", async () => {
     const response = await createApp().inject({
       method: "GET",
-      url: "/api/v1/hello?name=Fernando",
+      url: "/api/v1/hello?name=Ana",
     });
 
     expect(response.statusCode).toBe(200);
-    expect(response.json()).toEqual({ message: "hello, Fernando" });
+    expect(response.json()).toEqual({ message: "hello, Ana" });
   });
 
   it("defaults to world", async () => {

@@ -6,10 +6,10 @@ template = "module"
 ci = "{{ cookiecutter.ci }}"
 language = "go"
 
-[source_host]
-kind = "github"
+{% if cookiecutter.github_owner %}[source_host]
+kind = "{{ cookiecutter.source_host }}"
 repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
-
+{% endif %}
 [release]
 strategy = "semver"
 changelog = "conventional"

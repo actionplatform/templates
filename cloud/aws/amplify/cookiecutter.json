@@ -1,7 +1,7 @@
 {
   "project_name": "My Project",
   "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
-  "github_owner": "actionplatform",
+  "github_owner": "",
   "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
   "language": [
     "node"

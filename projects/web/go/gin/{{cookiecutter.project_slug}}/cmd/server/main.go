@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/app"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/app"
 )
 
 func main() {

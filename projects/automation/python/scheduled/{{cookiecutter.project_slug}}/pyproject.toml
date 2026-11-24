@@ -2,10 +2,10 @@
 name = "{{ cookiecutter.project_slug }}"
 version = "0.0.0"
 description = "{{ cookiecutter.description }}"
-authors = ["{{ cookiecutter.author }}"]
+authors = [{% if cookiecutter.author %}"{{ cookiecutter.author }}"{% endif %}]
 readme = "README.md"
-license = "MIT"
-package-mode = false
+{% if cookiecutter.__spdx %}license = "{{ cookiecutter.__spdx }}"
+{% endif %}package-mode = false
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter._python_version }}"

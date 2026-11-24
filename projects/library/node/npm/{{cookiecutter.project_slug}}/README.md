@@ -5,13 +5,13 @@
 ## Install
 
 ```bash
-npm install @{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}
+npm install @{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}
 ```
 
 ## Usage
 
 ```ts
-import { hello } from "@{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}";
+import { hello } from "@{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}";
 
 hello("ana"); // "hello, ana"
 ```

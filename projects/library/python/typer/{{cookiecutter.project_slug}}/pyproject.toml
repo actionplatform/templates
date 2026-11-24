@@ -1,28 +1,28 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.0.0"
-authors = [{ name = "{{ cookiecutter.author }}" }]
+authors = [{% if cookiecutter.author %}{ name = "{{ cookiecutter.author }}" }{% endif %}]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-license = "MIT"
-requires-python = ">={{ cookiecutter._python_version }}"
+{% if cookiecutter.__spdx %}license = "{{ cookiecutter.__spdx }}"
+{% endif %}requires-python = ">={{ cookiecutter._python_version }}"
 dependencies = ["typer>=0.12"]
 
 [project.scripts]
 {{ cookiecutter.project_slug }} = "{{ cookiecutter.package_name }}.cli:app"
 
 [project.urls]
-Repository = "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
-Issues = "https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/issues"
+Repository = "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}"
+Issues = "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/issues"
 
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.0.0"
 description = "{{ cookiecutter.description }}"
-authors = ["{{ cookiecutter.author }}"]
+authors = [{% if cookiecutter.author %}"{{ cookiecutter.author }}"{% endif %}]
 readme = "README.md"
-license = "MIT"
-package-mode = true
+{% if cookiecutter.__spdx %}license = "{{ cookiecutter.__spdx }}"
+{% endif %}package-mode = true
 packages = [{ include = "{{ cookiecutter.package_name }}" }]
 
 [tool.poetry.dependencies]

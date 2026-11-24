@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/version"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/version"
 )
 
 func run(t *testing.T, args ...string) string {
@@ -30,7 +30,7 @@ func TestHello(t *testing.T) {
 	if got := run(t, "hello"); got != "hello, world" {
 		t.Fatalf("got %q", got)
 	}
-	if got := run(t, "hello", "--name", "Fernando"); got != "hello, Fernando" {
+	if got := run(t, "hello", "--name", "Ana"); got != "hello, Ana" {
 		t.Fatalf("got %q", got)
 	}
 }

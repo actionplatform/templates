@@ -18,7 +18,7 @@
 
   <name>{{ cookiecutter.project_name }}</name>
   <description>{{ cookiecutter.description }}</description>
-  <url>https://github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}</url>
+  <url>https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}</url>
 
   <properties>
     <java.version>{{ cookiecutter._java_version }}</java.version>

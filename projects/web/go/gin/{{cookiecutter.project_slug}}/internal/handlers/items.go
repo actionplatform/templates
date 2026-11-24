@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/models"
-	"github.com/{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}/internal/services"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/models"
+	"{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/services"
 )
 
 // Items is the example resource: handler → service → response.
