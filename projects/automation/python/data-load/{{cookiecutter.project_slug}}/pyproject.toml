@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.0.0"
+description = "{{ cookiecutter.description }}"
+authors = ["{{ cookiecutter.author }}"]
+readme = "README.md"
+license = "MIT"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">={{ cookiecutter._python_version }}"
+psycopg = {extras = ["binary"], version = "^3.2.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+
+[tool.poetry.group.code-quality.dependencies]
+ruff = "^0.16.0"
+mypy = "^1.13.0"
+
+[tool.ruff]
+extend = ".code_quality/ruff.toml"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

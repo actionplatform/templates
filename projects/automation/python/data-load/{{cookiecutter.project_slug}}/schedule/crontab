@@ -1,0 +1,1 @@
+0 3 * * * docker run --rm --env-file /srv/{{ cookiecutter.project_slug }}/.env {{ cookiecutter.project_slug }}:latest

@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        dockerfile {
+            filename 'schedule/Dockerfile'
+            dir '.'
+        }
+    }
+    triggers { cron('H 3 * * *') }
+    stages {
+        stage('Load') {
+            steps {
+                withCredentials([string(credentialsId: 'database-url', variable: 'DATABASE_URL')]) {
+                    sh 'python -m app'
+                }
+            }
+        }
+    }
+}
