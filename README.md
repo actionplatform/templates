@@ -25,9 +25,9 @@ action-platform cloud set docker            # overlay on an existing project
 
 ### Owner, author and licence
 
-Every project template asks for them and defaults to nothing of anyone's: `github_owner` and `author` are empty, `source_host` is `github` (`gitlab`, `bitbucket`), `license` is `none` (`mit`, `apache-2.0`).
+Every project template asks for them and defaults to nothing of anyone's: `github_owner` and `author` are empty, `source_host` is `github` (`gitlab`, `bitbucket`), `license` is `none` (`mit`, `apache-2.0`; `empty` ships no licence and has no such variable).
 
-- `github_owner` and `source_host` fill `[source_host]` in `platform.toml`; with no owner the project has no `[source_host]` and cannot be pushed until one is set. Repository URLs, Go module paths, npm scopes, Composer vendors and Java/Kotlin packages use the owner, or `example` while there is none (`com.example.<name>`, `github.com/example/<name>`).
+- `github_owner` and `source_host` fill `[source_host]` in `platform.toml`; with no owner the project has no `[source_host]` and cannot be pushed until one is set. Repository URLs, Go module paths, npm scopes, Composer vendors and Java/Kotlin packages use the owner, or `example` while there is none (`com.example.<name>`, `github.com/example/<name>`); a package segment that would start with a digit gets a leading `_` (`com._42labs.<name>`).
 - `author` goes into the manifest's authors and the licence's copyright line; empty leaves the authors list empty and the copyright to the project name.
 - `license`: `mit` or `apache-2.0` writes `LICENSE` and the manifest's licence field; `none` writes no `LICENSE`, no licence in `pyproject.toml` or `Cargo.toml`, and `UNLICENSED` (npm) or `proprietary` (Composer).
 
