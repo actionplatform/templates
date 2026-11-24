@@ -5,7 +5,7 @@ from app.tasks.hello import hello
 
 
 def test_hello():
-    assert hello("Fernando") == "hello, Fernando"
+    assert hello("Ana") == "hello, Ana"
 
 
 def test_hello_refuses_empty_name():
@@ -14,8 +14,8 @@ def test_hello_refuses_empty_name():
 
 
 def test_main_prints_and_exits_zero(capsys):
-    assert main(["--name", "Fernando"]) == 0
-    assert capsys.readouterr().out.strip() == "hello, Fernando"
+    assert main(["--name", "Ana"]) == 0
+    assert capsys.readouterr().out.strip() == "hello, Ana"
 
 
 def test_main_reports_failure(capsys):

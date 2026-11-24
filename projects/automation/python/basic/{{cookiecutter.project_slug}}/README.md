@@ -14,7 +14,7 @@ poetry install --with dev,code-quality
 
 ```bash
 poetry run python -m app
-poetry run python -m app --name Fernando     # hello, Fernando
+poetry run python -m app --name Ana     # hello, Ana
 ```
 
 Exit code is `0` on success and `1` when the task raises, so a caller (cron, CI, another program) can tell.
