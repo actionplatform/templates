@@ -33,4 +33,7 @@ def create_app(
     )
 
 
-app = create_app()
+def __getattr__(name: str):
+    if name == "app":
+        return create_app()
+    raise AttributeError(name)
