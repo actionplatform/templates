@@ -1,0 +1,23 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "Python job: runs once, exits with a status code",
+  "author": "Fernando Celmer",
+  "github_owner": "actionplatform",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "_type": "job",
+  "_stack": "python",
+  "_language": "python",
+  "_variant": "basic",
+  "_copy_without_render": [
+    ".github",
+    "poetry.lock"
+  ],
+  "_python_version": "3.12"
+}
