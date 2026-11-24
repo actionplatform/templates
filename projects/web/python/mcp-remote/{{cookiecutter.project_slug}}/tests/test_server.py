@@ -132,6 +132,23 @@ async def test_stdio_server_has_no_auth():
     assert result.data == "hello, world"
 
 
+def test_asgi_app_refuses_to_start_without_auth_env(monkeypatch):
+    monkeypatch.delenv("MCP_AUTH_DISABLED", raising=False)
+    for name in auth.REQUIRED:
+        monkeypatch.delenv(name, raising=False)
+    import app as package
+
+    with pytest.raises(RuntimeError, match="MCP_JWKS_URI"):
+        _ = package.app
+
+
+def test_asgi_app_without_auth_when_disabled(monkeypatch):
+    monkeypatch.setenv("MCP_AUTH_DISABLED", "true")
+    import app as package
+
+    assert package.app is not None
+
+
 def test_env_auth_requires_all_variables(monkeypatch):
     monkeypatch.delenv("MCP_AUTH_DISABLED", raising=False)
     for name in auth.REQUIRED:
