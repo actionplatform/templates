@@ -16,13 +16,13 @@ definitions:
           - .ap/setup.sh
           - .ap/check.sh
     - step: &ap-conventional-commit
-        name: Conventional commits
+        name: conventional-commit
         script:
           - *ap-fetch
           - git fetch origin "$BITBUCKET_PR_DESTINATION_BRANCH"
           - AP_BASE="origin/$BITBUCKET_PR_DESTINATION_BRANCH" .ap/conventional-commit.sh
     - step: &ap-gitflow
-        name: Git-flow
+        name: gitflow
         script:
           - *ap-fetch
           - AP_HEAD="$BITBUCKET_BRANCH" AP_BASE="$BITBUCKET_PR_DESTINATION_BRANCH" AP_DEFAULT_BRANCH="${AP_DEFAULT_BRANCH:-main}" .ap/gitflow-pr.sh

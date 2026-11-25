@@ -10,7 +10,7 @@ check:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
-commits:
+conventional-commit:
   extends: .ap-conventional-commit
 
 gitflow:
