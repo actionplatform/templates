@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.0 — 2026-11-25
+
+### Features
+- **templates:** stable gitflow and conventional-commit checks, host protection (#70)
+
 ## v0.8.0 — 2026-11-24
 
 ### Features
