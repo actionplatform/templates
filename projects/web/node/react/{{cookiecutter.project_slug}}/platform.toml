@@ -16,3 +16,6 @@ changelog = "conventional"
 
 [build]
 start = "npx serve -s build -l ${PORT:-8000}"
+
+[gitflow.protection]
+enforce = true

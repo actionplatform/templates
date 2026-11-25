@@ -11,6 +11,7 @@ import argparse
 import json
 import re
 import sys
+import tomllib
 from pathlib import Path
 
 from cookiecutter.main import cookiecutter
@@ -22,6 +23,14 @@ CI_FILES = {
     "gitlab": [".gitlab-ci.yml"],
     "jenkins": ["Jenkinsfile"],
     "bitbucket": ["bitbucket-pipelines.yml"],
+}
+CHECK_NAMES = {
+    "github": {
+        ".github/workflows/gitflow.yml": ["name: gitflow"],
+        ".github/workflows/conventional-commit.yml": ["name: conventional-commit"],
+    },
+    "gitlab": {".gitlab-ci.yml": ["gitflow:", "conventional-commit:"]},
+    "bitbucket": {"bitbucket-pipelines.yml": ["name: gitflow", "name: conventional-commit"]},
 }
 LOCKFILES = {
     "pyproject.toml": "poetry.lock",
@@ -89,6 +98,23 @@ def check(project: Path, ci: str, template: dict) -> None:
 
     if not (project / "platform.toml").exists():
         problems.append("platform.toml missing")
+    else:
+        manifest = tomllib.loads((project / "platform.toml").read_text())
+
+        if manifest.get("gitflow", {}).get("protection", {}).get("enforce") is not True:
+            problems.append("platform.toml lacks [gitflow.protection] enforce = true")
+
+    for rel, names in CHECK_NAMES.get(ci, {}).items():
+        path = project / rel
+
+        if not path.exists():
+            continue
+
+        text = path.read_text()
+
+        for line in names:
+            if not re.search(rf"^\s*{re.escape(line)}\s*$", text, re.M):
+                problems.append(f"{rel} does not report the check '{line}'")
 
     if (project / "LAST_VERSION").read_text().strip() != "0.0.0":
         problems.append("LAST_VERSION is not 0.0.0")

@@ -20,3 +20,6 @@ kind = "pypi"
 run_by = "github_actions"
 workflow = "publish.yml"
 package = "{{ cookiecutter.project_slug }}"
+
+[gitflow.protection]
+enforce = true

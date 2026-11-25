@@ -30,6 +30,10 @@ Git-flow, enforced by git hooks locally (`action-platform install` once per clon
 - Never commit on `main`, `master` or `develop`; the release tool is the only thing that does.
 - `feature`/`bugfix`/… merge into `develop` (or the default branch when there is no `develop`); `release`/`hotfix` into `main` and `develop`.
 
+## Enforced on the code host
+
+With `[gitflow.protection] enforce = true` in `platform.toml`, the platform protects `main`, `master` and `develop` on GitHub, GitLab or Bitbucket: no direct push, no force push, no deletion. Changes merge only through a pull request whose `gitflow` and `conventional-commit` checks, and the project's CI, pass. Only the platform's own identity pushes `chore(release)` commits; nobody else bypasses this, owners included.
+
 ## Layout
 
 _see README_
