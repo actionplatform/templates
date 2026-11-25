@@ -20,3 +20,6 @@ kind = "npm"
 run_by = "github_actions"
 workflow = "publish.yml"
 package = "@{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}"
+
+[gitflow.protection]
+enforce = true
