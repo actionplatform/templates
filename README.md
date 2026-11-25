@@ -163,6 +163,26 @@ cookiecutter gh:actionplatform/templates --directory projects/web/python/fastapi
 
 All four call the same scripts from [ci-scripts](https://github.com/actionplatform/ci-scripts) through [ci-github](https://github.com/actionplatform/ci-github) (composite actions), [ci-gitlab](https://github.com/actionplatform/ci-gitlab) (`include: remote`), [ci-jenkins](https://github.com/actionplatform/ci-jenkins) (shared library) and [ci-bitbucket](https://github.com/actionplatform/ci-bitbucket) (a self-contained `bitbucket-pipelines.yml`, since Pipelines cannot include a remote file).
 
+### Checks the code host requires
+
+The platform requires two checks on pull requests into `main`, `master` and `develop`; every template reports them under these exact names:
+
+| `ci` | `gitflow` | `conventional-commit` |
+|---|---|---|
+| `github` | job `gitflow` in `gitflow.yml` | job `conventional-commit` in `conventional-commit.yml` |
+| `gitlab` | job `gitflow` | job `conventional-commit` |
+| `bitbucket` | step `gitflow` | step `conventional-commit` |
+| `jenkins` | reports its own context | reports its own context |
+
+Every `platform.toml` carries
+
+```toml
+[gitflow.protection]
+enforce = true
+```
+
+which tells the platform to protect `main`, `master` and `develop` on the code host: no direct push, no force push, no deletion, merges only through a pull request whose checks pass. `branches` is optional and omitted, so the protected branches follow the project's git-flow. Run `action-platform install` once per clone for the local hooks.
+
 ## Shared files
 
 `projects/_shared/` is the single source of what every template carries unchanged: the four GitHub workflows and `dependabot.yml` (`__ECOSYSTEM__` becomes the language's package ecosystem), `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml` (`__IMAGE__` becomes the language's CI image), the post-generation hook (which also drops `LICENSE` when `license` is `none`), `.editorconfig`, `LICENSE` (MIT or Apache-2.0 by `license`, author and year rendered), `.gitignore` (`gitignore/common` + `gitignore/<language>`) and the head of `AGENTS.md` (Commits and Branches — each template writes Layout onwards). `empty` gets `.editorconfig` and the common `.gitignore`. Edit them there, then:
@@ -188,6 +208,6 @@ python scripts/render.py --list               # the matrix
 - Every template ships `.code_quality/` with the stack's lint/format config, `.editorconfig`, `.gitignore`, the chosen `LICENSE` (none by default) and, for GitHub, `dependabot.yml` (weekly, actions + the language's ecosystem) — all from `projects/_shared/`. A template whose code reads environment variables ships `.env.example` naming them.
 - One toolchain per template, pinned as a private variable in `cookiecutter.json` (`_python_version` 3.12, `_node_version` 22, `_go_version` 1.23, `_java_version` 21, `_ruby_version` 3.3, `_php_version` 8.2, `_rust_version` 1.80 — the versions of the [images-base](https://github.com/actionplatform/images-base) build images) and rendered into the toolchain file the CI reads (`.python-version`, `.nvmrc`, `go.mod`, `.java-version`, `.ruby-version`, `rust-toolchain.toml`), the CI images of `.gitlab-ci.yml`, `Jenkinsfile` and `bitbucket-pipelines.yml`, and the linter's target. Changing a version is a change to the template, validated by its CI.
 - Every template with a package manager ships its lockfile (`poetry.lock`, `package-lock.json`, `go.sum`, `Cargo.lock`, `Gemfile.lock`, `composer.lock`); a generated project installs the same versions the template was validated with. Bumping a dependency means regenerating the lockfile: render the template (`scripts/render.py`), run the package manager's lock command in the output and copy the file back, with the project name turned back into `{{ cookiecutter.project_slug }}` where it appears.
-- Git-flow and Conventional Commits are enforced by git hooks the CLI installs into `.git/hooks` (`action-platform install`, once per clone; `init`, `branch` and `push` do it too) and by the `gitflow` CI check on pull requests. Hooks are not versioned in the project.
+- Git-flow and Conventional Commits are enforced by git hooks the CLI installs into `.git/hooks` (`action-platform install`, once per clone; `init`, `branch` and `push` do it too) and by the `gitflow` and `conventional-commit` CI checks on pull requests. Hooks are not versioned in the project.
 - Each stack has exactly one template with `default = true`.
 - Variables are declared in `cookiecutter.json`; keep defaults sensible.
