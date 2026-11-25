@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.8.0 — 2026-11-24
+
+### Features
+- **templates:** owner, author and licence chosen by whoever generates the project (#68)
+
 ## v0.7.0 — 2026-11-24
 
 ### Features
