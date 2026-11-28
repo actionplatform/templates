@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="{{ cookiecutter.project_slug }}">
+    <description>WordPress coding standards for {{ cookiecutter.project_name }}</description>
+
+    <arg name="basepath" value=".."/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg value="ps"/>
+
+    <file>../{{ cookiecutter.project_slug }}.php</file>
+    <file>../uninstall.php</file>
+    <file>../includes</file>
+    <file>../tests</file>
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <config name="minimum_wp_version" value="6.5"/>
+    <config name="testVersion" value="{{ cookiecutter._php_version }}-"/>
+
+    <rule ref="WordPress">
+        <exclude name="Squiz.Commenting"/>
+        <exclude name="Generic.Commenting"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+    </rule>
+    <rule ref="PHPCompatibilityWP"/>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="{{ cookiecutter.project_slug }}"/>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="{{ cookiecutter.package_name }}"/>
+            </property>
+        </properties>
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+
+    <rule ref="WordPress.Files.FileName">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+    <rule ref="WordPress.WP.AlternativeFunctions">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+    <rule ref="WordPress.PHP.DiscouragedPHPFunctions">
+        <exclude-pattern>tests/*</exclude-pattern>
+    </rule>
+</ruleset>

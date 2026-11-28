@@ -1,0 +1,44 @@
+{
+    "name": "{{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}",
+    "description": "{{ cookiecutter.description }}",
+    "type": "wordpress-plugin",
+    "license": "{{ cookiecutter.__spdx or 'proprietary' }}",
+    "support": {
+        "issues": "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/issues",
+        "source": "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}"
+    },
+    "require": {
+        "php": ">={{ cookiecutter._php_version }}"
+    },
+    "require-dev": {
+        "brain/monkey": "^2.6",
+        "ext-zip": "*",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "{{ cookiecutter._php_version }}.0"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "test": "phpunit -c .code_quality/phpunit.xml",
+        "lint": [
+            "parallel-lint --exclude vendor --exclude node_modules .",
+            "phpcs --standard=.code_quality/phpcs.xml"
+        ],
+        "lint:fix": "phpcbf --standard=.code_quality/phpcs.xml",
+        "analyse": "phpstan analyse -c .code_quality/phpstan.neon --memory-limit=512M",
+        "build": "php scripts/build.php"
+    }
+}

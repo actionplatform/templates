@@ -1,0 +1,37 @@
+{
+  "project_name": "My Plugin",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "WordPress plugin with a settings page",
+  "author": "",
+  "github_owner": "",
+  "source_host": [
+    "github",
+    "gitlab",
+    "bitbucket"
+  ],
+  "license": [
+    "none",
+    "mit",
+    "apache-2.0"
+  ],
+  "__owner": "{{ cookiecutter.github_owner or 'example' }}",
+  "__domain": "{{ {'gitlab': 'gitlab.com', 'bitbucket': 'bitbucket.org'}.get(cookiecutter.source_host, 'github.com') }}",
+  "__spdx": "{{ {'mit': 'MIT', 'apache-2.0': 'Apache-2.0'}.get(cookiecutter.license, '') }}",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "class_prefix": "{{ cookiecutter.project_name|replace('-', ' ')|title|replace(' ', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "_type": "plugin",
+  "_stack": "wordpress",
+  "_language": "php",
+  "_variant": "basic",
+  "_copy_without_render": [
+    ".github",
+    "composer.lock"
+  ],
+  "_php_version": "8.2"
+}
