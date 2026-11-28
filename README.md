@@ -57,6 +57,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/php.svg" width="18" height="18" alt="php"> php | <img src="assets/icons/composer.svg" width="18" height="18" alt="composer"> Composer | [`composer`](projects/library/php/composer) | Composer package | ✓ |
 |  | <img src="assets/icons/java.svg" width="18" height="18" alt="java"> java | <img src="assets/icons/maven.svg" width="18" height="18" alt="maven"> Maven | [`maven`](projects/library/java/maven) | Maven artifact | ✓ |
 |  | <img src="assets/icons/rust.svg" width="18" height="18" alt="rust"> rust | <img src="assets/icons/rust.svg" width="18" height="18" alt="rust"> Cargo | [`cargo`](projects/library/rust/cargo) | Cargo crate | ✓ |
+| `cli` | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> go | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> Cobra | [`cobra`](projects/cli/go/cobra) | Go CLI released as binaries with GoReleaser | ✓ |
 | `automation` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`basic`](projects/automation/python/basic) | Simple Python automation: `python -m app` | ✓ |
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`scheduled`](projects/automation/python/scheduled) | Scheduled Python jobs: `python -m app run <job>` |  |
 | `job` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`basic`](projects/job/python/basic) | Python job: runs once, exits with a status code | ✓ |
@@ -77,6 +78,7 @@ The contract a template honours so the platform can build, check and run every p
 |---|---|---|
 | `web` | serves HTTP on `$PORT` (the platform sets it; default `8000` locally) and answers `GET /health`; `ap-build start` runs it — the language default or `[build] start` in `platform.toml` (the two React templates serve their static bundle with `serve`); tests for the HTTP contract and for the rules behind it | `check.sh`, the Lambda Web Adapter's readiness check on `/health` |
 | `library` | a public API with a version constant the release writes (`__version__`, `const Version`, `VERSION`…), unit tests for every public function, an install line in the README (`pip install`, `npm i`, `cargo add`, `go get`…); `publish.yml` from `_shared` — the platform dispatches it with `version` and `registry` when a release is deployed to a scope, the pipeline publishes with its own credentials; python and node declare one registry target in `platform.toml`; the scope's criticality picks TestPyPI / the npm `next` tag (`test`) or the registry itself | `check.sh`, `publish.sh` |
+| `cli` | a root command with subcommands and a `version` command that prints version, commit and build date, injected by ldflags at release time (never written in source); a release config that builds linux, darwin and windows on amd64 and arm64, packs archives, writes checksums and a changelog (`.goreleaser.yaml`); with `ci = "github"` a `release.yml` that runs it on `v*` tags — the platform releases by tagging, other hosts keep the config and run it from their pipeline; unit tests per command, an install section in the README (download, verify, `go install`) | `check.sh`, `goreleaser check` |
 | `automation` | an entrypoint the scheduler calls (`python -m app`, a `main`), one module per task, tests per task, no long-lived server | `check.sh` |
 | `job` | an entrypoint that runs once and exits with a status code (`python -m app`), logs to stdout, config from the environment, tests per task; no server | `check.sh` |
 | `docs` | `docs/` of Markdown pages; with `mkdocs.yml` it builds with `mkdocs build --strict` (`mkdocs/material`), without it the language's checks run (`markdown/knowledge`: Prettier format + remark link check through npm) | `check.sh` (docs type) |
@@ -121,7 +123,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 27 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 28 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
