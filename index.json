@@ -39,6 +39,11 @@
       "description": "Extension for a host system, which imposes the language."
     },
     {
+      "id": "mobile",
+      "label": "Mobile app",
+      "description": "Application built for iOS and Android."
+    },
+    {
       "id": "empty",
       "label": "Empty project",
       "description": "Only platform.toml and .code_quality/."
@@ -99,6 +104,11 @@
       "id": "chrome",
       "label": "Chrome",
       "icon": "assets/icons/chrome.svg"
+    },
+    {
+      "id": "expo",
+      "label": "Expo",
+      "icon": "assets/icons/expo.svg"
     }
   ],
   "projects": [
@@ -450,6 +460,20 @@
       "icons": {
         "language": "assets/icons/chrome.svg",
         "framework": "assets/icons/chrome.svg"
+      }
+    },
+    {
+      "id": "mobile/expo/app",
+      "type": "mobile",
+      "stack": "expo",
+      "template": "app",
+      "framework": "Expo",
+      "language": "node",
+      "description": "Expo + React Native + TypeScript, expo-router, Jest and EAS Build",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/expo.svg"
       }
     },
     {
