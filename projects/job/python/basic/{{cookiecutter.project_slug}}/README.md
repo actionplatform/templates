@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-A command that runs once and exits, started by a scheduler. It logs to stdout, reads its config from the environment and exits with `0` on success or `1` on a handled failure. No server stays running.
+{% endif %}A command that runs once and exits, started by a scheduler. It logs to stdout, reads its config from the environment and exits with `0` on success or `1` on a handled failure. No server stays running.
 
 ## Install
 

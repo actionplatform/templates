@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-## Install
+{% endif %}## Install
 
 ```bash
 go get {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}

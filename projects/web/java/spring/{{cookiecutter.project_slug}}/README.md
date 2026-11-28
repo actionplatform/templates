@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-## Run
+{% endif %}## Run
 
 ```bash
 mvn -B spring-boot:run          # http://localhost:8000/health

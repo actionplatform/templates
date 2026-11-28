@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-## Install
+{% endif %}## Install
 
 ```bash
 composer require {{ cookiecutter.__owner|lower }}/{{ cookiecutter.project_slug }}

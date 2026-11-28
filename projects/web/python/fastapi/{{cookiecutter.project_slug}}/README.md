@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-## Run
+{% endif %}## Run
 
 ```bash
 poetry install --with dev,code-quality

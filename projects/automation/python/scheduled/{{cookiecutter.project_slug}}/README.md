@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-Jobs that an external scheduler runs — cron, GitHub Actions, EventBridge, a Kubernetes CronJob. Nothing stays resident: each invocation runs one job and exits.
+{% endif %}Jobs that an external scheduler runs — cron, GitHub Actions, EventBridge, a Kubernetes CronJob. Nothing stays resident: each invocation runs one job and exits.
 
 ## Install
 
