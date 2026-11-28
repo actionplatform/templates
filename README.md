@@ -43,6 +43,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/mcp.svg" width="18" height="18" alt="mcp"> FastMCP | [`fastmcp`](projects/web/python/fastmcp) | MCP server over HTTP |  |
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/mcp.svg" width="18" height="18" alt="mcp"> FastMCP | [`mcp-remote`](projects/web/python/mcp-remote) | Remote MCP server, OAuth bearer auth |  |
 |  | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> go | <img src="assets/icons/gin.svg" width="18" height="18" alt="gin"> Gin | [`gin`](projects/web/go/gin) | Gin + net/http | ✓ |
+|  | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> go | <img src="assets/icons/chi.svg" width="18" height="18" alt="chi"> chi | [`chi`](projects/web/go/chi) | chi + net/http |  |
 |  | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/react.svg" width="18" height="18" alt="react"> React | [`react`](projects/web/node/react) | React + webpack + jest | ✓ |
 |  | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/fastify.svg" width="18" height="18" alt="fastify"> Fastify | [`fastify`](projects/web/node/fastify) | Fastify + TypeScript + Vitest |  |
 |  | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/vite.svg" width="18" height="18" alt="vite"> React + Vite | [`react-vite`](projects/web/node/react-vite) | React + TypeScript + Vite + Vitest |  |
@@ -116,7 +117,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 25 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 26 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres

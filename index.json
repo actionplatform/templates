@@ -201,6 +201,20 @@
       }
     },
     {
+      "id": "web/go/chi",
+      "type": "web",
+      "stack": "go",
+      "template": "chi",
+      "framework": "chi",
+      "language": "go",
+      "description": "chi + net/http",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/go.svg",
+        "framework": "assets/icons/chi.svg"
+      }
+    },
+    {
       "id": "web/node/react",
       "type": "web",
       "stack": "node",
