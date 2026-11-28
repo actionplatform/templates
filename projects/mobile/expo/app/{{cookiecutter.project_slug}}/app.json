@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "{{ cookiecutter.project_name }}",
+    "slug": "{{ cookiecutter.project_slug }}",
+    "version": "0.0.0",
+    "orientation": "portrait",
+    "scheme": "{{ cookiecutter.project_slug }}",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "{{ cookiecutter.__bundle_id }}"
+    },
+    "android": {
+      "package": "{{ cookiecutter.__bundle_id }}"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
