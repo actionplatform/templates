@@ -1,0 +1,26 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Platform
+.ap-build/
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+npm-debug.log*
+*.tsbuildinfo
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/
