@@ -64,6 +64,7 @@ Under `projects/`, three levels: **type → stack → template**.
 | `docs` | mkdocs | <img src="assets/icons/mkdocs.svg" width="18" height="18" alt="mkdocs"> MkDocs Material | [`material`](projects/docs/mkdocs/material) | MkDocs Material site | ✓ |
 |  | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> markdown | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> Markdown | [`knowledge`](projects/docs/markdown/knowledge) | Markdown pages + `AGENTS.md`/`CLAUDE.md` + an example agent skill; checks links and format, no build | ✓ |
 | `plugin` | chrome | <img src="assets/icons/chrome.svg" width="18" height="18" alt="chrome"> Manifest V3 | [`vanilla`](projects/plugin/chrome/vanilla) | Chrome extension, no bundler | ✓ |
+|  | wordpress | <img src="assets/icons/wordpress.svg" width="18" height="18" alt="wordpress"> WordPress plugin | [`basic`](projects/plugin/wordpress/basic) | WordPress plugin: Settings API page, WPCS, phpstan, PHPUnit + Brain Monkey, zip build | ✓ |
 | `mobile` | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/expo.svg" width="18" height="18" alt="expo"> Expo | [`app`](projects/mobile/expo/app) | Expo + React Native + TypeScript, expo-router, Jest | ✓ |
 | `empty` | — | — | [`empty`](projects/empty) | Only `platform.toml` + `.code_quality/` |  |
 
@@ -121,7 +122,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 27 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 28 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
