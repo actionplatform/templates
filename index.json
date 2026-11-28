@@ -243,6 +243,20 @@
       }
     },
     {
+      "id": "web/node/hono",
+      "type": "web",
+      "stack": "node",
+      "template": "hono",
+      "framework": "Hono",
+      "language": "node",
+      "description": "Hono API on Node with TypeScript and Vitest",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/hono.svg"
+      }
+    },
+    {
       "id": "library/python/poetry",
       "type": "library",
       "stack": "python",

@@ -1,0 +1,38 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.0.0",
+  "description": "{{ cookiecutter.description }}",
+  "private": true,
+  "license": "{{ cookiecutter.__spdx or 'UNLICENSED' }}",
+  "author": "{{ cookiecutter.author }}",
+  "type": "module",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">={{ cookiecutter._node_version }}"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc -p .code_quality/tsconfig.json",
+    "typecheck": "tsc -p .code_quality/tsconfig.test.json",
+    "lint": "eslint --config .code_quality/eslint.config.mjs src tests",
+    "format": "prettier --config .code_quality/.prettierrc.json --check \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:write": "prettier --config .code_quality/.prettierrc.json --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.11",
+    "hono": "^4.13.23"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.7",
+    "eslint": "^10.16.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^4.1.12"
+  }
+}
