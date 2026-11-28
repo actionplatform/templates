@@ -6,14 +6,29 @@ import { Welcome } from "../src/components/Welcome";
 describe("Welcome", () => {
   it("renders what it is given", () => {
     render(
-      <Welcome name="Acme" description="Widgets" docsUrl="https://example.test/docs" />
+      <Welcome
+        name="Acme"
+        description="Widgets"
+        docsUrl="https://example.test/docs"
+      />
     );
 
     expect(screen.getByRole("heading", { name: "Acme" })).toBeInTheDocument();
     expect(screen.getByText("Widgets")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Documentation" })).toHaveAttribute(
-      "href",
-      "https://example.test/docs"
+    expect(
+      screen.getByRole("link", { name: "Documentation" })
+    ).toHaveAttribute("href", "https://example.test/docs");
+  });
+
+  it("leaves the description out when there is none", () => {
+    const { container } = render(
+      <Welcome
+        name="Acme"
+        description=""
+        docsUrl="https://example.test/docs"
+      />
     );
+
+    expect(container.querySelectorAll("p")).toHaveLength(1);
   });
 });
