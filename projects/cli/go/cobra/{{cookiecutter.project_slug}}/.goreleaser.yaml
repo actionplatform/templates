@@ -1,0 +1,37 @@
+version: 2
+
+project_name: {{ cookiecutter.project_slug }}
+
+builds:
+  - main: .
+    binary: {{ cookiecutter.project_slug }}
+    env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w
+      - -X {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/version.Version={% raw %}{{ .Version }}{% endraw %}
+      - -X {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/version.Commit={% raw %}{{ .ShortCommit }}{% endraw %}
+      - -X {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}/internal/version.Date={% raw %}{{ .Date }}{% endraw %}
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{% raw %}{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{% endraw %}"
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs"
+      - "^test"
+      - "^chore"
+      - "^ci"
+      - "^style"

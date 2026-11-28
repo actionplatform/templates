@@ -19,6 +19,11 @@
       "description": "Reusable package, module or command-line tool."
     },
     {
+      "id": "cli",
+      "label": "Command-line tool",
+      "description": "Binary released for linux, darwin and windows."
+    },
+    {
       "id": "automation",
       "label": "Automation",
       "description": "Scripts and jobs run by hand or by an external scheduler."
@@ -362,6 +367,20 @@
       "icons": {
         "language": "assets/icons/rust.svg",
         "framework": "assets/icons/rust.svg"
+      }
+    },
+    {
+      "id": "cli/go/cobra",
+      "type": "cli",
+      "stack": "go",
+      "template": "cobra",
+      "framework": "Cobra",
+      "language": "go",
+      "description": "Go CLI released as binaries with GoReleaser",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/go.svg",
+        "framework": "assets/icons/go.svg"
       }
     },
     {
