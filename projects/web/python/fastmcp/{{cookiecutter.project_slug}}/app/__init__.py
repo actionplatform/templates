@@ -14,7 +14,10 @@ from starlette.responses import JSONResponse
 
 from tools.hello import hello
 
-mcp = FastMCP("{{ cookiecutter.project_name }}", version=__version__)
+mcp = FastMCP(
+    "{{ cookiecutter.project_name }}",
+    version=__version__,
+)
 mcp.tool(hello)
 
 
