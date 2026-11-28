@@ -159,6 +159,20 @@
       }
     },
     {
+      "id": "web/java/quarkus",
+      "type": "web",
+      "stack": "java",
+      "template": "quarkus",
+      "framework": "Quarkus",
+      "language": "java",
+      "description": "Quarkus REST API (Maven, JDK 21)",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/java.svg",
+        "framework": "assets/icons/quarkus.svg"
+      }
+    },
+    {
       "id": "web/kotlin/spring",
       "type": "web",
       "stack": "kotlin",
