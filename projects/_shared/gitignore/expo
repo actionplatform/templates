@@ -1,0 +1,11 @@
+
+# Expo
+.expo/
+web-build/
+expo-env.d.ts
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.metro-health-check*

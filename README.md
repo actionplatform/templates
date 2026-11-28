@@ -64,6 +64,7 @@ Under `projects/`, three levels: **type → stack → template**.
 | `docs` | mkdocs | <img src="assets/icons/mkdocs.svg" width="18" height="18" alt="mkdocs"> MkDocs Material | [`material`](projects/docs/mkdocs/material) | MkDocs Material site | ✓ |
 |  | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> markdown | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> Markdown | [`knowledge`](projects/docs/markdown/knowledge) | Markdown pages + `AGENTS.md`/`CLAUDE.md` + an example agent skill; checks links and format, no build | ✓ |
 | `plugin` | chrome | <img src="assets/icons/chrome.svg" width="18" height="18" alt="chrome"> Manifest V3 | [`vanilla`](projects/plugin/chrome/vanilla) | Chrome extension, no bundler | ✓ |
+| `mobile` | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/expo.svg" width="18" height="18" alt="expo"> Expo | [`app`](projects/mobile/expo/app) | Expo + React Native + TypeScript, expo-router, Jest | ✓ |
 | `empty` | — | — | [`empty`](projects/empty) | Only `platform.toml` + `.code_quality/` |  |
 
 `action-platform init <type> <stack>` picks the default template of the pair; name the third part to pick another (`init web node fastify`). `plugin` stack is the **host system** — it imposes the language.
@@ -80,6 +81,7 @@ The contract a template honours so the platform can build, check and run every p
 | `job` | an entrypoint that runs once and exits with a status code (`python -m app`), logs to stdout, config from the environment, tests per task; no server | `check.sh` |
 | `docs` | `docs/` of Markdown pages; with `mkdocs.yml` it builds with `mkdocs build --strict` (`mkdocs/material`), without it the language's checks run (`markdown/knowledge`: Prettier format + remark link check through npm) | `check.sh` (docs type) |
 | `plugin` | the host's manifest and build, tests where the host allows them | `check.sh` |
+| `mobile` | an Expo app (`app.json` with name, slug, scheme and bundle id; `eas.json` with development, preview and production profiles, no secrets), at least two screens, tests that render them and the navigation between them, `npm run lint` covering eslint, Prettier and `tsc --noEmit`; no native folders committed | `check.sh` (`npm run lint`, `npm test`), `npx expo-doctor` |
 | `empty` | `platform.toml`, `LAST_VERSION`, `.code_quality/` — nothing else | render only |
 
 Every type: `platform.toml`, `LAST_VERSION = 0.0.0`, `.code_quality/` with the linters that run, the shared files (CI for the four providers, `.editorconfig`, `.gitignore`, `LICENSE`, `AGENTS.md`), a pinned toolchain and its lockfile, a `README` with Run / Test / Layout sections, and code that passes its own lint, format and tests on the first commit.
@@ -119,7 +121,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 26 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 27 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
