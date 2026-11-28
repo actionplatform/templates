@@ -397,6 +397,20 @@
       }
     },
     {
+      "id": "job/python/lambda",
+      "type": "job",
+      "stack": "python",
+      "template": "lambda",
+      "framework": "aws-sam",
+      "language": "python",
+      "description": "Python job on AWS Lambda: an event handler deployed with SAM",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/aws.svg"
+      }
+    },
+    {
       "id": "docs/mkdocs/material",
       "type": "docs",
       "stack": "mkdocs",
