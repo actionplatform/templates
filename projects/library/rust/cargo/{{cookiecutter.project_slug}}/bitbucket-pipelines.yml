@@ -40,6 +40,9 @@ pipelines:
           - step: *ap-check
           - step: *ap-conventional-commit
           - step: *ap-gitflow
+  branches:
+    "{main,master}":
+      - step: *ap-check
   tags:
     "v*":
       - step: *ap-release
