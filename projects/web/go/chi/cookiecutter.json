@@ -1,0 +1,36 @@
+{
+  "project_name": "My Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+  "description": "chi + net/http",
+  "author": "",
+  "github_owner": "",
+  "source_host": [
+    "github",
+    "gitlab",
+    "bitbucket"
+  ],
+  "license": [
+    "none",
+    "mit",
+    "apache-2.0"
+  ],
+  "__owner": "{{ cookiecutter.github_owner or 'example' }}",
+  "__domain": "{{ {'gitlab': 'gitlab.com', 'bitbucket': 'bitbucket.org'}.get(cookiecutter.source_host, 'github.com') }}",
+  "__spdx": "{{ {'mit': 'MIT', 'apache-2.0': 'Apache-2.0'}.get(cookiecutter.license, '') }}",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "ci": [
+    "github",
+    "gitlab",
+    "jenkins",
+    "bitbucket"
+  ],
+  "_type": "web",
+  "_stack": "go",
+  "_language": "go",
+  "_variant": "chi",
+  "_copy_without_render": [
+    ".github",
+    "go.sum"
+  ],
+  "_go_version": "1.26.0"
+}
