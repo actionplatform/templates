@@ -243,6 +243,20 @@
       }
     },
     {
+      "id": "web/node/nestjs",
+      "type": "web",
+      "stack": "node",
+      "template": "nestjs",
+      "framework": "NestJS",
+      "language": "node",
+      "description": "NestJS API with TypeScript and Jest",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/nestjs.svg"
+      }
+    },
+    {
       "id": "library/python/poetry",
       "type": "library",
       "stack": "python",
