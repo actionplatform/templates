@@ -217,6 +217,20 @@
       }
     },
     {
+      "id": "web/rust/axum",
+      "type": "web",
+      "stack": "rust",
+      "template": "axum",
+      "framework": "Axum",
+      "language": "rust",
+      "description": "Axum + Tokio",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/rust.svg",
+        "framework": "assets/icons/rust.svg"
+      }
+    },
+    {
       "id": "web/go/gin",
       "type": "web",
       "stack": "go",

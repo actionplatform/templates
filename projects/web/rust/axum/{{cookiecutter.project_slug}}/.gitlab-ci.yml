@@ -1,0 +1,18 @@
+include:
+  - remote: https://raw.githubusercontent.com/actionplatform/ci-gitlab/v1/ci.yml
+
+image: rust:{{ cookiecutter._rust_version }}
+
+stages: [test, deploy]
+
+check:
+  extends: .ap-check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+conventional-commit:
+  extends: .ap-conventional-commit
+
+gitflow:
+  extends: .ap-gitflow
