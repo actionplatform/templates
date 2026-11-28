@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.0.0"
+package-mode = false
+description = "{{ cookiecutter.description }}"
+authors = [{% if cookiecutter.author %}"{{ cookiecutter.author }}"{% endif %}]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^{{ cookiecutter._python_version }}"
+django = "^5.2.0"
+djangorestframework = "^3.18.0"
+gunicorn = "^27.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.2.0"
+pytest-django = "^4.14.0"
+
+[tool.poetry.group.code-quality.dependencies]
+ruff = "^0.16.0"
+
+[tool.ruff]
+extend = ".code_quality/ruff.toml"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "app.settings"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
