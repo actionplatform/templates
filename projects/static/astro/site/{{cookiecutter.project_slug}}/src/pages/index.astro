@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { description, name } from "../site";
+import { formatDate, published, sortByDate } from "../lib/posts";
+
+const latest = sortByDate(published(await getCollection("blog"))).slice(0, 3);
+---
+
+<Layout title={name}>
+  <section class="hero">
+    <h1>{name}</h1>
+    <p>{description}</p>
+    <a class="button" href="/blog/">
+      Read the blog
+    </a>
+  </section>
+
+  <ul class="features">
+    <li>
+      <h3>Static</h3>
+      <p>Built once to plain HTML in dist/, served by any web server.</p>
+    </li>
+    <li>
+      <h3>Content</h3>
+      <p>
+        Posts are Markdown files in src/content/blog, validated by a schema.
+      </p>
+    </li>
+    <li>
+      <h3>Fast</h3>
+      <p>No JavaScript is shipped unless a page asks for it.</p>
+    </li>
+  </ul>
+
+  <h2>Latest posts</h2>
+  <ul class="posts">
+    {latest.map((post) => (
+      <li>
+        <h3>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        </h3>
+        <span class="meta">{formatDate(post.data.date)}</span>
+      </li>
+    ))}
+  </ul>
+</Layout>

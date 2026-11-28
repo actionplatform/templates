@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { name } from "../../site";
+import {
+  formatDate,
+  published,
+  readingTime,
+  sortByDate,
+} from "../../lib/posts";
+
+const posts = sortByDate(published(await getCollection("blog")));
+---
+
+<Layout title={`Blog | ${name}`}>
+  <h1>Blog</h1>
+  <ul class="posts">
+    {posts.map((post) => (
+      <li>
+        <h2>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        </h2>
+        <span class="meta">
+          {formatDate(post.data.date)} · {readingTime(post.body ?? "")} min read
+        </span>
+        <p>{post.data.description}</p>
+      </li>
+    ))}
+  </ul>
+</Layout>

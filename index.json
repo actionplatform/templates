@@ -34,6 +34,11 @@
       "description": "Documentation site."
     },
     {
+      "id": "static",
+      "label": "Static site",
+      "description": "Site built to static files in dist/, served by any web server or CDN."
+    },
+    {
       "id": "plugin",
       "label": "Plugin",
       "description": "Extension for a host system, which imposes the language."
@@ -99,6 +104,11 @@
       "id": "chrome",
       "label": "Chrome",
       "icon": "assets/icons/chrome.svg"
+    },
+    {
+      "id": "astro",
+      "label": "Astro",
+      "icon": "assets/icons/astro.svg"
     }
   ],
   "projects": [
@@ -422,6 +432,20 @@
       "icons": {
         "language": "assets/icons/markdown.svg",
         "framework": "assets/icons/markdown.svg"
+      }
+    },
+    {
+      "id": "static/astro/site",
+      "type": "static",
+      "stack": "astro",
+      "template": "site",
+      "framework": "Astro",
+      "language": "node",
+      "description": "Astro landing page + blog content collection, Vitest, nginx image",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/nodejs.svg",
+        "framework": "assets/icons/astro.svg"
       }
     },
     {

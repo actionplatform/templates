@@ -78,6 +78,8 @@ The contract a template honours so the platform can build, check and run every p
 | `automation` | an entrypoint the scheduler calls (`python -m app`, a `main`), one module per task, tests per task, no long-lived server | `check.sh` |
 | `job` | an entrypoint that runs once and exits with a status code (`python -m app`), logs to stdout, config from the environment, tests per task; no server | `check.sh` |
 | `docs` | `docs/` of Markdown pages; with `mkdocs.yml` it builds with `mkdocs build --strict` (`mkdocs/material`), without it the language's checks run (`markdown/knowledge`: Prettier format + remark link check through npm) | `check.sh` (docs type) |
+| `static` | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/astro.svg" width="18" height="18" alt="astro"> Astro | [`site`](projects/static/astro/site) | Astro landing page + blog content collection, Vitest, nginx image | ✓ |
+| `static` | `npm run build` writes the site to `dist/` (plain files, no server needed); an optional `Dockerfile` serves `dist/` with nginx on `$PORT` and answers `GET /health` with `200`; tests for the code behind the pages | `check.sh` |
 | `plugin` | the host's manifest and build, tests where the host allows them | `check.sh` |
 | `empty` | `platform.toml`, `LAST_VERSION`, `.code_quality/` — nothing else | render only |
 
@@ -116,7 +118,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 25 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 26 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres

@@ -1,0 +1,36 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.0.0",
+  "description": "{{ cookiecutter.description }}",
+  "private": true,
+  "license": "{{ cookiecutter.__spdx or 'UNLICENSED' }}",
+  "author": "{{ cookiecutter.author }}",
+  "type": "module",
+  "engines": {
+    "node": ">={{ cookiecutter._node_version }}"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint --config .code_quality/eslint.config.js . && astro check",
+    "format": "prettier --config .code_quality/.prettierrc.json --check \"src/**/*.{ts,astro,css,md}\" \"tests/**/*.ts\"",
+    "format:write": "prettier --config .code_quality/.prettierrc.json --write \"src/**/*.{ts,astro,css,md}\" \"tests/**/*.ts\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "astro": "^7.4.13",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.16.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^4.1.12"
+  }
+}
