@@ -108,6 +108,22 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
+      - if: matrix.template.language == 'elixir'
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: "1.17"
+          otp-version: "27"
+      - if: matrix.template.language == 'swift'
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "6.0"
+      - if: matrix.template.language == 'scala'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - if: matrix.template.language == 'scala'
+        uses: sbt/setup-sbt@v1
 
       - name: setup and check (ci-scripts v1)
         working-directory: ${{ env.PROJECT }}
