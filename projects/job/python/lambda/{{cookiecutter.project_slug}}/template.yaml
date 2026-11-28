@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: "{{ cookiecutter.project_name }}"
+
+Parameters:
+  Schedule:
+    Type: String
+    Default: rate(1 day)
+  LogLevel:
+    Type: String
+    Default: INFO
+  GreetingName:
+    Type: String
+    Default: world
+
+Globals:
+  Function:
+    Runtime: python{{ cookiecutter._python_version }}
+    Timeout: 60
+    MemorySize: 256
+    Environment:
+      Variables:
+        LOG_LEVEL: !Ref LogLevel
+        GREETING_NAME: !Ref GreetingName
+
+Resources:
+  JobFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: app.handler.handler
+      Events:
+        Scheduled:
+          Type: Schedule
+          Properties:
+            Schedule: !Ref Schedule
+        Queue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt JobQueue.Arn
+            BatchSize: 10
+            FunctionResponseTypes:
+              - ReportBatchItemFailures
+
+  JobQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 360
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt JobDeadLetterQueue.Arn
+        maxReceiveCount: 3
+
+  JobDeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      MessageRetentionPeriod: 1209600
+
+Outputs:
+  JobFunctionName:
+    Value: !Ref JobFunction
+  JobQueueUrl:
+    Value: !Ref JobQueue

@@ -60,6 +60,7 @@ Under `projects/`, three levels: **type → stack → template**.
 | `automation` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`basic`](projects/automation/python/basic) | Simple Python automation: `python -m app` | ✓ |
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`scheduled`](projects/automation/python/scheduled) | Scheduled Python jobs: `python -m app run <job>` |  |
 | `job` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> argparse | [`basic`](projects/job/python/basic) | Python job: runs once, exits with a status code | ✓ |
+| `job` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/aws.svg" width="18" height="18" alt="aws-sam"> aws-sam | [`lambda`](projects/job/python/lambda) | Python job on AWS Lambda: an event handler deployed with SAM | |
 | `docs` | mkdocs | <img src="assets/icons/mkdocs.svg" width="18" height="18" alt="mkdocs"> MkDocs Material | [`material`](projects/docs/mkdocs/material) | MkDocs Material site | ✓ |
 |  | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> markdown | <img src="assets/icons/markdown.svg" width="18" height="18" alt="markdown"> Markdown | [`knowledge`](projects/docs/markdown/knowledge) | Markdown pages + `AGENTS.md`/`CLAUDE.md` + an example agent skill; checks links and format, no build | ✓ |
 | `plugin` | chrome | <img src="assets/icons/chrome.svg" width="18" height="18" alt="chrome"> Manifest V3 | [`vanilla`](projects/plugin/chrome/vanilla) | Chrome extension, no bundler | ✓ |
@@ -92,6 +93,8 @@ Under `cloud/`, deploy overlays applied **on top** of a generated project. Proje
 | <img src="assets/icons/aws.svg" width="18" height="18" alt="aws"> [`aws/amplify`](cloud/aws/amplify) | web | node | `amplify.yml`, `customHttp.yml`, deploy workflow (start job + wait) |
 | <img src="assets/icons/docker.svg" width="18" height="18" alt="docker"> [`docker`](cloud/docker) | web | python, node, go, java, kotlin, ruby | `Dockerfile` (build image → runtime image), `docker-compose.yml`, `.dockerignore` |
 
+`aws/lambda` is for `web` projects: it runs the app as an HTTP server behind the Lambda Web Adapter. A job that is itself a Lambda handler (EventBridge schedule, SQS) is its own template, [`job/python/lambda`](projects/job/python/lambda), with a SAM `template.yaml` and no overlay.
+
 Clouds that need a deploy target come as plugins and bring their overlay with them: `aws/lambda` lives in [apx-aws-lambda](https://github.com/actionplatform/apx-aws-lambda) and shows in the matrix through the plugin.
 
 AWS overlays ship `requirements/` — `trust.json` (GitHub OIDC for the repo) and `policy.json` (least privilege the deploy role needs). `DEPLOY.md` shows the two `aws iam` commands to create the role.
@@ -116,7 +119,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 25 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 26 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
