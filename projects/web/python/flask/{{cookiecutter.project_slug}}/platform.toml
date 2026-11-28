@@ -1,0 +1,21 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+type = "web"
+stack = "python"
+template = "flask"
+ci = "{{ cookiecutter.ci }}"
+language = "python"
+
+{% if cookiecutter.github_owner %}[source_host]
+kind = "{{ cookiecutter.source_host }}"
+repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+{% endif %}
+[release]
+strategy = "semver"
+changelog = "conventional"
+
+[build]
+start = "python -m gunicorn --bind 0.0.0.0:${PORT:-8000} 'app:create_app()'"
+
+[gitflow.protection]
+enforce = true
