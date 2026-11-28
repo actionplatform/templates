@@ -47,6 +47,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/fastify.svg" width="18" height="18" alt="fastify"> Fastify | [`fastify`](projects/web/node/fastify) | Fastify + TypeScript + Vitest |  |
 |  | <img src="assets/icons/nodejs.svg" width="18" height="18" alt="nodejs"> node | <img src="assets/icons/vite.svg" width="18" height="18" alt="vite"> React + Vite | [`react-vite`](projects/web/node/react-vite) | React + TypeScript + Vite + Vitest |  |
 |  | <img src="assets/icons/java.svg" width="18" height="18" alt="java"> java | <img src="assets/icons/spring.svg" width="18" height="18" alt="spring"> Spring Boot | [`spring`](projects/web/java/spring) | Spring Boot web API (Maven, JDK 17) | ✓ |
+|  | <img src="assets/icons/java.svg" width="18" height="18" alt="java"> java | <img src="assets/icons/quarkus.svg" width="18" height="18" alt="quarkus"> Quarkus | [`quarkus`](projects/web/java/quarkus) | Quarkus REST API (Maven, JDK 21) |  |
 |  | <img src="assets/icons/kotlin.svg" width="18" height="18" alt="kotlin"> kotlin | <img src="assets/icons/spring.svg" width="18" height="18" alt="spring"> Spring Boot | [`spring`](projects/web/kotlin/spring) | Spring Boot web API in Kotlin (Maven, JDK 17) | ✓ |
 |  | <img src="assets/icons/ruby.svg" width="18" height="18" alt="ruby"> ruby | <img src="assets/icons/sinatra.svg" width="18" height="18" alt="sinatra"> Sinatra | [`sinatra`](projects/web/ruby/sinatra) | Sinatra + Puma + RSpec | ✓ |
 | `library` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/poetry.svg" width="18" height="18" alt="poetry"> Poetry | [`poetry`](projects/library/python/poetry) | Poetry package | ✓ |
@@ -116,7 +117,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 25 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 26 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
