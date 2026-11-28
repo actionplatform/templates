@@ -69,6 +69,7 @@ def templates() -> list[Path]:
 def expected(template: Path) -> dict[Path, str]:
     data = json.loads((template / "cookiecutter.json").read_text())
     language = data.get("_language")
+    stack = data.get("_stack")
     files = {template / SLUG / ".editorconfig": (SHARED / ".editorconfig").read_text()}
     gitignore = (SHARED / "gitignore" / "common").read_text()
 
@@ -77,7 +78,13 @@ def expected(template: Path) -> dict[Path, str]:
 
         return files
 
-    files[template / SLUG / ".gitignore"] = gitignore + (SHARED / "gitignore" / language).read_text()
+    gitignore += (SHARED / "gitignore" / language).read_text()
+    extra = SHARED / "gitignore" / str(stack)
+
+    if stack != language and extra.exists():
+        gitignore += extra.read_text()
+
+    files[template / SLUG / ".gitignore"] = gitignore
     files[template / SLUG / "LICENSE"] = (SHARED / "LICENSE").read_text()
 
     for rel in CI_FILES:
