@@ -1,5 +1,5 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-Start at [Getting started](getting-started.md).
+{% endif %}Start at [Getting started](getting-started.md).

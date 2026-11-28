@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-Plain Markdown, read on the code host. No build, no site.
+{% endif %}Plain Markdown, read on the code host. No build, no site.
 
 ## Run
 

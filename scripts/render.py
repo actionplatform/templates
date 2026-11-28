@@ -65,7 +65,7 @@ def render(template: dict, ci: str, out: Path) -> Path:
             no_input=True,
             output_dir=str(target),
             overwrite_if_exists=True,
-            extra_context={"project_name": "Sample App", "ci": ci},
+            extra_context={"project_name": "Sample App", "description": "", "ci": ci},
         )
     )
     check(path, ci, template)

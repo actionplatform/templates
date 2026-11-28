@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-Documentation site built with MkDocs Material.
+{% endif %}Documentation site built with MkDocs Material.
 
 ```bash
 poetry install

@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-A shell for scripts, integrations and tasks run by hand or by an external system. No scheduler, no API, no database.
+{% endif %}A shell for scripts, integrations and tasks run by hand or by an external system. No scheduler, no API, no database.
 
 ## Install
 

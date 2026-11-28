@@ -1,7 +1,7 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-## Pages
+{% endif %}## Pages
 
 - [Getting started](getting-started.md)

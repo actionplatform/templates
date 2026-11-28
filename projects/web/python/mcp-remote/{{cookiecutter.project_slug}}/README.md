@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-MCP over streamable HTTP at `/mcp`. Every request needs `Authorization: Bearer <jwt>`; the JWT is verified against the authorization server's JWKS (signature, issuer, audience, expiry). `/health` is public, and `/.well-known/oauth-protected-resource/mcp` publishes the OAuth protected resource metadata (RFC 9728) pointing clients to the authorization server.
+{% endif %}MCP over streamable HTTP at `/mcp`. Every request needs `Authorization: Bearer <jwt>`; the JWT is verified against the authorization server's JWKS (signature, issuer, audience, expiry). `/health` is public, and `/.well-known/oauth-protected-resource/mcp` publishes the OAuth protected resource metadata (RFC 9728) pointing clients to the authorization server.
 
 ## Configuration
 

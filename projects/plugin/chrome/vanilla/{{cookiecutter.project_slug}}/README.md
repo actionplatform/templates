@@ -1,8 +1,8 @@
 # {{ cookiecutter.project_name }}
 
-{{ cookiecutter.description }}
+{% if cookiecutter.description %}{{ cookiecutter.description }}
 
-Chrome extension, Manifest V3. No bundler: plain scripts loaded in order by `manifest.json`.
+{% endif %}Chrome extension, Manifest V3. No bundler: plain scripts loaded in order by `manifest.json`.
 
 ## Develop
 
