@@ -108,3 +108,17 @@ jobs:
           chmod +x .ap/*.sh
           .ap/setup.sh
           .ap/check.sh
+
+      - name: Tauri system libraries
+        if: matrix.template.type == 'desktop'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Rust checks
+        if: matrix.template.type == 'desktop'
+        working-directory: ${{ env.PROJECT }}
+        run: |
+          rustup toolchain install
+          npm run lint:rust
+          npm run test:rust
