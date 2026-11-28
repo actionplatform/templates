@@ -161,6 +161,20 @@
       }
     },
     {
+      "id": "web/python/graphql",
+      "type": "web",
+      "stack": "python",
+      "template": "graphql",
+      "framework": "Strawberry",
+      "language": "python",
+      "description": "Strawberry GraphQL + FastAPI",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/graphql.svg"
+      }
+    },
+    {
       "id": "web/python/mcp-remote",
       "type": "web",
       "stack": "python",
