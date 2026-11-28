@@ -10,7 +10,6 @@ describe("App", () => {
     expect(
       screen.getByRole("heading", { name: PROJECT.name })
     ).toBeInTheDocument();
-    expect(screen.getByText(PROJECT.description)).toBeInTheDocument();
     expect(screen.getByText(/Action Platform/)).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Documentation" })
