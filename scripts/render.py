@@ -1,6 +1,7 @@
 """Render every project template the way the platform does and check the result.
 
     python scripts/render.py --list            # the matrix: one line of JSON per template
+    python scripts/render.py --list --changed FILE   # only the templates the listed paths touch
     python scripts/render.py --ci github OUT   # render all into OUT/<id>/sample-app
     python scripts/render.py --ci gitlab --only web/python/fastapi OUT
 """
@@ -39,6 +40,7 @@ LOCKFILES = {
     "Gemfile": "Gemfile.lock",
     "composer.json": "composer.lock",
 }
+DOCS = ("README.md", "CHANGELOG.md", "LAST_VERSION", "index.json", "assets/")
 LEFTOVER = re.compile(r"\{\{\s*cookiecutter\.|\{%")
 
 
@@ -53,6 +55,28 @@ def templates() -> list[dict]:
         sys.exit(f"index.json and projects/ disagree: {sorted(dirs ^ ids)}")
 
     return INDEX["projects"]
+
+
+def touched(all_templates: list[dict], paths: list[str]) -> list[dict]:
+    """The templates whose directory holds one of `paths`; every template when a path is shared."""
+    ids = {t["id"] for t in all_templates}
+    picked: set[str] = set()
+
+    for path in paths:
+        if path.startswith(DOCS):
+            continue
+
+        owner = next(
+            (i for i in ids if path.startswith(f"projects/{i}/")),
+            None,
+        )
+
+        if owner is None:
+            return all_templates
+
+        picked.add(owner)
+
+    return [t for t in all_templates if t["id"] in picked]
 
 
 def render(template: dict, ci: str, out: Path) -> Path:
@@ -132,15 +156,21 @@ def main() -> None:
     parser.add_argument("--list", action="store_true")
     parser.add_argument("--ci", default="github", choices=sorted(CI_FILES))
     parser.add_argument("--only")
+    parser.add_argument("--changed", type=Path)
     parser.add_argument("out", nargs="?", type=Path)
     args = parser.parse_args()
 
     if args.list:
+        listed = templates()
+
+        if args.changed is not None:
+            listed = touched(listed, args.changed.read_text().split())
+
         print(
             json.dumps(
                 [
                     {"id": t["id"], "language": t["language"] or "none", "type": t["type"]}
-                    for t in templates()
+                    for t in listed
                 ]
             )
         )

@@ -38,16 +38,27 @@ jobs:
       templates: ${{ steps.list.outputs.templates }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install cookiecutter
       - id: list
-        run: echo "templates=$(python scripts/render.py --list)" >> "$GITHUB_OUTPUT"
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE" ] && [ "$BASE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            git diff --name-only "$BASE"...HEAD > changed.txt
+            echo "templates=$(python scripts/render.py --list --changed changed.txt)" >> "$GITHUB_OUTPUT"
+          else
+            echo "templates=$(python scripts/render.py --list)" >> "$GITHUB_OUTPUT"
+          fi
 
   check:
     name: ${{ matrix.template.id }}
     needs: matrix
+    if: needs.matrix.outputs.templates != '[]'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
