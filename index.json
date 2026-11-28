@@ -231,6 +231,20 @@
       }
     },
     {
+      "id": "web/php/laravel",
+      "type": "web",
+      "stack": "php",
+      "template": "laravel",
+      "framework": "Laravel",
+      "language": "php",
+      "description": "Laravel 12 API-only + SQLite + PHPUnit",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/php.svg",
+        "framework": "assets/icons/laravel.svg"
+      }
+    },
+    {
       "id": "web/go/gin",
       "type": "web",
       "stack": "go",

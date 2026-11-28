@@ -50,6 +50,7 @@ Under `projects/`, three levels: **type → stack → template**.
 |  | <img src="assets/icons/kotlin.svg" width="18" height="18" alt="kotlin"> kotlin | <img src="assets/icons/spring.svg" width="18" height="18" alt="spring"> Spring Boot | [`spring`](projects/web/kotlin/spring) | Spring Boot web API in Kotlin (Maven, JDK 17) | ✓ |
 |  | <img src="assets/icons/ruby.svg" width="18" height="18" alt="ruby"> ruby | <img src="assets/icons/sinatra.svg" width="18" height="18" alt="sinatra"> Sinatra | [`sinatra`](projects/web/ruby/sinatra) | Sinatra + Puma + RSpec | ✓ |
 |  | <img src="assets/icons/rust.svg" width="18" height="18" alt="rust"> rust | <img src="assets/icons/rust.svg" width="18" height="18" alt="rust"> Axum | [`axum`](projects/web/rust/axum) | Axum + Tokio | ✓ |
+|  | <img src="assets/icons/php.svg" width="18" height="18" alt="php"> php | <img src="assets/icons/laravel.svg" width="18" height="18" alt="laravel"> Laravel | [`laravel`](projects/web/php/laravel) | Laravel 12 API-only + SQLite + PHPUnit | ✓ |
 | `library` | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/poetry.svg" width="18" height="18" alt="poetry"> Poetry | [`poetry`](projects/library/python/poetry) | Poetry package | ✓ |
 |  | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> python | <img src="assets/icons/python.svg" width="18" height="18" alt="python"> Typer | [`typer`](projects/library/python/typer) | Python CLI with Typer |  |
 |  | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> go | <img src="assets/icons/go.svg" width="18" height="18" alt="go"> Go module | [`module`](projects/library/go/module) | Go module | ✓ |
@@ -127,7 +128,7 @@ eval "$(./services/postgres/link)"
 ```
 templates/
 ├── index.json            the catalog: types, stacks, projects, clouds, services — read by the CLI, the API and the web app
-├── projects/             <type>/<stack>/<template> — 29 templates, see the catalog above
+├── projects/             <type>/<stack>/<template> — 32 templates, see the catalog above
 │   └── _shared/          CI files, hook and AGENTS.md head copied into every template (scripts/shared.py)
 ├── cloud/                aws/amplify · docker (aws/lambda comes with its plugin)
 ├── service/              postgres
