@@ -1,0 +1,22 @@
+[package]
+name = "{{ cookiecutter.package_name }}"
+version = "0.0.0"
+edition = "2021"
+description = "{{ cookiecutter.description }}"
+{% if cookiecutter.__spdx %}license = "{{ cookiecutter.__spdx }}"
+{% endif %}repository = "https://{{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}/{{ cookiecutter.project_slug }}"
+publish = false
+
+[lib]
+name = "{{ cookiecutter.package_name }}_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"

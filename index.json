@@ -49,6 +49,11 @@
       "description": "Application built for iOS and Android."
     },
     {
+      "id": "desktop",
+      "label": "Desktop application",
+      "description": "Installable app for macOS, Linux and Windows."
+    },
+    {
       "id": "empty",
       "label": "Empty project",
       "description": "Only platform.toml and .code_quality/."
@@ -114,6 +119,11 @@
       "id": "expo",
       "label": "Expo",
       "icon": "assets/icons/expo.svg"
+    },
+    {
+      "id": "tauri",
+      "label": "Tauri",
+      "icon": "assets/icons/tauri.svg"
     }
   ],
   "projects": [
@@ -493,6 +503,20 @@
       "icons": {
         "language": "assets/icons/nodejs.svg",
         "framework": "assets/icons/expo.svg"
+      }
+    },
+    {
+      "id": "desktop/tauri/app",
+      "type": "desktop",
+      "stack": "tauri",
+      "template": "app",
+      "framework": "Tauri 2",
+      "language": "node",
+      "description": "Tauri 2 with React, TypeScript, Vite and a Rust backend",
+      "default": true,
+      "icons": {
+        "language": "assets/icons/tauri.svg",
+        "framework": "assets/icons/react.svg"
       }
     },
     {

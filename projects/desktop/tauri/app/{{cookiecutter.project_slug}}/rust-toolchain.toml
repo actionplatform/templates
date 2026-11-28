@@ -1,0 +1,3 @@
+[toolchain]
+channel = "{{ cookiecutter._rust_version }}"
+components = ["rustfmt", "clippy"]
