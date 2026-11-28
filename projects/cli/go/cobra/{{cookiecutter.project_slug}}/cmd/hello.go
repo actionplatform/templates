@@ -13,8 +13,10 @@ func helloCommand() *cobra.Command {
 		Use:   "hello",
 		Short: "Say hello",
 		Args:  cobra.NoArgs,
-		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Fprintf(cmd.OutOrStdout(), "hello, %s\n", name)
+		RunE: func(cmd *cobra.Command, args []string) error {
+			_, err := fmt.Fprintf(cmd.OutOrStdout(), "hello, %s\n", name)
+
+			return err
 		},
 	}
 	command.Flags().StringVarP(&name, "name", "n", "world", "who to greet")

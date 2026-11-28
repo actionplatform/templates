@@ -13,8 +13,10 @@ func versionCommand() *cobra.Command {
 		Use:   "version",
 		Short: "Print version, commit and build date",
 		Args:  cobra.NoArgs,
-		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Fprintln(cmd.OutOrStdout(), version.String())
+		RunE: func(cmd *cobra.Command, args []string) error {
+			_, err := fmt.Fprintln(cmd.OutOrStdout(), version.String())
+
+			return err
 		},
 	}
 }

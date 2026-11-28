@@ -18,9 +18,9 @@ func sumCommand() *cobra.Command {
 				return err
 			}
 
-			fmt.Fprintln(cmd.OutOrStdout(), total)
+			_, err = fmt.Fprintln(cmd.OutOrStdout(), total)
 
-			return nil
+			return err
 		},
 	}
 }
