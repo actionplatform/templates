@@ -12,7 +12,11 @@ from tools.hello import hello
 
 
 def build_mcp(auth: AuthProvider | None = None) -> FastMCP:
-    mcp = FastMCP("{{ cookiecutter.project_name }}", version=__version__, auth=auth)
+    mcp = FastMCP(
+        "{{ cookiecutter.project_name }}",
+        version=__version__,
+        auth=auth,
+    )
     mcp.tool(hello)
 
     @mcp.custom_route("/health", methods=["GET"])
