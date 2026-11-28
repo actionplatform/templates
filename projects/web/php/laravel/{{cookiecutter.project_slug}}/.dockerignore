@@ -1,0 +1,14 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+vendor
+node_modules
+storage/logs/*
+storage/framework/cache/data/*
+database/*.sqlite
+tests
+Dockerfile
+.dockerignore
+*.md
