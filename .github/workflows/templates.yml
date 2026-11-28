@@ -62,6 +62,15 @@ jobs:
           python-version: "3.12"
       - run: pip install cookiecutter
       - run: python scripts/render.py --ci github --only ${{ matrix.template.id }} out
+      - name: Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: ${{ env.PROJECT }}
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          format: table
+          exit-code: "1"
 
       - if: matrix.template.language == 'go'
         uses: actions/setup-go@v6

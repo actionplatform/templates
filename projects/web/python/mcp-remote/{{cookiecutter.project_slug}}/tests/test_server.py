@@ -1,6 +1,6 @@
 from typing import Any
 
-import httpx
+import httpx2
 import pytest
 from fastmcp import Client
 from fastmcp.client.auth import BearerAuth
@@ -50,8 +50,8 @@ def token(keys, **overrides):
 
 
 def http(app):
-    return httpx.AsyncClient(
-        transport=httpx.ASGITransport(app=app), base_url=BASE_URL
+    return httpx2.AsyncClient(
+        transport=httpx2.ASGITransport(app=app), base_url=BASE_URL
     )
 
 
@@ -90,13 +90,13 @@ async def test_mcp_with_invalid_token_is_401(app, keys, overrides):
 async def test_tools_with_valid_token(app, keys):
     def factory(
         headers: dict[str, str] | None = None,
-        timeout: httpx.Timeout | None = None,
-        auth: httpx.Auth | None = None,
+        timeout: httpx2.Timeout | None = None,
+        auth: httpx2.Auth | None = None,
         **kwargs: Any,
-    ) -> httpx.AsyncClient:
+    ) -> httpx2.AsyncClient:
         kwargs.pop("transport", None)
-        return httpx.AsyncClient(
-            transport=httpx.ASGITransport(app=app),
+        return httpx2.AsyncClient(
+            transport=httpx2.ASGITransport(app=app),
             headers=headers,
             timeout=timeout,
             auth=auth,

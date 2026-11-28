@@ -10,7 +10,7 @@ gem "sinatra-contrib", "~> 4.1"
 gem "webrick", "~> 1.9"
 
 group :development, :test do
-  gem "puma", "~> 6.4"
+  gem "puma", "~> 8.1"
   gem "rack-test", "~> 2.1"
   gem "rspec", "~> 3.13"
   gem "rubocop", "~> 1.69", require: false

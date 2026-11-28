@@ -8,8 +8,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter._python_version }}"
-fastmcp = "^2.0"
-uvicorn = { extras = ["standard"], version = "^0.34.0" }
+fastmcp = "^4.2"
+uvicorn = { extras = ["standard"], version = "^0.54.0" }
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.0"
