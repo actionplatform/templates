@@ -1,0 +1,49 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "0.0.0",
+  "description": "{{ cookiecutter.description }}",
+  "private": true,
+  "license": "{{ cookiecutter.__spdx or 'UNLICENSED' }}",
+  "author": "{{ cookiecutter.author }}",
+  "type": "module",
+  "main": "dist/main.js",
+  "engines": {
+    "node": ">={{ cookiecutter._node_version }}"
+  },
+  "scripts": {
+    "dev": "nest start --watch",
+    "start": "node dist/main.js",
+    "build": "nest build",
+    "lint": "eslint --config .code_quality/eslint.config.mjs src test",
+    "format": "prettier --config .code_quality/.prettierrc.json --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:write": "prettier --config .code_quality/.prettierrc.json --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --config .code_quality/jest.config.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.6.3",
+    "@nestjs/core": "^12.6.3",
+    "@nestjs/platform-express": "^12.6.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/cli": "^12.0.15",
+    "@nestjs/schematics": "^12.0.17",
+    "@nestjs/testing": "^12.6.3",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.20.7",
+    "@types/supertest": "^7.2.1",
+    "eslint": "^10.16.0",
+    "globals": "^17.14.0",
+    "jest": "^30.5.2",
+    "prettier": "^3.10.1",
+    "supertest": "^7.3.2",
+    "ts-jest": "^29.4.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.74.0"
+  }
+}
