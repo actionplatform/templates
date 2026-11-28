@@ -145,6 +145,20 @@
       }
     },
     {
+      "id": "web/python/flask",
+      "type": "web",
+      "stack": "python",
+      "template": "flask",
+      "framework": "Flask",
+      "language": "python",
+      "description": "Flask 3 + gunicorn + pytest",
+      "default": false,
+      "icons": {
+        "language": "assets/icons/python.svg",
+        "framework": "assets/icons/flask.svg"
+      }
+    },
+    {
       "id": "web/java/spring",
       "type": "web",
       "stack": "java",
