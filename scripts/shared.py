@@ -42,6 +42,10 @@ ECOSYSTEMS = {
     "rust": "cargo",
 }
 
+TYPE_DEPENDABOT = {
+    "desktop": [("cargo", "/src-tauri")],
+}
+
 CI_FILES = [
     ".github/workflows/code-quality.yml",
     ".github/workflows/conventional-commit.yml",
@@ -94,6 +98,9 @@ def expected(template: Path) -> dict[Path, str]:
             .replace("__IMAGE__", IMAGES[language])
             .replace("__ECOSYSTEM__", ECOSYSTEMS[language])
         )
+        if rel == ".github/dependabot.yml":
+            text += dependabot_extra(data.get("_type"))
+
         files[template / SLUG / rel] = text
 
     if data.get("_type") == "library":
@@ -108,6 +115,15 @@ def expected(template: Path) -> dict[Path, str]:
         files[agents] = with_head(agents.read_text(), (SHARED / "AGENTS.md").read_text())
 
     return files
+
+
+def dependabot_extra(type_: str | None) -> str:
+    block = (SHARED / ".github" / "dependabot-ecosystem.yml").read_text()
+
+    return "".join(
+        block.replace("__ECOSYSTEM__", ecosystem).replace("__DIRECTORY__", directory)
+        for ecosystem, directory in TYPE_DEPENDABOT.get(type_, [])
+    )
 
 
 def with_head(current: str, head: str) -> str:

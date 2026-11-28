@@ -120,8 +120,12 @@ def check(project: Path, ci: str, template: dict) -> None:
         problems.append("LAST_VERSION is not 0.0.0")
 
     for manifest, lock in LOCKFILES.items():
-        if (project / manifest).exists() and not (project / lock).exists():
-            problems.append(f"{manifest} without {lock}")
+        for path in project.rglob(manifest):
+            if "node_modules" in path.parts or "target" in path.parts:
+                continue
+
+            if not (path.parent / lock).exists():
+                problems.append(f"{path.relative_to(project)} without {lock}")
 
     if problems:
         sys.exit(f"{template['id']}: " + "; ".join(problems))
