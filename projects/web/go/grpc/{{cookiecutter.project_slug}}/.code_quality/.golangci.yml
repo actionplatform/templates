@@ -1,0 +1,34 @@
+version: "2"
+
+run:
+  timeout: 3m
+
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - ineffassign
+    - unused
+    - misspell
+    - unconvert
+    - gocritic
+  exclusions:
+    paths:
+      - internal/gen
+    rules:
+      - path: _test\.go
+        linters:
+          - errcheck
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - {{ cookiecutter.__domain }}/{{ cookiecutter.__owner }}
+  exclusions:
+    paths:
+      - internal/gen

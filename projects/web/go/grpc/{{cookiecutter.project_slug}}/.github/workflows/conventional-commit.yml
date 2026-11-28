@@ -1,0 +1,15 @@
+name: Conventional commit
+
+on:
+  pull_request:
+    branches: ["main", "master", "develop"]
+
+jobs:
+  conventional-commit:
+    name: conventional-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actionplatform/ci-github/conventional-commit@v1

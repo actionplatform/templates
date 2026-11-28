@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package items.v1;
+
+option go_package = "items/v1;itemsv1";
+
+// ItemService is the example resource: list, get and create.
+service ItemService {
+  rpc ListItems(ListItemsRequest) returns (ListItemsResponse);
+  rpc GetItem(GetItemRequest) returns (GetItemResponse);
+  rpc CreateItem(CreateItemRequest) returns (CreateItemResponse);
+}
+
+message Item {
+  int64 id = 1;
+  string name = 2;
+}
+
+message ListItemsRequest {}
+
+message ListItemsResponse {
+  repeated Item items = 1;
+}
+
+message GetItemRequest {
+  int64 id = 1;
+}
+
+message GetItemResponse {
+  Item item = 1;
+}
+
+message CreateItemRequest {
+  string name = 1;
+}
+
+message CreateItemResponse {
+  Item item = 1;
+}
