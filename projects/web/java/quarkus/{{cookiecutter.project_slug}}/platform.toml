@@ -1,0 +1,21 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+type = "web"
+stack = "java"
+template = "quarkus"
+ci = "{{ cookiecutter.ci }}"
+language = "java"
+
+{% if cookiecutter.github_owner %}[source_host]
+kind = "{{ cookiecutter.source_host }}"
+repo = "{{ cookiecutter.github_owner }}/{{ cookiecutter.project_slug }}"
+{% endif %}
+[release]
+strategy = "semver"
+changelog = "conventional"
+
+[build]
+start = "java -jar target/quarkus-app/quarkus-run.jar"
+
+[gitflow.protection]
+enforce = true
